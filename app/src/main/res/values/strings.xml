@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Kos</string>
+    <string name="app_name">Omah Kos</string>
+    <string name="lupa_password"><u>Lupa Password?</u></string>
+    <string name="selamat_datang_kembali">Selamat datang kembali</string>
+    <string name="tolong_isi_data_dirimu_untuk_masuk_sebagai_pencari_kost">Tolong isi data dirimu untuk masuk sebagai pencari kost</string>
+    <string name="login_image_1">Login image 1</string>
+    <string name="email">Email</string>
+    <string name="masukkan_alamat_email_anda">Masukkan alamat email anda</string>
+    <string name="password">Password</string>
+    <string name="masukkan_password_anda">Masukkan password anda</string>
+    <string name="ingat_dalam_30_hari">Ingat dalam 30 hari</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="daftar_gratis">Daftar gratis!</string>
+    <string name="line_login">Line login</string>
 </resources>
