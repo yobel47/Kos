@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Kos"
         tools:targetApi="31">
         <activity
+            android:name=".view.ui.LoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.ui.MainActivity"
             android:exported="false">
             <meta-data
@@ -20,7 +27,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.ui.LoginActivity"
+            android:name=".view.ui.SelectUserActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

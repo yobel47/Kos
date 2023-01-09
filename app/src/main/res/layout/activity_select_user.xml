@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ui.SelectUserActivity">
+
+    <TextView
+        android:id="@+id/tv_welcome_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/selamat_datang_di_omah_kost"
+        android:paddingTop="24dp"
+        android:paddingHorizontal="24dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_welcome_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/silahkan_pilih_kamu_ingin_masuk_sebagai_apa"
+        android:textColor="#787579"
+        android:paddingHorizontal="24dp"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_title" />
+
+
+    <Button
+        android:id="@+id/btn_pencari_kos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/pencari_kos"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textFontWeight="900"
+        android:paddingVertical="27dp"
+        android:paddingHorizontal="16dp"
+        android:drawableLeft="@drawable/image_auth_3"
+        android:gravity="start|center"
+        android:textColor="@color/black"
+        app:backgroundTint="@null"
+        android:background="@drawable/button_select_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome_description"
+        tools:targetApi="p"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/btn_penyewa_kos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/penyewa_kos"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textFontWeight="900"
+        android:paddingVertical="27dp"
+        android:paddingHorizontal="16dp"
+        android:drawableLeft="@drawable/image_auth_4"
+        android:gravity="start|center"
+        android:textColor="@color/black"
+        app:backgroundTint="@null"
+        android:background="@drawable/button_select_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pencari_kos"
+        tools:targetApi="p"
+        tools:ignore="RtlHardcoded" />
+
+
+    <ImageView
+        android:id="@+id/iv_auth_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/image_auth_1"
+        android:contentDescription="@string/auth_background_1" />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
