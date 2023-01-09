@@ -13,4 +13,9 @@
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="daftar_gratis">Daftar gratis!</string>
     <string name="line_login">Line login</string>
+    <string name="pencari_kos">\t\t\t\tPencari Kos</string>
+    <string name="silahkan_pilih_kamu_ingin_masuk_sebagai_apa">Silahkan pilih kamu ingin masuk sebagai apa :)</string>
+    <string name="penyewa_kos">\t\t\t\tPenyewa Kos</string>
+    <string name="auth_background_1">Auth background 1</string>
+    <string name="selamat_datang_di_omah_kost">Selamat datang di Omah Kost</string>
 </resources>
