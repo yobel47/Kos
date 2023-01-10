@@ -18,4 +18,11 @@
     <string name="penyewa_kos">\t\t\t\tPenyewa Kos</string>
     <string name="auth_background_1">Auth background 1</string>
     <string name="selamat_datang_di_omah_kost">Selamat datang di Omah Kost</string>
+    <string name="filter">Filter</string>
+    <string name="kos_terlaris">Kos Terlaris</string>
+    <string name="filter_text">Filter</string>
+    <string name="favorit">Favorit</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="profil">Profil</string>
+    <string name="home">Home</string>
 </resources>
