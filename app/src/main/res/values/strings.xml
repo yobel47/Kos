@@ -18,4 +18,14 @@
     <string name="penyewa_kos">\t\t\t\tPenyewa Kos</string>
     <string name="auth_background_1">Auth background 1</string>
     <string name="selamat_datang_di_omah_kost">Selamat datang di Omah Kost</string>
+    <string name="dengan_mendaftar_saya_menyetujui_kebijakan_privasi">Dengan mendaftar, saya menyetujui <b>kebijakan privasi</b></string>
+    <string name="daftar_sebagai_pencari_kos">Daftar sebagai Pencari Kos</string>
+    <string name="yuk_lengkapi_data_diri_supaya_bisa_masuk_ke_omah_kost">Yuk, lengkapi data diri supaya bisa masuk ke Omah Kost!</string>
+    <string name="nama">Nama</string>
+    <string name="no_hp">No. HP</string>
+    <string name="masukkan_nomor_handphone_anda">Masukkan nomor handphone anda</string>
+    <string name="masukkan_nama_anda">Masukkan nama anda</string>
+    <string name="daftar">Daftar</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="masuk_di_sini">Masuk di sini!</string>
 </resources>
