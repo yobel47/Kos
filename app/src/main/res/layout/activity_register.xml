@@ -235,13 +235,13 @@
             android:layout_marginTop="20dp"
             android:text="@string/sudah_punya_akun"
             android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_btn_register"
+            app:layout_constraintEnd_toStartOf="@+id/tv_btn_login"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
         <Button
-            android:id="@+id/tv_btn_register"
+            android:id="@+id/tv_btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -263,9 +263,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_btn_register"
-            app:layout_constraintStart_toStartOf="@+id/tv_btn_register"
-            app:layout_constraintTop_toBottomOf="@+id/tv_btn_register"
+            app:layout_constraintEnd_toEndOf="@+id/tv_btn_login"
+            app:layout_constraintStart_toStartOf="@+id/tv_btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/tv_btn_login"
             app:srcCompat="@drawable/auth_line"
             android:contentDescription="@string/line_login" />
 
