@@ -36,4 +36,9 @@
     <string name="daftar">Daftar</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="masuk_di_sini">Masuk di sini!</string>
+    <string name="kos_title_here">Kos Title Here</string>
+    <string name="kos_location">Kos Location</string>
+    <string name="rp1_225_000"><strike>Rp1.225.000</strike></string>
+    <string name="per_month">/bulan</string>
+    <string name="rate_5">5/5</string>
 </resources>
