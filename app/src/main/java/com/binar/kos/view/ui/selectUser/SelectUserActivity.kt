@@ -1,9 +1,10 @@
-package com.binar.kos.view.ui
+package com.binar.kos.view.ui.selectUser
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.binar.kos.databinding.ActivitySelectUserBinding
+import com.binar.kos.view.ui.login.LoginActivity
 
 class SelectUserActivity : AppCompatActivity() {
 
@@ -14,7 +15,7 @@ class SelectUserActivity : AppCompatActivity() {
         binding = ActivitySelectUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intent = Intent(this,LoginActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         binding.btnPencariKos.setOnClickListener {
             intent.putExtra(USER_TYPE,"pencari")
             startActivity(intent)

@@ -1,4 +1,4 @@
-package com.binar.kos.view.ui
+package com.binar.kos.view.ui.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.binar.kos.R
 import com.binar.kos.databinding.ActivityRegisterBinding
+import com.binar.kos.view.ui.selectUser.SelectUserActivity
+import com.binar.kos.view.ui.login.LoginActivity
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -22,7 +24,7 @@ class RegisterActivity : AppCompatActivity() {
         checkUserType(userType!!)
 
         binding.tvBtnLogin.setOnClickListener {
-            val intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra(SelectUserActivity.USER_TYPE,userType)
             finish()
             startActivity(intent)

@@ -1,4 +1,4 @@
-package com.binar.kos.view.ui
+package com.binar.kos.view.ui.login
 
 import android.content.Intent
 import android.graphics.Rect
@@ -11,6 +11,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.binar.kos.R
 import com.binar.kos.databinding.ActivityLoginBinding
+import com.binar.kos.view.ui.register.RegisterActivity
+import com.binar.kos.view.ui.selectUser.SelectUserActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -29,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         checkButton()
 
         binding.tvBtnRegister.setOnClickListener {
-            val intent = Intent(this,RegisterActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             intent.putExtra(SelectUserActivity.USER_TYPE,userType)
             finish()
             startActivity(intent)
