@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/background"
-    tools:context=".view.ui.login.LoginActivity">
+    tools:context=".view.ui.register.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="@string/selamat_datang_kembali"
+            android:text="@string/daftar_sebagai_pencari_kos"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
             android:id="@+id/tv_welcome_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tolong_isi_data_dirimu_untuk_masuk_sebagai_pencari_kost"
+            android:text="@string/yuk_lengkapi_data_diri_supaya_bisa_masuk_ke_omah_kost"
             android:textColor="#787579"
             android:textSize="16sp"
             android:layout_marginTop="12dp"
@@ -49,17 +49,94 @@
             android:contentDescription="@string/login_image_1" />
 
         <TextView
-            android:id="@+id/tv_email_title"
+            android:id="@+id/tv_name_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
-            android:text="@string/email"
+            android:text="@string/nama"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_login_1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_title">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/masukkan_nama_anda"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:autofillHints="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_phone_number_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/no_hp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phone_number_title">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/masukkan_nomor_handphone_anda"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:autofillHints="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_email_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_phone_number" />
 
         <com.binar.kos.view.customView.CustomEmailEditText
             android:id="@+id/et_email"
@@ -124,26 +201,14 @@
                 android:minHeight="48dp"
                 android:autofillHints="" />
         </com.binar.kos.view.customView.CustomPasswordEditText>
-
         <CheckBox
-            android:id="@+id/cb_remember"
+            android:id="@+id/cb_policy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ingat_dalam_30_hari"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password" />
-
-        <TextView
-            android:id="@+id/tv_forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/lupa_password"
-            android:textAlignment="textEnd"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:text="@string/dengan_mendaftar_saya_menyetujui_kebijakan_privasi"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
         <Button
@@ -154,29 +219,29 @@
             app:backgroundTint="@null"
             android:background="@drawable/custom_button"
             android:textColor="@drawable/custom_button_text"
-            android:text="@string/masuk"
+            android:text="@string/daftar"
             android:textAllCaps="false"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
+            app:layout_constraintTop_toBottomOf="@+id/cb_policy" />
 
         <TextView
             android:id="@+id/tv_to_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/belum_punya_akun"
+            android:text="@string/sudah_punya_akun"
             android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_btn_register"
+            app:layout_constraintEnd_toStartOf="@+id/tv_btn_login"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
         <Button
-            android:id="@+id/tv_btn_register"
+            android:id="@+id/tv_btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -187,7 +252,7 @@
             android:minWidth="0dp"
             android:layout_marginTop="10dp"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:text="@string/daftar_gratis"
+            android:text="@string/masuk_di_sini"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_to_register"
@@ -198,13 +263,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_btn_register"
-            app:layout_constraintStart_toStartOf="@+id/tv_btn_register"
-            app:layout_constraintTop_toBottomOf="@+id/tv_btn_register"
+            app:layout_constraintEnd_toEndOf="@+id/tv_btn_login"
+            app:layout_constraintStart_toStartOf="@+id/tv_btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/tv_btn_login"
             app:srcCompat="@drawable/auth_line"
             android:contentDescription="@string/line_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>

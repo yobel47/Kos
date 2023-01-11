@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -70,5 +71,13 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.4.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:2.4.3"
+
+    //Koin
+    implementation "io.insert-koin:koin-core:3.2.2"
+    implementation "io.insert-koin:koin-android:3.3.0"
+    implementation "io.insert-koin:koin-android-compat:3.3.0"
+    implementation "io.insert-koin:koin-androidx-workmanager:3.3.0"
+    implementation "io.insert-koin:koin-androidx-navigation:3.3.0"
+
 
 }
