@@ -48,7 +48,7 @@
         android:id="@+id/tv_email_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="44dp"
         android:text="@string/email"
         android:textColor="@color/black"
         android:textSize="14sp"
