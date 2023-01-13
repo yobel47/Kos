@@ -88,11 +88,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tv_phone_number_title"
+            android:id="@+id/tv_username_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:text="@string/no_hp"
+            android:text="@string/username"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -101,7 +101,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_phone_number"
+            android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -114,12 +114,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phone_number_title">
+            app:layout_constraintTop_toBottomOf="@+id/tv_username_title">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/masukkan_nomor_handphone_anda"
+                android:hint="@string/masukkan_username_anda"
                 android:inputType="number"
                 android:minHeight="48dp"
                 android:autofillHints="" />
@@ -136,7 +136,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_phone_number" />
+            app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
         <com.binar.kos.view.customView.CustomEmailEditText
             android:id="@+id/et_email"
