@@ -8,6 +8,7 @@ import com.binar.kos.R
 import com.binar.kos.databinding.ActivityRegisterBinding
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.view.ui.login.LoginActivity
+import com.binar.kos.view.ui.verification.VerificationActivity
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -22,6 +23,12 @@ class RegisterActivity : AppCompatActivity() {
         val userType = intent.getStringExtra(SelectUserActivity.USER_TYPE)
 
         checkUserType(userType!!)
+
+        binding.btnRegister.setOnClickListener {
+            val intent = Intent(this, VerificationActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
 
         binding.tvBtnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

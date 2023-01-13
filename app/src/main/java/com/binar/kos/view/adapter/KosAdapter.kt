@@ -1,4 +1,4 @@
-package com.binar.kos.view.ui.adapter
+package com.binar.kos.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
