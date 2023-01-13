@@ -125,13 +125,13 @@
                 android:autofillHints="" />
         </com.binar.kos.view.customView.CustomPasswordEditText>
 
-        <CheckBox
-            android:id="@+id/cb_remember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ingat_dalam_30_hari"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+<!--        <CheckBox-->
+<!--            android:id="@+id/cb_remember"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/ingat_dalam_30_hari"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/et_password" />-->
 
         <TextView
             android:id="@+id/tv_forgot_password"
