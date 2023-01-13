@@ -43,4 +43,5 @@
     <string name="rp1_225_000"><strike>Rp1.225.000</strike></string>
     <string name="per_month">/bulan</string>
     <string name="rate_5">5/5</string>
+    <string name="verif_image">Verif Image</string>
 </resources>

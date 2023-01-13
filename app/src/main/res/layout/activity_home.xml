@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".view.ui.HomeActivity">
+    tools:context=".view.ui.home.HomeActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -54,11 +54,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="18dp"
         android:background="@drawable/outline_button"
         android:backgroundTint="@null"
         android:minWidth="50dp"
-        android:minHeight="0dp"
+        android:minHeight="48dp"
         android:padding="2dp"
         android:text="@string/filter_text"
         android:textColor="@color/black"
