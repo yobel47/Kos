@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Kode Verifikasi"
+        android:text="@string/kode_verifikasi"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="64dp"
         android:layout_marginTop="6dp"
-        android:text="Masukkan kode verifikasi yang sudah kami kirim ke emailmu"
+        android:text="@string/masukkan_kode_verifikasi_yang_sudah_kami_kirim_ke_emailmu"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,45 +43,89 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_verif_title" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/tv_verif_desc"
         tools:layout_editor_absoluteX="1dp">
 
-        <EditText
-            android:id="@+id/et_otp_1"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Name"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="464dp" />
-        <EditText
-            android:id="@+id/et_otp_2"
+            android:layout_marginHorizontal="8dp"
+            app:boxBackgroundColor="#F6F7FB">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Name"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="464dp" />
-        <EditText
-            android:id="@+id/et_otp_3"
+            android:layout_marginHorizontal="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Name"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="464dp" />
-        <EditText
-            android:id="@+id/et_otp_4"
+            android:layout_marginHorizontal="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Name"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="464dp" />
+            android:layout_marginHorizontal="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_verif"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="36dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/verifikasi"
+        android:textAllCaps="false"
+        android:textColor="@drawable/custom_button_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

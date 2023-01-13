@@ -44,4 +44,7 @@
     <string name="per_month">/bulan</string>
     <string name="rate_5">5/5</string>
     <string name="verif_image">Verif Image</string>
+    <string name="verifikasi">Verifikasi</string>
+    <string name="masukkan_kode_verifikasi_yang_sudah_kami_kirim_ke_emailmu">Masukkan kode verifikasi yang sudah kami kirim ke emailmu</string>
+    <string name="kode_verifikasi">Kode Verifikasi</string>
 </resources>
