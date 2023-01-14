@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".view.ui.home.HomeActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="27dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_horizontal"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -36,6 +39,45 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/notificationButton" />
 
+    <LinearLayout
+        android:id="@+id/searchKosContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:weightSum="5"
+        app:layout_constraintTop_toTopOf="@id/topBanner">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="4.75"
+            android:background="@drawable/filter_input"
+            android:drawableStart="@drawable/search_icon"
+            android:drawablePadding="11.4dp"
+            android:hint="@string/cari_kos_sekarang"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingHorizontal="23dp" />
+
+        <LinearLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="0.25"
+            android:background="@drawable/circle_button"
+            android:backgroundTint="@null">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:src="@drawable/filter_icon" />
+
+        </LinearLayout>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/kosTerlarisText"
         android:layout_width="wrap_content"
@@ -54,11 +96,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/outline_button"
         android:backgroundTint="@null"
-        android:minWidth="50dp"
-        android:minHeight="48dp"
-        android:padding="2dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
         android:text="@string/filter_text"
         android:textColor="@color/black"
         android:textSize="12sp"
@@ -72,7 +116,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/kosTerlarisText"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:minHeight="250dp" />
 
     <LinearLayout
         android:id="@+id/bottomNavBar"

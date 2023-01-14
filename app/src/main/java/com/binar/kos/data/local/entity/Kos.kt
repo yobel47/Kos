@@ -10,9 +10,10 @@ data class Kos(
     var id:String,
     var name: String,
     var kota: String,
-    var rating: Float,
+    var rating: Double,
     var discount: Int,
     var originalPrice: Int,
-    var DiscountedPrice: Int,
-    var tipeKos: TipeKos,
+    var discountedPrice: Int,
+    var tipeKos: String,
+    var kosImage: String,
 )
