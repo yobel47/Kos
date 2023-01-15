@@ -1,274 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/background"
+    android:layout_height="match_parent"
     tools:context=".view.ui.register.RegisterActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.binar.kos.view.customView.CustomScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="24dp"
-        android:paddingHorizontal="24dp">
+        android:background="@color/background">
 
-        <TextView
-            android:id="@+id/tv_welcome_title"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="@string/daftar_sebagai_pencari_kos"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="24dp">
 
-        <TextView
-            android:id="@+id/tv_welcome_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/yuk_lengkapi_data_diri_supaya_bisa_masuk_ke_omah_kost"
-            android:textColor="#787579"
-            android:textSize="16sp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_title" />
-
-        <ImageView
-            android:id="@+id/iv_login_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_description"
-            app:srcCompat="@drawable/image_login_1"
-            android:contentDescription="@string/login_image_1" />
-
-        <TextView
-            android:id="@+id/tv_name_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="@string/nama"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_login_1" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:hintAnimationEnabled="false"
-            app:hintEnabled="false"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name_title">
-
-            <EditText
+            <TextView
+                android:id="@+id/tv_welcome_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/masukkan_nama_anda"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:autofillHints="" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/daftar_sebagai_pencari_kos"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_username_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/username"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_name" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:hintAnimationEnabled="false"
-            app:hintEnabled="false"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_username_title">
-            <EditText
+            <TextView
+                android:id="@+id/tv_welcome_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/masukkan_username_anda"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:autofillHints="" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="12dp"
+                android:text="@string/yuk_lengkapi_data_diri_supaya_bisa_masuk_ke_omah_kost"
+                android:textColor="#787579"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_welcome_title" />
 
-        <TextView
-            android:id="@+id/tv_email_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/email"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_username" />
+            <ImageView
+                android:id="@+id/iv_login_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:contentDescription="@string/login_image_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_welcome_description"
+                app:srcCompat="@drawable/image_login_1" />
 
-        <com.binar.kos.view.customView.CustomEmailEditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:hintAnimationEnabled="false"
-            app:hintEnabled="false"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_email_title">
-
-            <EditText
+            <TextView
+                android:id="@+id/tv_name_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/masukkan_alamat_email_anda"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:autofillHints="" />
-        </com.binar.kos.view.customView.CustomEmailEditText>
+                android:layout_marginTop="44dp"
+                android:text="@string/nama"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_login_1" />
 
-        <TextView
-            android:id="@+id/tv_password_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/password"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email" />
-
-        <com.binar.kos.view.customView.CustomPasswordEditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:hintAnimationEnabled="false"
-            app:hintEnabled="false"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_password_title">
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/masukkan_password_anda"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:autofillHints="" />
-        </com.binar.kos.view.customView.CustomPasswordEditText>
-        <CheckBox
-            android:id="@+id/cb_policy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dengan_mendaftar_saya_menyetujui_kebijakan_privasi"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+                android:layout_marginTop="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_title">
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginHorizontal="2dp"
-            app:backgroundTint="@null"
-            android:background="@drawable/custom_button"
-            android:textColor="@drawable/custom_button_text"
-            android:text="@string/daftar"
-            android:textAllCaps="false"
-            android:layout_marginTop="28dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cb_policy" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints=""
+                    android:hint="@string/masukkan_nama_anda"
+                    android:inputType="text"
+                    android:minHeight="48dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tv_to_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/sudah_punya_akun"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_btn_login"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+            <TextView
+                android:id="@+id/tv_username_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/username"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_name" />
 
-        <Button
-            android:id="@+id/tv_btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            android:textAllCaps="false"
-            android:letterSpacing="0"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:layout_marginTop="10dp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:text="@string/masuk_di_sini"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_to_register"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_username"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username_title">
 
-        <ImageView
-            android:id="@+id/iv_line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_btn_login"
-            app:layout_constraintStart_toStartOf="@+id/tv_btn_login"
-            app:layout_constraintTop_toBottomOf="@+id/tv_btn_login"
-            app:srcCompat="@drawable/auth_line"
-            android:contentDescription="@string/line_login" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints=""
+                    android:hint="@string/masukkan_username_anda"
+                    android:inputType="text"
+                    android:minHeight="48dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_email_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/email"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
-</ScrollView>
+            <com.binar.kos.view.customView.CustomEmailEditText
+                android:id="@+id/et_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email_title">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints=""
+                    android:hint="@string/masukkan_alamat_email_anda"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp" />
+            </com.binar.kos.view.customView.CustomEmailEditText>
+
+            <TextView
+                android:id="@+id/tv_password_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
+
+            <com.binar.kos.view.customView.CustomPasswordEditText
+                android:id="@+id/et_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_password_title">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints=""
+                    android:hint="@string/masukkan_password_anda"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp" />
+            </com.binar.kos.view.customView.CustomPasswordEditText>
+
+            <CheckBox
+                android:id="@+id/cb_policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dengan_mendaftar_saya_menyetujui_kebijakan_privasi"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/daftar"
+                android:textAllCaps="false"
+                android:textColor="@drawable/custom_button_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cb_policy" />
+
+            <TextView
+                android:id="@+id/tv_to_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/sudah_punya_akun"
+                app:layout_constraintEnd_toStartOf="@+id/tv_btn_login"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+
+            <Button
+                android:id="@+id/tv_btn_login"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="@string/masuk_di_sini"
+                android:textAllCaps="false"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/tv_to_register"
+                app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+
+            <ImageView
+                android:id="@+id/iv_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:contentDescription="@string/line_login"
+                app:layout_constraintEnd_toEndOf="@+id/tv_btn_login"
+                app:layout_constraintStart_toStartOf="@+id/tv_btn_login"
+                app:layout_constraintTop_toBottomOf="@+id/tv_btn_login"
+                app:srcCompat="@drawable/auth_line" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.binar.kos.view.customView.CustomScrollView>
+
+    <include
+        android:id="@+id/pb_loading"
+        android:visibility="gone"
+        layout="@layout/loading_bar"/>
+</RelativeLayout>
