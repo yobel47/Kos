@@ -51,14 +51,14 @@ class LoginActivity : AppCompatActivity() {
     private fun checkButton(){
         binding.etEmail.editText?.doOnTextChanged { _, _, _, _ ->
             if(!binding.etEmail.isErrorEnabled){
-                binding.btnLogin.isEnabled = (binding.etEmail.editText?.text.toString().isNotEmpty())
+                binding.btnLogin.isEnabled = (binding.etEmail.editText?.text.toString().isNotEmpty() && binding.etPassword.editText?.text.toString().isNotEmpty())
             }else{
                 binding.btnLogin.isEnabled = false
             }
         }
         binding.etPassword.editText?.doOnTextChanged { _, _, _, _ ->
             if(!binding.etPassword.isErrorEnabled){
-                binding.btnLogin.isEnabled = (binding.etPassword.editText?.text.toString().isNotEmpty())
+                binding.btnLogin.isEnabled = (binding.etPassword.editText?.text.toString().isNotEmpty() && binding.etEmail.editText?.text.toString().isNotEmpty() )
             }else{
                 binding.btnLogin.isEnabled = false
             }
