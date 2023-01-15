@@ -40,8 +40,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkUserType(userType: String){
         if(userType == "pencari"){
+            binding.tvWelcomeTitle.text = resources.getString(R.string.daftar_sebagai_pencari_kos)
             binding.ivLogin1.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.image_login_1, null))
         }else if(userType == "penyewa"){
+            binding.tvWelcomeTitle.text = resources.getString(R.string.daftar_sebagai_penyewa_kos)
             binding.ivLogin1.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.image_login_2, null))
         }
     }

@@ -238,7 +238,7 @@
             app:layout_constraintEnd_toStartOf="@+id/tv_btn_login"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
         <Button
             android:id="@+id/tv_btn_login"
@@ -256,7 +256,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_to_register"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
         <ImageView
             android:id="@+id/iv_line"
