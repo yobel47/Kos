@@ -48,4 +48,6 @@
     <string name="verifikasi">Verifikasi</string>
     <string name="masukkan_kode_verifikasi_yang_sudah_kami_kirim_ke_emailmu">Masukkan kode verifikasi yang sudah kami kirim ke emailmu</string>
     <string name="kode_verifikasi">Kode Verifikasi</string>
+    <string name="category">Category</string>
+    <string name="cari_kos_sekarang">Cari kos sekarang</string>
 </resources>

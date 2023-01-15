@@ -1,126 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
     android:id="@+id/kosCardLayout"
     android:layout_width="160dp"
-    android:layout_height="228dp"
-    android:background="@drawable/card">
+    android:layout_marginHorizontal="7dp"
+    android:background="@drawable/card"
+    android:padding="0dp">
 
-    <ImageView
-        android:id="@+id/kosImagePreview"
-        android:layout_width="match_parent"
-        android:layout_height="108dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/heart_outline"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/kosName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="13dp"
-        android:text="@string/kos_title_here"
-        android:textFontWeight="700"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/kosImagePreview" />
+        android:layout_margin="0dp"
+        android:layout_marginBottom="9dp">
 
-    <TextView
-        android:id="@+id/kosLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:text="@string/kos_location"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/kosName" />
+        <ImageView
+            android:id="@+id/kosImagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/kosRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="10dp"
-        android:drawableStart="@drawable/star"
-        android:drawablePadding="7dp"
-        android:text="@string/rate_5"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kosName" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/heart_outline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/kosDiscount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:text="20%"
-        android:textColor="@color/red"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kosLocation" />
+        <TextView
+            android:id="@+id/kosName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/kos_title_here"
+            android:textFontWeight="700"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/kosImagePreview" />
 
-    <TextView
-        android:id="@+id/kosOriginalPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/rp1_225_000"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toRightOf="@id/kosDiscount"
-        app:layout_constraintTop_toBottomOf="@id/kosLocation"
-        app:layout_goneMarginLeft="4dp" />
+        <TextView
+            android:id="@+id/kosLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="@string/kos_location"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/kosName" />
 
-    <TextView
-        android:id="@+id/kosDiscountedPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="2dp"
-        android:text="Rp900.000"
-        android:textFontWeight="700"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kosOriginalPrice" />
+        <TextView
+            android:id="@+id/kosRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp"
+            android:drawableStart="@drawable/star"
+            android:drawablePadding="7dp"
+            android:text="@string/rate_5"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kosName" />
 
-    <TextView
-        android:id="@+id/perMonthText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="2dp"
-        android:text="@string/per_month"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toRightOf="@id/kosDiscountedPrice"
-        app:layout_constraintTop_toBottomOf="@id/kosOriginalPrice"
-        tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/kosDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:text="20%"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kosLocation" />
 
-    <Button
-        android:id="@+id/kosCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="7dp"
-        android:background="@drawable/kos_category_box"
-        android:backgroundTint="@null"
-        android:minWidth="10dp"
-        android:minHeight="0dp"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="2dp"
-        android:text="Category"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/kosOriginalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/rp1_225_000"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/kosDiscount"
+            app:layout_constraintTop_toBottomOf="@id/kosLocation"
+            app:layout_goneMarginLeft="4dp" />
 
+        <TextView
+            android:id="@+id/kosDiscountedPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:text="Rp900.000"
+            android:textFontWeight="700"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/kosOriginalPrice" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/perMonthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="2dp"
+            android:text="@string/per_month"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/kosDiscountedPrice"
+            app:layout_constraintTop_toBottomOf="@id/kosOriginalPrice"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/kosCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/kos_category_box"
+            android:backgroundTint="@null"
+            android:minWidth="10dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/category"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/perMonthText"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
