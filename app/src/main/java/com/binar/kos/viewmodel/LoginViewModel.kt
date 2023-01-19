@@ -5,10 +5,6 @@ import androidx.lifecycle.liveData
 import com.binar.kos.data.repository.LoginRepository
 import com.binar.kos.utils.Resource
 import kotlinx.coroutines.Dispatchers
-import org.json.JSONObject
-import retrofit2.HttpException
-import java.io.IOException
-
 
 class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
