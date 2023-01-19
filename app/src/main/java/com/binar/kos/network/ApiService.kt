@@ -13,7 +13,7 @@ import retrofit2.http.Path
 
 interface ApiService {
     @POST("auth/login")
-    fun login(@Body request: LoginRequest): Call<LoginResponse>
+    suspend fun login(@Body request: LoginRequest): LoginResponse
 
     @POST("auth/signup")
     suspend fun register(@Body request: RegisterRequest): RegisterResponse

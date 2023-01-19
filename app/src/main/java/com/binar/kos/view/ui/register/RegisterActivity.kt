@@ -40,12 +40,6 @@ class RegisterActivity : AppCompatActivity() {
         checkButton()
         onRegister()
 
-//        binding.btnRegister.setOnClickListener {
-//            val intent = Intent(this, VerificationActivity::class.java)
-//            finish()
-//            startActivity(intent)
-//        }
-
         binding.tvBtnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra(SelectUserActivity.USER_TYPE, userType)
@@ -154,7 +148,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         binding.scrollView.setScrolling(true)
-                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
                         binding.pbLoading.layoutLoading.visibility = View.GONE
                     }
                 }

@@ -2,6 +2,7 @@ package com.binar.kos.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.binar.kos.data.repository.LoginRepository
 import com.binar.kos.data.repository.MainRepository
 import com.binar.kos.data.repository.RegisterRepository
 import com.binar.kos.network.ApiHelper
@@ -14,6 +15,8 @@ class ViewModelFactory private constructor(private val apiHelper: ApiHelper) :
             return MainViewModel(MainRepository(apiHelper)) as T
         } else if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
             return RegisterViewModel(RegisterRepository(apiHelper)) as T
+        } else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+            return LoginViewModel(LoginRepository(apiHelper)) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }
