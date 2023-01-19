@@ -6,18 +6,24 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.binar.kos.R
 import com.binar.kos.databinding.ActivityLoginBinding
+import com.binar.kos.utils.Status
+import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.register.RegisterActivity
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
+import com.binar.kos.viewmodel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
+    private val loginViewModel: LoginViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         checkUserType(userType!!)
         checkButton()
+        onLogin()
 
         binding.tvBtnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -81,7 +88,32 @@ class LoginActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(event)
     }
 
+    private fun onLogin() {
+        val email = binding.etEmail.editText?.text
+        val password = binding.etPassword.editText?.text
 
+        if (email != null && password != null) {
+            binding.btnLogin.setOnClickListener {
+                loginViewModel.loginAccount(email.toString(), password.toString())
+                    .observe(this) { result ->
+                        when (result.status) {
+                            Status.LOADING -> {}
+                            Status.SUCCESS -> {
+                                Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_LONG).show()
+                                val intent = Intent(this, HomeActivity::class.java)
+                                finish()
+                                startActivity(intent)
+                            }
+                            Status.ERROR -> {
+                                Toast.makeText(this, "Login Error!", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+            }
+        }
+
+
+    }
 
 }
 
