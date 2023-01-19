@@ -1,6 +1,7 @@
 package com.binar.kos.di
 
 import android.app.Application
+import com.binar.kos.data.repository.LoginRepository
 import com.binar.kos.data.repository.MainRepository
 import com.binar.kos.data.repository.RegisterRepository
 import com.binar.kos.network.ApiClient
@@ -20,5 +21,6 @@ object DataModule {
         //REPOSITORY
         factory { MainRepository(get()) }
         factory { RegisterRepository(get()) }
+        factory { LoginRepository(get()) }
     }
 }

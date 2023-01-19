@@ -2,24 +2,23 @@ package com.binar.kos.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.binar.kos.data.repository.RegisterRepository
+import com.binar.kos.data.repository.LoginRepository
 import com.binar.kos.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
 
-class RegisterViewModel(private val repository: RegisterRepository) : ViewModel() {
 
-    fun registerAccount(
+class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
+
+    fun loginAccount(
         email: String,
-        username: String,
         password: String,
-        fullname: String
     ) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(data = repository.registerAccount(email, username, password, fullname)))
+            emit(Resource.success(data = repository.loginAccount(email, password)))
         } catch (e: IOException) {
             emit(Resource.error(null, e.message ?: "Error Occurred!"))
         } catch (e: HttpException) {

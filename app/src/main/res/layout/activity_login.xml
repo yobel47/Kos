@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".view.ui.login.LoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.binar.kos.view.customView.CustomScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="24dp"
-        android:paddingHorizontal="24dp">
+        android:background="@color/background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="24dp">
 
         <TextView
             android:id="@+id/tv_welcome_title"
@@ -162,7 +168,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
-
+            
         <TextView
             android:id="@+id/tv_to_register"
             android:layout_width="wrap_content"
@@ -175,23 +181,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-        <Button
-            android:id="@+id/tv_btn_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            android:textAllCaps="false"
-            android:letterSpacing="0"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:layout_marginTop="10dp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:text="@string/daftar_gratis"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_to_register"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            <Button
+                android:id="@+id/tv_btn_register"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0"
+                android:minWidth="0dp"
+                android:minHeight="48dp"
+                android:text="@string/daftar_gratis"
+                android:textAllCaps="false"
+                android:textColor="@color/primary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/tv_to_register"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
         <ImageView
             android:id="@+id/iv_line"
@@ -204,7 +210,11 @@
             app:srcCompat="@drawable/auth_line"
             android:contentDescription="@string/line_login" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.binar.kos.view.customView.CustomScrollView>
 
-
-</ScrollView>
+    <include
+        android:id="@+id/pb_loading"
+        android:visibility="gone"
+        layout="@layout/loading_bar"/>
+</RelativeLayout>
