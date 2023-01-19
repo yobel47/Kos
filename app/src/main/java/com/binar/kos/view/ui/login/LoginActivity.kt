@@ -128,32 +128,5 @@ class LoginActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(event)
     }
 
-    private fun onLogin() {
-        val email = binding.etEmail.editText?.text
-        val password = binding.etPassword.editText?.text
-
-        if (email != null && password != null) {
-            binding.btnLogin.setOnClickListener {
-                loginViewModel.loginAccount(email.toString(), password.toString())
-                    .observe(this) { result ->
-                        when (result.status) {
-                            Status.LOADING -> {}
-                            Status.SUCCESS -> {
-                                Toast.makeText(this, "Login Berhasil!", Toast.LENGTH_LONG).show()
-                                val intent = Intent(this, HomeActivity::class.java)
-                                finish()
-                                startActivity(intent)
-                            }
-                            Status.ERROR -> {
-                                Toast.makeText(this, "Login Error!", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-            }
-        }
-
-
-    }
-
 }
 
