@@ -1,19 +1,18 @@
 package com.binar.kos.data.local.entity
 
-enum class TipeKos{
-    Campur,
-    Pria,
-    Wanita
-}
 
 data class Kos(
-    var id:String,
-    var name: String,
-    var kota: String,
-    var rating: Double,
-    var discount: Int,
-    var originalPrice: Int,
-    var discountedPrice: Int,
-    var tipeKos: String,
-    var kosImage: String,
+    var id: Int,
+    var title: String,
+    var type: String,
+    var stock: String,
+    var price: Int,
+    var imageUrl: List<String>,
+    var description: String,
+    var electricity: Boolean,
+    var wide: String,
+    var user_id: Int,
+    var createdBy: String,
+    var createdAt: String,
+    var updatedAt: String,
 )
