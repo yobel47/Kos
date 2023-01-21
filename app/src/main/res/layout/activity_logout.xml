@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.ui.login.LogoutActivity">
 
     <LinearLayout
         android:id="@+id/profileSection"
