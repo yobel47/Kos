@@ -52,7 +52,8 @@
             android:text="Edit Profil"
             android:textAlignment="textEnd"
             android:textColor="@color/primary"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            tools:ignore="RtlCompat" />
 
 
     </LinearLayout>
