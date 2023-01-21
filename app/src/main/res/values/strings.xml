@@ -50,4 +50,17 @@
     <string name="kode_verifikasi">Kode Verifikasi</string>
     <string name="category">Category</string>
     <string name="cari_kos_sekarang">Cari kos sekarang</string>
+    <string name="tukar_poin"><![CDATA[Tukar Poin >]]></string>
+    <string name="edit_profil">Edit Profil</string>
+    <string name="pesanan_saya">Pesanan Saya</string>
+    <string name="ubah_kata_sandi">Ubah Kata Sandi</string>
+    <string name="undang_teman_dan_dapatkan_poin">Undang Teman dan Dapatkan Poin</string>
+    <string name="voucher">Voucher</string>
+    <string name="khusus_untuk_kamu">Khusus Untuk Kamu</string>
+    <string name="kebijakan_privasi">Kebijakan Privasi</string>
+    <string name="syarat_dan_ketentuan">Syarat dan Ketentuan</string>
+    <string name="connect_with_us">Connect With Us</string>
+    <string name="tentang_kami">Tentang Kami</string>
+    <string name="bantuan">Bantuan</string>
+    <string name="lainnya">Lainnya</string>
 </resources>
