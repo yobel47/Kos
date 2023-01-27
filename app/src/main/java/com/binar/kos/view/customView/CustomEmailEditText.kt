@@ -24,10 +24,11 @@ class CustomEmailEditText : TextInputLayout {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-//        errorIconDrawable = null
         editText?.hint= "Email"
         editText?.doOnTextChanged { inputText, _, _, _ ->
-            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(inputText!!).matches()){
+            if (inputText?.length!! < 1) {
+                error = "Kamu belum isi email-mu"
+            }else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(inputText!!).matches()){
                 error =  "Tolong isi alamat email yang benar"
             }else{
                 error = null

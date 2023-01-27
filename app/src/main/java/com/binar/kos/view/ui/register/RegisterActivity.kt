@@ -3,6 +3,8 @@ package com.binar.kos.view.ui.register
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -38,6 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.isEnabled = false
 
         checkButton()
+        checkInput()
         onRegister()
 
         binding.tvBtnLogin.setOnClickListener {
@@ -45,6 +48,36 @@ class RegisterActivity : AppCompatActivity() {
             intent.putExtra(SelectUserActivity.USER_TYPE, userType)
             finish()
             startActivity(intent)
+        }
+    }
+
+    private fun checkInput() {
+        val space = Regex("^\\S+\$")
+        val special = Regex("^[a-zA-Z0-9_]+\$")
+        val letterspace = Regex("^[a-zA-Z ]*\$")
+        binding.etName.editText?.doOnTextChanged { text, _, _, _ ->
+            if (text?.length!! < 1) {
+                binding.etName.error = "Nama tidak boleh kosong"
+            } else if (!text.matches(letterspace)) {
+                binding.etName.error = "Nama hanya boleh berisi huruf dan spasi"
+            } else {
+                binding.etName.error = null
+                binding.etName.isErrorEnabled = false
+            }
+        }
+        binding.etUsername.editText?.doOnTextChanged { text, _, _, _ ->
+            if (text?.length!! < 1) {
+                binding.etUsername.error = "Username tidak boleh kosong"
+            } else if (text.length < 6) {
+                binding.etUsername.error = "Username harus berisi 6 karakter"
+            } else if (!text.matches(space)) {
+                binding.etUsername.error = "Username tidak boleh berisi spasi"
+            } else if (!text.matches(special)) {
+                binding.etUsername.error = "Username tidak boleh berisi spesial karakter"
+            } else {
+                binding.etUsername.error = null
+                binding.etUsername.isErrorEnabled = false
+            }
         }
     }
 
@@ -64,57 +97,109 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun checkButton() {
-        binding.etEmail.editText?.doOnTextChanged { _, _, _, _ ->
-            if (!binding.etEmail.isErrorEnabled) {
-                binding.btnRegister.isEnabled = (binding.etEmail.editText?.text.toString()
-                    .isNotEmpty() && binding.etPassword.editText?.text.toString()
-                    .isNotEmpty() && binding.etName.editText?.text.toString()
-                    .isNotEmpty() && binding.etUsername.editText?.text.toString()
-                    .isNotEmpty() && binding.cbPolicy.isChecked)
-            } else {
-                binding.btnRegister.isEnabled = false
+
+        binding.etEmail.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (binding.etEmail.editText?.text!!.isEmpty()) {
+                        binding.etEmail.error = "Kamu belum isi email-mu"
+                    }
+                }
             }
-        }
-        binding.etPassword.editText?.doOnTextChanged { _, _, _, _ ->
-            if (!binding.etPassword.isErrorEnabled) {
-                binding.btnRegister.isEnabled = (binding.etEmail.editText?.text.toString()
-                    .isNotEmpty() && binding.etPassword.editText?.text.toString()
-                    .isNotEmpty() && binding.etName.editText?.text.toString()
-                    .isNotEmpty() && binding.etUsername.editText?.text.toString()
-                    .isNotEmpty() && binding.cbPolicy.isChecked)
-            } else {
-                binding.btnRegister.isEnabled = false
+
+        binding.etPassword.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (binding.etPassword.editText?.text!!.isEmpty()) {
+                        binding.etPassword.error = "Kamu belum isi password-mu"
+                    }
+                }
             }
-        }
-        binding.etName.editText?.doOnTextChanged { _, _, _, _ ->
-            if (!binding.etName.isErrorEnabled) {
-                binding.btnRegister.isEnabled = (binding.etEmail.editText?.text.toString()
-                    .isNotEmpty() && binding.etPassword.editText?.text.toString()
-                    .isNotEmpty() && binding.etName.editText?.text.toString()
-                    .isNotEmpty() && binding.etUsername.editText?.text.toString()
-                    .isNotEmpty() && binding.cbPolicy.isChecked)
-            } else {
-                binding.btnRegister.isEnabled = false
+
+        binding.etName.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (binding.etName.editText?.text!!.isEmpty()) {
+                        binding.etName.error = "Nama tidak boleh kosong!"
+                    }
+                }
             }
-        }
-        binding.etUsername.editText?.doOnTextChanged { _, _, _, _ ->
-            if (!binding.etUsername.isErrorEnabled) {
-                binding.btnRegister.isEnabled = (binding.etEmail.editText?.text.toString()
-                    .isNotEmpty() && binding.etPassword.editText?.text.toString()
-                    .isNotEmpty() && binding.etName.editText?.text.toString()
-                    .isNotEmpty() && binding.etUsername.editText?.text.toString()
-                    .isNotEmpty() && binding.cbPolicy.isChecked)
-            } else {
-                binding.btnRegister.isEnabled = false
+
+        binding.etUsername.editText?.onFocusChangeListener =
+            View.OnFocusChangeListener { _, hasFocus ->
+                if (!hasFocus) {
+                    if (binding.etUsername.editText?.text!!.isEmpty()) {
+                        binding.etUsername.error = "Username tidak boleh kosong!"
+                    }
+                }
             }
-        }
+
+        binding.etName.editText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (!binding.etName.isErrorEnabled && !binding.etUsername.isErrorEnabled && !binding.etEmail.isErrorEnabled && !binding.etPassword.isErrorEnabled && binding.cbPolicy.isChecked) {
+                    binding.btnRegister.isEnabled = !binding.etName.isErrorEnabled
+                } else {
+                    binding.btnRegister.isEnabled = false
+                }
+            }
+        })
+        binding.etUsername.editText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (!binding.etName.isErrorEnabled && !binding.etUsername.isErrorEnabled && !binding.etEmail.isErrorEnabled && !binding.etPassword.isErrorEnabled && binding.cbPolicy.isChecked) {
+                    binding.btnRegister.isEnabled = !binding.etUsername.isErrorEnabled
+                } else {
+                    binding.btnRegister.isEnabled = false
+                }
+            }
+        })
+        binding.etEmail.editText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (!binding.etName.isErrorEnabled && !binding.etUsername.isErrorEnabled && !binding.etEmail.isErrorEnabled && !binding.etPassword.isErrorEnabled && binding.cbPolicy.isChecked) {
+                    binding.btnRegister.isEnabled = !binding.etEmail.isErrorEnabled
+                } else {
+                    binding.btnRegister.isEnabled = false
+                }
+            }
+        })
+        binding.etPassword.editText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (!binding.etName.isErrorEnabled && !binding.etUsername.isErrorEnabled && !binding.etEmail.isErrorEnabled && !binding.etPassword.isErrorEnabled && binding.cbPolicy.isChecked) {
+                    binding.btnRegister.isEnabled = !binding.etPassword.isErrorEnabled
+                } else {
+                    binding.btnRegister.isEnabled = false
+                }
+            }
+        })
         binding.cbPolicy.setOnCheckedChangeListener { _, b ->
-            if (b) {
-                binding.btnRegister.isEnabled = (binding.etEmail.editText?.text.toString()
-                    .isNotEmpty() && binding.etPassword.editText?.text.toString()
-                    .isNotEmpty() && binding.etName.editText?.text.toString()
-                    .isNotEmpty() && binding.etUsername.editText?.text.toString().isNotEmpty())
-            }
+            binding.btnRegister.isEnabled =
+                (binding.etName.editText?.text?.length!! > 1 && !binding.etName.isErrorEnabled) &&
+                        (binding.etUsername.editText?.text?.length!! > 1 && !binding.etUsername.isErrorEnabled) &&
+                        (binding.etEmail.editText?.text?.length!! > 1 && !binding.etEmail.isErrorEnabled) &&
+                        (binding.etPassword.editText?.text?.length!! > 1 && !binding.etPassword.isErrorEnabled) && b
         }
     }
 
@@ -123,11 +208,20 @@ class RegisterActivity : AppCompatActivity() {
         val username = binding.etUsername.editText?.text
         val password = binding.etPassword.editText?.text
         val fullname = binding.etName.editText?.text
+        val userType = intent.getStringExtra(SelectUserActivity.USER_TYPE)
+        val role = if (userType == "pencari") {
+            "penyewa"
+        } else {
+            "pemilik"
+        }
         binding.btnRegister.setOnClickListener {
-            registerViewModel.registerAccount(email.toString(),
+            registerViewModel.registerAccount(
+                email.toString(),
                 username.toString(),
                 password.toString(),
-                fullname.toString()).observe(this@RegisterActivity) { result ->
+                fullname.toString(),
+                role
+            ).observe(this@RegisterActivity) { result ->
                 when (result.status) {
                     Status.LOADING -> {
                         binding.scrollView.setScrolling(false)
@@ -148,7 +242,17 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         binding.scrollView.setScrolling(true)
-                        Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
+                        if (result.message!!.contains("email")) {
+                            binding.etEmail.error = result.message
+                        } else if (result.message.contains("password")) {
+                            binding.etPassword.error = result.message
+                        } else if (result.message.contains("username")) {
+                            binding.etUsername.error = result.message
+                        } else if (result.message.contains("fullname")) {
+                            binding.etName.error = result.message
+                        } else {
+                            Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
+                        }
                         binding.pbLoading.layoutLoading.visibility = View.GONE
                     }
                 }

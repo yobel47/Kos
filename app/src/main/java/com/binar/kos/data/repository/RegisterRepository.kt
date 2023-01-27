@@ -7,6 +7,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class RegisterRepository(private val apiHelper: ApiHelper) {
-    suspend fun registerAccount(email: String, username: String, password: String, fullname: String) =
-        apiHelper.register(email, username, password, fullname)
+    suspend fun registerAccount(email: String, username: String, password: String, fullname: String, role: String) =
+        apiHelper.register(email, username, password, fullname, role)
 }

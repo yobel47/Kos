@@ -15,11 +15,12 @@ class RegisterViewModel(private val repository: RegisterRepository) : ViewModel(
         email: String,
         username: String,
         password: String,
-        fullname: String
+        fullname: String,
+        role : String
     ) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {
-            emit(Resource.success(data = repository.registerAccount(email, username, password, fullname)))
+            emit(Resource.success(data = repository.registerAccount(email, username, password, fullname, role)))
         } catch (e: IOException) {
             emit(Resource.error(null, e.message ?: "Error Occurred!"))
         } catch (e: HttpException) {

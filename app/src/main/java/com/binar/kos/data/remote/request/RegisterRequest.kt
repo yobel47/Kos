@@ -14,4 +14,7 @@ data class RegisterRequest(
 
     @field:SerializedName("fullname")
     val fullname: String,
+
+    @field:SerializedName("role")
+    val role: String,
 )
