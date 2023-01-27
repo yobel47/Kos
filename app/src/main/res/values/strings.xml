@@ -2,8 +2,8 @@
     <string name="app_name">Omah Kos</string>
     <string name="lupa_password"><u>Lupa Password?</u></string>
     <string name="selamat_datang_kembali">Selamat datang kembali</string>
-    <string name="tolong_isi_data_dirimu_untuk_masuk_sebagai_pencari_kost">Tolong isi data dirimu untuk masuk sebagai pencari kost</string>
-    <string name="tolong_isi_data_dirimu_untuk_masuk_sebagai_penyewa_kost">Tolong isi data dirimu untuk masuk sebagai penyewa kost</string>
+    <string name="tolong_isi_data_dirimu_untuk_masuk_sebagai_pencari_kost">Tolong isi data dirimu untuk masuk sebagai pencari kos</string>
+    <string name="tolong_isi_data_dirimu_untuk_masuk_sebagai_penyewa_kost">Tolong isi data dirimu untuk masuk sebagai penyewa kos</string>
     <string name="login_image_1">Login image 1</string>
     <string name="email">Email</string>
     <string name="masukkan_alamat_email_anda">Masukkan alamat email anda</string>
@@ -18,7 +18,7 @@
     <string name="silahkan_pilih_kamu_ingin_masuk_sebagai_apa">Silahkan pilih kamu ingin masuk sebagai apa :)</string>
     <string name="penyewa_kos">\t\t\t\tPenyewa Kos</string>
     <string name="auth_background_1">Auth background 1</string>
-    <string name="selamat_datang_di_omah_kost">Selamat datang di Omah Kost</string>
+    <string name="selamat_datang_di_omah_kost">Selamat datang di Omah Kos</string>
     <string name="filter">Filter</string>
     <string name="kos_terlaris">Kos Terlaris</string>
     <string name="filter_text">Filter</string>
@@ -29,7 +29,7 @@
     <string name="dengan_mendaftar_saya_menyetujui_kebijakan_privasi">Dengan mendaftar, saya menyetujui <b>kebijakan privasi</b></string>
     <string name="daftar_sebagai_pencari_kos">Daftar sebagai Pencari Kos</string>
     <string name="daftar_sebagai_penyewa_kos">Daftar sebagai Penyewa Kos</string>
-    <string name="yuk_lengkapi_data_diri_supaya_bisa_masuk_ke_omah_kost">Yuk, lengkapi data diri supaya bisa masuk ke Omah Kost!</string>
+    <string name="yuk_lengkapi_data_diri_supaya_bisa_masuk_ke_omah_kost">Yuk, lengkapi data diri supaya bisa masuk ke Omah Kos!</string>
     <string name="nama">Nama</string>
     <string name="no_hp">No. HP</string>
     <string name="masukkan_nomor_handphone_anda">Masukkan nomor handphone anda</string>

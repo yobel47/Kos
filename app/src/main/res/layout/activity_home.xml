@@ -50,6 +50,7 @@
         app:layout_constraintTop_toTopOf="@id/topBanner">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_search"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="4.75"
@@ -197,6 +198,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -216,7 +218,9 @@
                 android:text="@string/profil"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
+
         </LinearLayout>
+
     </LinearLayout>
 
 

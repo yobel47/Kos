@@ -7,7 +7,7 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun login(email: String, password:String) = apiService.login(LoginRequest(email, password))
 
-    suspend fun register(email: String, username: String, password: String, fullname: String) =
-        apiService.register(RegisterRequest(email, username, password, fullname))
+    suspend fun register(email: String, username: String, password: String, fullname: String, role: String) =
+        apiService.register(RegisterRequest(email, username, password, fullname, role))
 
 }
