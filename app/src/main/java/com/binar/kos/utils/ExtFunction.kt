@@ -9,3 +9,7 @@ fun Int.toRp() : String{
     numberFormat.maximumFractionDigits = 0
     return  numberFormat.format(this)
 }
+
+fun String.toCapital() : String{
+    return split(" ").joinToString(separator = " ", transform = String::capitalize)
+}
