@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.data.local.entity.Filter
 import com.binar.kos.data.remote.response.searchResponse.SearchResponse
 import com.binar.kos.databinding.CardSearchItemBinding
+import com.binar.kos.utils.toCapital
 import com.binar.kos.utils.toRp
 import com.bumptech.glide.Glide
+import java.util.*
 
 class SearchResultAdapter(
     val clickListener: (SearchResponse) -> Unit
@@ -57,9 +59,9 @@ class SearchResultAdapter(
                 clickListener(item)
             }
 
-            binding.tvTitle.text = item.title
-            binding.tvLocation.text = "${item.address?.district}, ${item.address?.city}"
-            binding.tvType.text = item.type
+            binding.tvTitle.text = item.title?.toCapital()
+            binding.tvLocation.text = "${item.address?.district!!.toCapital()}, ${item.address.city!!.toCapital()}"
+            binding.tvType.text = item.type!!.toCapital()
 
 
             if(item.discount?.isDiscount == "true"){
