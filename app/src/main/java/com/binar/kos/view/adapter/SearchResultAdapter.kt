@@ -1,6 +1,7 @@
 package com.binar.kos.view.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,25 +61,26 @@ class SearchResultAdapter(
             binding.tvLocation.text = "${item.address?.district}, ${item.address?.city}"
             binding.tvType.text = item.type
 
-            binding.tvPrice.text = "${item.price?.costMonth!!.toInt().toRp()}/bulan"
 
             if(item.discount?.isDiscount == "true"){
-                val price = item.price.costMonth.toInt()
+                val price = item.price?.costMonth!!.toInt()
                 val discount = item.discount.discountPercentage!!.toInt()
-                val discountPrice = price * (discount / 100)
-                binding.tvDiscountPrice.text = "Rp.${discountPrice.toString()}"
-                binding.tvDiscount.text = discount.toString()
+                val discountPrice = price / (discount * 100)
+                val truePrice = price - discountPrice
+                binding.tvDiscountPrice.text = price.toRp()
+                binding.tvDiscountPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                binding.tvDiscount.text = "${discount.toString()}%"
             }else{
+                binding.tvPrice.text = "${item.price?.costMonth!!.toInt().toRp()}/bulan"
                 binding.tvDiscountPrice.isVisible = false
                 binding.tvDiscount.isVisible = false
             }
 
             binding.tvRoomLeft.text = "Sisa ${item.stock} kamar"
 
-//            Glide.with(itemView.context)
-//                .load(item.imageUrl?.get(0))
-//                .into(binding.ivRoom)
-
+            Glide.with(itemView.context)
+                .load(item.imageUrl?.get(0)?.url)
+                .into(binding.ivRoom)
         }
     }
 }
