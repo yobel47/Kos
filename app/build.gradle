@@ -23,9 +23,11 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "BASE_URL", baseUrl
+            buildConfigField "String", "ROOM_BASE_URL", baseUrl2
         }
         release {
             buildConfigField "String", "BASE_URL", baseUrl
+            buildConfigField "String", "ROOM_BASE_URL", baseUrl2
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

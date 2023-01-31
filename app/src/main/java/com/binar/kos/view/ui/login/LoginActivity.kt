@@ -49,11 +49,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onLogin() {
-        val email = binding.etEmail.editText?.text
-        val password = binding.etPassword.editText?.text
         binding.btnLogin.setOnClickListener {
-            loginViewModel.loginAccount(email.toString(),
-                password.toString()).observe(this@LoginActivity) { result ->
+            loginViewModel.loginAccount(binding.etEmail.editText!!.text.toString(),
+                binding.etPassword.editText!!.text.toString()).observe(this@LoginActivity) { result ->
                 when (result.status) {
                     Status.LOADING -> {
                         binding.scrollView.setScrolling(false)
@@ -61,9 +59,6 @@ class LoginActivity : AppCompatActivity() {
                     }
                     Status.SUCCESS -> {
                         binding.scrollView.setScrolling(true)
-//                        Toast.makeText(this,
-//                            "${result.data!!.data}",
-//                            Toast.LENGTH_SHORT).show()
                         Toast.makeText(this,
                             "Login Berhasil",
                             Toast.LENGTH_SHORT).show()
