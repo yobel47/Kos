@@ -1,8 +1,13 @@
 package com.binar.kos.view.ui.filter
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.R
@@ -11,6 +16,8 @@ import com.binar.kos.databinding.ActivityFilterBinding
 import com.binar.kos.utils.GridSpacingItemDecoration
 import com.binar.kos.view.adapter.FilterGeneralAdapter
 import com.binar.kos.view.adapter.FilterRoomAdapter
+import com.google.android.material.card.MaterialCardView
+
 
 class FilterActivity : AppCompatActivity()  {
     private lateinit var binding: ActivityFilterBinding
@@ -69,15 +76,22 @@ class FilterActivity : AppCompatActivity()  {
 
         val layoutManager2: RecyclerView.LayoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
         binding.rvFacilities2.layoutManager = layoutManager2
-        filterRoomAdapter = FilterRoomAdapter(filterRoomList) { filter -> onClick(filter) }
+        filterRoomAdapter = FilterRoomAdapter(filterRoomList) { filter, view -> onClickRoom(filter, view) }
         binding.rvFacilities2.addItemDecoration(GridSpacingItemDecoration(1,20, 40))
         binding.rvFacilities2.adapter = filterRoomAdapter
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun onClickRoom(filter: Filter, view: View){
+        val card = view as MaterialCardView
+        card.strokeWidth = 5
+        card.strokeColor = Color.BLACK
+        Toast.makeText(this, filter.text, Toast.LENGTH_SHORT).show()
     }
 
     private fun onClick(filter: Filter){
         Toast.makeText(this, filter.text, Toast.LENGTH_SHORT).show()
     }
-
     private fun loadFilter() {
         filterGeneralList = listOf(
             Filter(R.drawable.ic_bathub, "Kamar Mandi Dalam"),

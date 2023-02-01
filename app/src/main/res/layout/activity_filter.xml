@@ -492,10 +492,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
             android:minHeight="0dp"
             android:paddingHorizontal="0dp"
             android:text="Check in di jam 14.00 (sewa harian &amp; mingguan)"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
 
@@ -505,10 +507,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
             android:minHeight="0dp"
             android:paddingHorizontal="0dp"
             android:text="Check out di jam 12.00 (sewa harian &amp; mingguan)"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
 

@@ -1,6 +1,7 @@
 package com.binar.kos.view.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.data.local.entity.Filter
@@ -8,8 +9,8 @@ import com.binar.kos.databinding.CardFilterBinding
 import com.binar.kos.utils.RecyclerViewClickListener
 
 class FilterRoomAdapter(
-    var filterList: List<Filter>,
-    val clickListener: (Filter) -> Unit
+    private var filterList: List<Filter>,
+    val clickListener: (Filter, View) -> Unit
 ) : RecyclerView.Adapter<FilterRoomAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: CardFilterBinding) : RecyclerView.ViewHolder(binding.root)
@@ -25,7 +26,7 @@ class FilterRoomAdapter(
                 binding.tvFilter.text = this.text
                 binding.ivIconFilter.setImageResource(this.icon)
                 binding.root.setOnClickListener {
-                    clickListener(this)
+                    clickListener(this, it)
                 }
             }
         }
