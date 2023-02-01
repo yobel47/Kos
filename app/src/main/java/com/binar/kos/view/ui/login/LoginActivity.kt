@@ -5,6 +5,7 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnFocusChangeListener
@@ -51,6 +52,9 @@ class LoginActivity : AppCompatActivity() {
     private fun onLogin() {
         val email = binding.etEmail.editText?.text
         val password = binding.etPassword.editText?.text
+
+        Log.e("HELLO ", password.toString())
+
         binding.btnLogin.setOnClickListener {
             loginViewModel.loginAccount(email.toString(),
                 password.toString()).observe(this@LoginActivity) { result ->
