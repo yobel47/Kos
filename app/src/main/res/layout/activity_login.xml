@@ -91,7 +91,6 @@
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
                 android:autofillHints="" />
-
         </com.binar.kos.view.customView.CustomEmailEditText>
 
         <TextView
@@ -122,7 +121,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_password_title">
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,8 +129,15 @@
                 android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:autofillHints="" />
-
         </com.binar.kos.view.customView.CustomPasswordEditText>
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/cb_remember"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/ingat_dalam_30_hari"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/et_password" />-->
 
         <TextView
             android:id="@+id/tv_forgot_password"
@@ -206,7 +211,10 @@
             android:contentDescription="@string/line_login" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.binar.kos.view.customView.CustomScrollView>
 
+    <include
+        android:id="@+id/pb_loading"
+        android:visibility="gone"
+        layout="@layout/loading_bar"/>
 </RelativeLayout>

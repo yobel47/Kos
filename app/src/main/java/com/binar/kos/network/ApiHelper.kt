@@ -10,10 +10,5 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun register(email: String, username: String, password: String, fullname: String, role: String) =
         apiService.register(RegisterRequest(email, username, password, fullname, role))
 
-    suspend fun verif(tokenOtp: String) = apiService.confirmUser(tokenOtp)
-
-    suspend fun sendOtp(email: String, username: String, password: String, fullname: String, role: String) =
-        apiService.sendOtp(RegisterRequest(email, username, password, fullname, role))
-
     suspend fun getAllRooms() = apiService.getAllRooms()
 }

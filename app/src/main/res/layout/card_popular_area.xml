@@ -8,7 +8,7 @@
         android:id="@+id/btn_popular_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/surface_variant"
+        android:backgroundTint="#EDEDED"
         android:minHeight="0dp"
         android:text="Jakarta"
         android:textColor="@color/black"

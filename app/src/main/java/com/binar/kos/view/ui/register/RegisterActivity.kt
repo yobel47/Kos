@@ -17,8 +17,6 @@ import androidx.core.widget.doOnTextChanged
 import com.binar.kos.R
 import com.binar.kos.databinding.ActivityRegisterBinding
 import com.binar.kos.utils.Status
-import com.binar.kos.utils.hideLoading
-import com.binar.kos.utils.showLoading
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.view.ui.verification.VerificationActivity
@@ -47,7 +45,8 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.tvBtnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
-            finishAffinity()
+            intent.putExtra(SelectUserActivity.USER_TYPE, userType)
+            finish()
             startActivity(intent)
         }
     }
@@ -211,9 +210,9 @@ class RegisterActivity : AppCompatActivity() {
         val fullname = binding.etName.editText?.text
         val userType = intent.getStringExtra(SelectUserActivity.USER_TYPE)
         val role = if (userType == "pencari") {
-            "pencari"
-        } else {
             "penyewa"
+        } else {
+            "pemilik"
         }
         binding.btnRegister.setOnClickListener {
             registerViewModel.registerAccount(
@@ -226,10 +225,9 @@ class RegisterActivity : AppCompatActivity() {
                 when (result.status) {
                     Status.LOADING -> {
                         binding.scrollView.setScrolling(false)
-                        showLoading(this)
+                        binding.pbLoading.layoutLoading.visibility = View.VISIBLE
                     }
                     Status.SUCCESS -> {
-                        hideLoading()
                         binding.scrollView.setScrolling(true)
 //                        Toast.makeText(this,
 //                            "${result.data!!.data}",
@@ -238,16 +236,11 @@ class RegisterActivity : AppCompatActivity() {
                             "Daftar Berhasil",
                             Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, VerificationActivity::class.java)
-                        intent.putExtra("email", email.toString())
-                        intent.putExtra("username", username.toString())
-                        intent.putExtra("password", password.toString())
-                        intent.putExtra("fullname", fullname.toString())
-                        intent.putExtra("role", role)
                         finish()
                         startActivity(intent)
+                        binding.pbLoading.layoutLoading.visibility = View.GONE
                     }
                     Status.ERROR -> {
-                        hideLoading()
                         binding.scrollView.setScrolling(true)
                         if (result.message!!.contains("email")) {
                             binding.etEmail.error = result.message
@@ -260,6 +253,7 @@ class RegisterActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
                         }
+                        binding.pbLoading.layoutLoading.visibility = View.GONE
                     }
                 }
             }

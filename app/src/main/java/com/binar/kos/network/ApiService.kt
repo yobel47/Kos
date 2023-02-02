@@ -19,12 +19,6 @@ interface ApiService {
     @POST("auth/signup")
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
 
-    @GET("auth/index/{tokenotp}")
-    suspend fun confirmUser(@Path("tokenotp") tokenotp: String): UsersListResponse
-
-    @POST("auth/send-otp")
-    suspend fun sendOtp(@Body request: RegisterRequest): RegisterResponse
-
     @POST("auth/forget-password")
     suspend fun forgotPassword(@Body request: ForgotPasswordRequest): ForgotPasswordResponse
 

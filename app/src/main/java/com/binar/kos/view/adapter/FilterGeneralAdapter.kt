@@ -1,7 +1,6 @@
 package com.binar.kos.view.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.data.local.entity.Filter
@@ -10,7 +9,7 @@ import com.binar.kos.utils.RecyclerViewClickListener
 
 class FilterGeneralAdapter(
     var filterList: List<Filter>,
-    val clickListener: (Filter, View) -> Unit
+    val clickListener: (Filter) -> Unit
 ) : RecyclerView.Adapter<FilterGeneralAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: CardFilterBinding) : RecyclerView.ViewHolder(binding.root)
@@ -26,7 +25,7 @@ class FilterGeneralAdapter(
                 binding.tvFilter.text = this.text
                 binding.ivIconFilter.setImageResource(this.icon)
                 binding.root.setOnClickListener {
-                    clickListener(this, it)
+                    clickListener(this)
                 }
             }
         }
