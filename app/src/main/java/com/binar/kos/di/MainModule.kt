@@ -15,6 +15,7 @@ object MainModule {
         viewModel { MainViewModel(get()) }
         viewModel { RegisterViewModel(get()) }
         viewModel { LoginViewModel(get()) }
+        viewModel { HomeViewModel(get()) }
         viewModel { SearchViewModel(get()) }
     }
 }

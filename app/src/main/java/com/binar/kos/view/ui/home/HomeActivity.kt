@@ -8,11 +8,9 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.binar.kos.R
-import com.binar.kos.data.dummy.kosDummyData
-import com.binar.kos.databinding.ActivityFilterBinding
+import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.databinding.ActivityHomeBinding
+import com.binar.kos.utils.Status
 import com.binar.kos.view.adapter.KosAdapter
 import com.binar.kos.view.ui.login.LogoutActivity
 import com.binar.kos.view.ui.search.SearchActivity
@@ -27,6 +25,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        fetchAllRooms()
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -41,8 +42,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun showKos(context: Context){
-        val adapter = KosAdapter(kosDummyData, context)
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return super.onCreateView(name, context, attrs)
+
+
+
+    }
+
+    private fun showKos(context: Context, kosList: ArrayList<Kos>) {
+        val adapter = KosAdapter(kosList, context)
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.kosTerlarisCard.layoutManager = linearLayoutManager
         binding.kosTerlarisCard.adapter = adapter

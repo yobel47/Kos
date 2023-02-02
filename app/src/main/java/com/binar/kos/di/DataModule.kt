@@ -4,6 +4,7 @@ import android.app.Application
 import com.binar.kos.data.repository.LoginRepository
 import com.binar.kos.data.repository.MainRepository
 import com.binar.kos.data.repository.RegisterRepository
+import com.binar.kos.data.repository.RoomRepository
 import com.binar.kos.data.repository.SearchRepository
 import com.binar.kos.network.ApiClient
 import com.binar.kos.network.ApiHelper
@@ -27,6 +28,7 @@ object DataModule {
         factory { MainRepository(get()) }
         factory { RegisterRepository(get()) }
         factory { LoginRepository(get()) }
+        factory { RoomRepository(get()) }
         factory { SearchRepository(get()) }
     }
 }
