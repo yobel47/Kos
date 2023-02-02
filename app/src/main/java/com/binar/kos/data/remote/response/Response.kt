@@ -1,0 +1,30 @@
+package com.binar.kos.data.remote.response
+
+import com.google.gson.annotations.SerializedName
+
+data class Response(
+
+	@field:SerializedName("access_token")
+	val accessToken: String? = null,
+
+	@field:SerializedName("refresh_token")
+	val refreshToken: String? = null,
+
+	@field:SerializedName("role")
+	val role: String? = null,
+
+	@field:SerializedName("user_id")
+	val userId: Int? = null,
+
+	@field:SerializedName("scope")
+	val scope: String? = null,
+
+	@field:SerializedName("token_type")
+	val tokenType: String? = null,
+
+	@field:SerializedName("expires_in")
+	val expiresIn: Int? = null,
+
+	@field:SerializedName("jti")
+	val jti: String? = null
+)

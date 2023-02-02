@@ -97,4 +97,5 @@
     <string name="mengirim_ulang_otp_dalam">Mengirim ulang OTP dalam</string>
     <string name="_00_00">00:00</string>
     <string name="kirim_ulang_otp">Kirim Ulang OTP</string>
+    <string name="data_kosong">Data kosong</string>
 </resources>

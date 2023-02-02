@@ -47,8 +47,9 @@
             android:background="@drawable/tag_selector"
             android:paddingHorizontal="8dp"
             android:paddingVertical="2dp"
+            android:textColor="#BB5D1C"
             android:text="Campur"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_location" />
@@ -184,7 +185,7 @@
             android:id="@+id/iv_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/heart_outline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_price" />

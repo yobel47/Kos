@@ -3,9 +3,11 @@ package com.binar.kos.view.ui.filter
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -39,7 +41,7 @@ class FilterActivity : AppCompatActivity() {
         onClickType()
     }
 
-    fun onClickType() {
+    private fun onClickType() {
         binding.cvMan.setOnClickListener {
             val card = it as MaterialCardView
             if (filterData.contains("Man")) {
@@ -47,7 +49,7 @@ class FilterActivity : AppCompatActivity() {
                 card.strokeColor = Color.parseColor("#C7C6CA")
             } else {
                 card.strokeWidth = 5
-                card.strokeColor = Color.BLACK
+                card.strokeColor = resources.getColor(R.color.primary)
             }
             checkFilter("Man")
         }
@@ -58,7 +60,7 @@ class FilterActivity : AppCompatActivity() {
                 card.strokeColor = Color.parseColor("#C7C6CA")
             } else {
                 card.strokeWidth = 5
-                card.strokeColor = Color.BLACK
+                card.strokeColor =  resources.getColor(R.color.primary)
             }
             checkFilter("Woman")
         }
@@ -69,7 +71,7 @@ class FilterActivity : AppCompatActivity() {
                 card.strokeColor = Color.parseColor("#C7C6CA")
             } else {
                 card.strokeWidth = 5
-                card.strokeColor = Color.BLACK
+                card.strokeColor =  resources.getColor(R.color.primary)
             }
             checkFilter("Mix")
         }
@@ -104,7 +106,7 @@ class FilterActivity : AppCompatActivity() {
             card.strokeColor = Color.parseColor("#C7C6CA")
         } else {
             card.strokeWidth = 5
-            card.strokeColor = Color.BLACK
+            card.strokeColor =  resources.getColor(R.color.primary)
         }
         checkFilter(filter.text)
     }

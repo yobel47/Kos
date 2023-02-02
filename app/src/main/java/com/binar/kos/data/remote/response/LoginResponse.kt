@@ -4,22 +4,28 @@ import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(
     @field:SerializedName("access_token")
-    val email: String,
+    val accessToken: String? = null,
 
     @field:SerializedName("refresh_token")
-    val password: String,
+    val refreshToken: String? = null,
+
+    @field:SerializedName("role")
+    val role: String? = null,
+
+    @field:SerializedName("user_id")
+    val userId: Int? = null,
 
     @field:SerializedName("scope")
-    val token: String,
+    val scope: String? = null,
 
     @field:SerializedName("token_type")
-    val token_type: String,
+    val tokenType: String? = null,
 
     @field:SerializedName("expires_in")
-    val expires_in: Int,
+    val expiresIn: Int? = null,
 
     @field:SerializedName("jti")
-    val jti: String,
+    val jti: String? = null
 
 //    @field:SerializedName("email")
 //    val email: String,

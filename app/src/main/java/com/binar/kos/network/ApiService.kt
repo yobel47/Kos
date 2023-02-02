@@ -40,7 +40,4 @@ interface ApiService {
     @DELETE("users/{id}")
     suspend fun deleteUser(@Path("id") id: Int, @Header("Authorization") authorization: String): UserResponse
 
-    @GET("/room")
-    suspend fun getAllRooms() : ArrayList<Kos>
-
 }

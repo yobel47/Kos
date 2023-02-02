@@ -4,122 +4,430 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="24dp"
     tools:context=".view.ui.home.HomeActivity">
 
-    <ImageView
-        android:layout_width="101dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo_horizontal"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/notificationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ion_notifcations"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/topBanner"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/banner_homepage"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/notificationButton" />
+        android:background="@color/background"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/searchKosContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:weightSum="5"
-        app:layout_constraintTop_toTopOf="@id/topBanner">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_search"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="4.75"
-            android:background="@drawable/filter_input"
-            android:drawableStart="@drawable/search_icon"
-            android:drawablePadding="11.4dp"
-            android:hint="@string/cari_kos_sekarang"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingHorizontal="23dp" />
-
-        <LinearLayout
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="0.25"
-            android:background="@drawable/circle_button"
-            android:backgroundTint="@null">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:paddingBottom="42dp">
 
             <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="101dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/logo_horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/notificationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ion_notifcations"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/topBanner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:src="@drawable/filter_icon" />
+                android:layout_height="360dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:minHeight="360dp"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notificationButton" />
 
-        </LinearLayout>
-    </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/topBanner"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/banner_homepage"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/notificationButton" />-->
 
-    <TextView
-        android:id="@+id/kosTerlarisText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="12dp"
-        android:text="@string/kos_terlaris"
-        android:textFontWeight="700"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBanner" />
+            <LinearLayout
+                android:id="@+id/searchKosContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:weightSum="5"
+                app:layout_constraintTop_toTopOf="@id/topBanner">
 
-    <Button
-        android:id="@+id/filterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/outline_button"
-        android:backgroundTint="@null"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="4dp"
-        android:text="@string/filter_text"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBanner" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="4.75"
+                    android:background="@drawable/filter_input"
+                    android:drawableStart="@drawable/search_icon"
+                    android:drawablePadding="11.4dp"
+                    android:hint="@string/cari_kos_sekarang"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:focusable="false"
+                    android:paddingHorizontal="23dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/kosTerlarisCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kosTerlarisText"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        tools:listitem="@layout/kos_card_layout"
-        android:minHeight="250dp" />
+                <LinearLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="0.25"
+                    android:background="@drawable/circle_button"
+                    android:backgroundTint="@null">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp"
+                        android:src="@drawable/filter_icon" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/kosTerlarisText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/kos_terlaris"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topBanner" />
+
+            <Button
+                android:id="@+id/filterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/outline_button"
+                android:backgroundTint="@null"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="@string/filter_text"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topBanner" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/kosTerlarisCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:minHeight="250dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kosTerlarisText" />
+
+
+            <TextView
+                android:id="@+id/tv_empty_rv"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="@string/data_kosong"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/kosTerlarisText" />
+
+            <ProgressBar
+                android:id="@+id/pb"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_marginTop="12dp"
+                android:indeterminateTint="@color/primary"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kosTerlarisText" />
+
+            <TextView
+                android:id="@+id/tv_promo_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="286dp"
+                android:layout_marginBottom="12dp"
+                android:text="Kota Terpopuler"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/kosTerlarisText" />
+
+            <HorizontalScrollView
+                android:id="@+id/populer_city_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingHorizontal="16dp"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_promo_title">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minWidth="120dp"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Kota Populer"
+                            android:src="@drawable/jakarta" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:layout_marginBottom="20dp"
+                            android:text="Jakarta"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minWidth="120dp"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Kota Populer"
+                            android:src="@drawable/yogyakarta" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:layout_marginBottom="20dp"
+                            android:text="Yogyakarta"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:minWidth="120dp"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Kota Populer"
+                            android:src="@drawable/bandung" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:layout_marginBottom="20dp"
+                            android:text="Bandung"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="120dp"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Kota Populer"
+                            android:src="@drawable/surabaya" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:layout_marginBottom="20dp"
+                            android:text="Surabaya"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tv_howto"
+                android:layout_width="231dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="3 Langkah Booking Kost di Omah Kos"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/populer_city_container" />
+
+            <TextView
+                android:id="@+id/tv_title_cari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:text="Cari"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_howto" />
+
+            <TextView
+                android:id="@+id/tv_cari"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:text="Pertama, cari kamar kost idamanmu. Untuk mempermudah, gunakan filter yaa.. Kamu juga bisa simpan hasil pencarianmu dulu buat nanti dilihat lagi."
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_cari" />
+
+            <TextView
+                android:id="@+id/tv_title_ajukan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="62dp"
+                android:text="Ajukan Sewa"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cari" />
+
+            <TextView
+                android:id="@+id/tv_ajukan"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                android:text="Pertama, cari kamar kost idamanmu. Untuk mempermudah, gunakan filter yaa.. Kamu juga bisa simpan hasil pencarianmu dulu buat nanti dilihat lagi."
+                android:textSize="12sp"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_ajukan" />
+
+
+            <TextView
+                android:id="@+id/tv_title_checkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="62dp"
+                android:text="Ajukan Sewa"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_ajukan" />
+
+            <TextView
+                android:id="@+id/tv_checkin"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:text="Pertama, cari kamar kost idamanmu. Untuk mempermudah, gunakan filter yaa.. Kamu juga bisa simpan hasil pencarianmu dulu buat nanti dilihat lagi."
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_checkin" />
+
+
+            <ImageView
+                android:id="@+id/line_howto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="138dp"
+                android:src="@drawable/line_howto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_howto" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="48dp"
+                android:src="@color/primary_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_howto" />
+
+            <ImageView
+                android:id="@+id/icon_howto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="32dp"
+                android:src="@drawable/icon_howto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_howto" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
     <LinearLayout
         android:id="@+id/bottomNavBar"
@@ -198,6 +506,30 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_chat" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:gravity="center"
+                android:text="Chat"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/btn_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -222,6 +554,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

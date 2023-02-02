@@ -6,22 +6,16 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
-import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.viewModels
-import com.binar.kos.R
 import com.binar.kos.databinding.ActivityLoginBinding
 import com.binar.kos.utils.Status
 import com.binar.kos.utils.hideLoading
 import com.binar.kos.utils.showLoading
 import com.binar.kos.view.ui.home.HomeActivity
-import com.binar.kos.view.ui.register.RegisterActivity
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LoginViewModel
@@ -29,10 +23,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModel()
-    private val dataStore: DatastoreViewModel by viewModels()
+    private val dataStore: DatastoreViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +43,17 @@ class LoginActivity : AppCompatActivity() {
             finish()
             startActivity(intent)
         }
+        
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, HomeActivity::class.java)
+        finish()
+        startActivity(intent)
+    }
+
 
     private fun onLogin() {
         binding.btnLogin.setOnClickListener {
@@ -65,11 +68,11 @@ class LoginActivity : AppCompatActivity() {
                         hideLoading()
                         binding.scrollView.setScrolling(true)
                         Toast.makeText(this,
-                            "Login Berhasil",
+                            "Berhasil Login",
                             Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, HomeActivity::class.java)
                         dataStore.saveLoginState(true)
-                        dataStore.saveAccessToken(result.data!!.token)
+                        dataStore.saveAccessToken(result.data?.accessToken!!)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                         finishAffinity()
                         startActivity(intent)
