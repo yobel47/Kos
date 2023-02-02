@@ -99,4 +99,14 @@ dependencies {
 
     // data store
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //jwt
+    implementation 'com.auth0.android:jwtdecode:2.0.2'
+
+    //circleimage
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Circle Indicator (To fix the xml preview "Missing classes" error)
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
 }

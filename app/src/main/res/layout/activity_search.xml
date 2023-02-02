@@ -7,13 +7,13 @@
     android:background="@color/background"
     tools:context=".view.ui.search.SearchActivity">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+    <EditText
+        android:id="@+id/et_search"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
         android:layout_weight="4.75"
-        android:background="@drawable/filter_input"
+        android:background="@drawable/filter_input2"
         android:drawableStart="@drawable/search_icon"
         android:drawablePadding="11.4dp"
         android:hint="@string/cari_kos_sekarang"
@@ -21,9 +21,14 @@
         android:maxLines="1"
         android:layout_marginTop="24dp"
         android:paddingHorizontal="23dp"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
+        android:transitionName="search"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView15"
@@ -35,7 +40,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search"

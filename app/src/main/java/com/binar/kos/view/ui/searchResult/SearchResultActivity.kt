@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,7 @@ import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.viewmodel.LoginViewModel
 import com.binar.kos.viewmodel.SearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class SearchResultActivity : AppCompatActivity() {
 
@@ -39,31 +41,44 @@ class SearchResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val searchText = intent.getStringExtra(SearchActivity.SEARCH_TEXT)
-        binding.etSearch.setText("haha")
+        binding.etSearch.setText(searchText)
 
         binding.btnFilter.setOnClickListener {
             val intent = Intent(this, FilterActivity::class.java)
             startActivity(intent)
         }
 
-        getData()
+        getData(searchText!!.toLowerCase(Locale.ROOT))
         setAdapter()
-
+        onBack()
     }
 
-    private fun getData(){
-        searchViewModel.searchRoom("bandung").observe(this@SearchResultActivity) { result ->
+    private fun onBack(){
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun getData(searchText: String){
+        searchViewModel.searchRoom(searchText).observe(this@SearchResultActivity) { result ->
             when (result.status) {
                 Status.LOADING -> {
-                    Toast.makeText(this,
-                        "Loading",
-                        Toast.LENGTH_SHORT).show()
+                    binding.pb.isVisible = true
+                    binding.rvSearchResult.isVisible = false
                 }
                 Status.SUCCESS -> {
-                    searchResultAdapter.submitList(result.data!!)
+                    binding.pb.isVisible = false
+                    if(result.data!!.isEmpty()){
+                        binding.tvEmptyRv.isVisible = true
+                    }else{
+                        binding.rvSearchResult.isVisible = true
+                        searchResultAdapter.submitList(result.data)
+                    }
                 }
                 Status.ERROR -> {
-                    Toast.makeText(this, "gagal", Toast.LENGTH_SHORT).show()
+                    binding.pb.isVisible = false
+                    binding.tvEmptyRv.isVisible = true
+                    binding.tvEmptyRv.text = result.message
                 }
             }
         }

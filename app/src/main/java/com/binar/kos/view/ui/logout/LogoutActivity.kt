@@ -1,36 +1,52 @@
 package com.binar.kos.view.ui.login
 
 import android.content.Intent
-import android.graphics.Rect
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.widget.doOnTextChanged
-import com.binar.kos.R
+import androidx.core.view.isVisible
+import com.auth0.android.jwt.JWT
 import com.binar.kos.databinding.ActivityLogoutBinding
-import com.binar.kos.utils.Status
 import com.binar.kos.view.ui.home.HomeActivity
-import com.binar.kos.view.ui.register.RegisterActivity
-import com.binar.kos.view.ui.selectUser.SelectUserActivity
-import com.binar.kos.view.ui.verification.VerificationActivity
-import com.binar.kos.viewmodel.LoginViewModel
-import com.binar.kos.viewmodel.RegisterViewModel
+import com.binar.kos.viewmodel.DatastoreViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LogoutActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityLogoutBinding
+    private lateinit var binding: ActivityLogoutBinding
+    private val dataStore: DatastoreViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        onLogout()
+        getUsername()
+
+    }
+
+    private fun getUsername() {
+        dataStore.getAccessToken().observe(this) { token ->
+            if(!token.equals("default value")){
+                val jwt = JWT(token.toString())
+                Log.e("jwt", token.toString())
+                val username = jwt.getClaim("user_name").asString()
+                binding.tvUsernameProfile.text = username.toString()
+                binding.tvNoProfile.isVisible = false
+            }
+        }
+    }
+
+    private fun onLogout() {
+        binding.logoutButton.setOnClickListener {
+            dataStore.deleteAllData()
+            val intent = Intent(this, HomeActivity::class.java)
+            finishAffinity()
+            startActivity(intent)
+        }
     }
 }
 

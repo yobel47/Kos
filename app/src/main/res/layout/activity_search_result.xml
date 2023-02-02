@@ -7,27 +7,65 @@
     android:background="@color/background"
     tools:context=".view.ui.searchResult.SearchResultActivity">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/et_search"
+    <LinearLayout
+        android:id="@+id/topBar_container"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_weight="4.75"
-        android:background="@drawable/filter_input"
-        android:drawableStart="@drawable/search_icon"
-        android:drawablePadding="11.4dp"
-        android:hint="@string/cari_kos_sekarang"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="23dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24"/>
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="4.75"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@color/white"
+            android:hint="Tulis nama daerah atau kota"
+            android:inputType="text"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D9D9D9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBar_container"/>
+    <!--    <com.google.android.material.textfield.TextInputEditText-->
+    <!--        android:id="@+id/et_search"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="48dp"-->
+    <!--        android:layout_marginHorizontal="16dp"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_weight="4.75"-->
+    <!--        android:background="@drawable/filter_input2"-->
+    <!--        android:drawableStart="@drawable/search_icon"-->
+    <!--        android:drawablePadding="11.4dp"-->
+    <!--        android:hint="@string/cari_kos_sekarang"-->
+    <!--        android:inputType="text"-->
+    <!--        android:maxLines="1"-->
+    <!--        android:paddingHorizontal="23dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
     <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+        android:id="@+id/filter_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -36,89 +74,97 @@
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_search">
+        app:layout_constraintTop_toBottomOf="@+id/topBar_container">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/satu1"
+                android:id="@+id/tv_type_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="@color/primary_container"
+                android:clickable="false"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="0dp"
                 android:text="Tipe Kos"
-                android:textColor="@color/black"
+                android:textColor="@color/primary"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_gender"
-                app:iconTint="@color/black"
+                app:iconTint="@color/primary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/satu2"
+                android:id="@+id/tv_duration_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="@color/primary_container"
+                android:clickable="false"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="0dp"
                 android:text="Waktu Bayar Kos"
-                android:textColor="@color/black"
+                android:textColor="@color/primary"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_baseline_access_time_filled_24"
-                app:iconTint="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/satu1"
+                app:iconTint="@color/primary"
+
+                app:layout_constraintStart_toEndOf="@+id/tv_type_filter"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/satu3"
+                android:id="@+id/tv_price_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="@color/primary_container"
+                android:clickable="false"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="0dp"
                 android:text="Harga"
-                android:textColor="@color/black"
+                android:textColor="@color/primary"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_baseline_discount_24"
-                app:iconTint="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/satu2"
+                app:iconTint="@color/primary"
+
+                app:layout_constraintStart_toEndOf="@+id/tv_duration_filter"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/satu4"
+                android:id="@+id/tv_facilities_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="@color/primary_container"
+                android:clickable="false"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="0dp"
                 android:text="Fasilitas"
-                android:textColor="@color/black"
+                android:textColor="@color/primary"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_baseline_house_24"
-                app:iconTint="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/satu3"
+                app:iconTint="@color/primary"
+
+                app:layout_constraintStart_toEndOf="@+id/tv_price_filter"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/satu5"
+            <TextView
+                android:id="@+id/tv_rule_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:backgroundTint="#EDEDED"
+                android:backgroundTint="@color/primary_container"
+                android:clickable="false"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="0dp"
                 android:text="Aturan Kos"
-                android:textColor="@color/black"
+                android:textColor="@color/primary"
                 android:textSize="18sp"
                 app:icon="@drawable/ic_baseline_article_24"
-                app:iconTint="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/satu4"
+                app:iconTint="@color/primary"
+                app:layout_constraintStart_toEndOf="@+id/tv_facilities_filter"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -133,10 +179,37 @@
         android:layout_height="0dp"
         android:fadeScrollbars="true"
         android:scrollbars="none"
-        tools:listitem="@layout/card_search_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@id/filter_container"
+        tools:listitem="@layout/card_search_item" />
+
+    <TextView
+        android:id="@+id/tv_empty_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="@string/data_kosong"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_container" />
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        android:indeterminateTint="@color/primary"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_container" />
+
 
 
     <LinearLayout
@@ -153,9 +226,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/filter_background"
             android:gravity="center"
             android:text="Filter"
-            android:background="@drawable/filter_background"
             android:textSize="16sp" />
 
         <TextView
@@ -163,9 +236,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/filter_background"
             android:gravity="center"
             android:text="Urutkan"
-            android:background="@drawable/filter_background"
             android:textSize="16sp" />
     </LinearLayout>
 

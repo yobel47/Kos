@@ -6,6 +6,8 @@ import com.binar.kos.network.ApiClient
 import com.binar.kos.network.ApiHelper
 import com.binar.kos.network2.ApiClient2
 import com.binar.kos.network2.ApiHelper2
+import com.binar.kos.utils.DatastoreManager
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 
@@ -26,5 +28,6 @@ object DataModule {
         factory { LoginRepository(get()) }
         factory { SearchRepository(get()) }
         factory { RoomRepository(get()) }
+        factory { DatastoreManager(androidContext())}
     }
 }
