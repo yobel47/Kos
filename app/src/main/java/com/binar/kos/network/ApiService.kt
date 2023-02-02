@@ -1,6 +1,5 @@
 package com.binar.kos.network
 
-import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.data.remote.request.*
 import com.binar.kos.data.remote.response.*
 import retrofit2.Call
@@ -33,8 +32,5 @@ interface ApiService {
 
     @DELETE("users/{id}")
     suspend fun deleteUser(@Path("id") id: Int, @Header("Authorization") authorization: String): UserResponse
-
-    @GET("/room")
-    suspend fun getAllRooms() : ArrayList<Kos>
 
 }
