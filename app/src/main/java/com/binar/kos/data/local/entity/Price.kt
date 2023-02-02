@@ -1,10 +1,12 @@
 package com.binar.kos.data.local.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class Price(
-    var id: Int,
-    var cost: Int,
-    var type: String,
-    var room_id: Int,
-    var createdAt: String,
-    var updatedAt: String,
+    @SerializedName("cost_day")
+    var costDay: String?,
+    @SerializedName("cost_month")
+    var costMonth: String?,
+    @SerializedName("cost_week")
+    var costWeek: String?,
 )
