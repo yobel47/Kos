@@ -19,13 +19,15 @@ import com.binar.kos.view.adapter.FilterRoomAdapter
 import com.google.android.material.card.MaterialCardView
 
 
-class FilterActivity : AppCompatActivity()  {
+class FilterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFilterBinding
 
     private lateinit var filterGeneralAdapter: FilterGeneralAdapter
     private lateinit var filterRoomAdapter: FilterRoomAdapter
-    private lateinit var filterGeneralList : List<Filter>
-    private lateinit var filterRoomList : List<Filter>
+    private lateinit var filterGeneralList: List<Filter>
+    private lateinit var filterRoomList: List<Filter>
+    private val filterData = arrayListOf<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,65 +35,89 @@ class FilterActivity : AppCompatActivity()  {
         setContentView(binding.root)
 
         loadFilter()
+        initFilter()
+        onClickType()
+    }
 
-//        binding.slPrice.addOnChangeListener { rangeSlider, _, _ ->
-//            val values = rangeSlider.values
-//            binding.etMinimum.editText?.setText("${values[0].toInt()}")
-//            binding.etMaximum.editText?.setText("${values[1].toInt()}")
-//        }
+    fun onClickType() {
+        binding.cvMan.setOnClickListener {
+            val card = it as MaterialCardView
+            if (filterData.contains("Man")) {
+                card.strokeWidth = 3
+                card.strokeColor = Color.parseColor("#C7C6CA")
+            } else {
+                card.strokeWidth = 5
+                card.strokeColor = Color.BLACK
+            }
+            checkFilter("Man")
+        }
+        binding.cvWoman.setOnClickListener {
+            val card = it as MaterialCardView
+            if (filterData.contains("Woman")) {
+                card.strokeWidth = 3
+                card.strokeColor = Color.parseColor("#C7C6CA")
+            } else {
+                card.strokeWidth = 5
+                card.strokeColor = Color.BLACK
+            }
+            checkFilter("Woman")
+        }
+        binding.cvManWoman.setOnClickListener {
+            val card = it as MaterialCardView
+            if (filterData.contains("Mix")) {
+                card.strokeWidth = 3
+                card.strokeColor = Color.parseColor("#C7C6CA")
+            } else {
+                card.strokeWidth = 5
+                card.strokeColor = Color.BLACK
+            }
+            checkFilter("Mix")
+        }
+    }
 
-//        binding.etMaximum.editText?.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                if(binding.etMaximum.editText?.text.toString().toFloat() <= 20000000f) {
-//                    binding.slPrice.valueTo = binding.etMaximum.editText?.text.toString().toFloat()
-//                }
-//            }
-//        })
-//
-//        binding.etMinimum.editText?.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                if(binding.etMinimum.editText?.text.toString().toFloat() >= 20000f){
-//                    binding.slPrice.valueFrom = binding.etMinimum.editText?.text.toString().toFloat()
-//                }
-//            }
-//        })
-
-        val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
+    private fun initFilter() {
+        val layoutManager: RecyclerView.LayoutManager =
+            GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
         binding.rvFacilities.layoutManager = layoutManager
-        filterGeneralAdapter = FilterGeneralAdapter(filterGeneralList) { filter -> onClick(filter) }
-        binding.rvFacilities.addItemDecoration(GridSpacingItemDecoration(1,20, 40))
+        filterGeneralAdapter =
+            FilterGeneralAdapter(filterGeneralList) { filter, view ->
+                onClickFacilities(filter,
+                    view)
+            }
+        binding.rvFacilities.addItemDecoration(GridSpacingItemDecoration(1, 20, 40))
         binding.rvFacilities.adapter = filterGeneralAdapter
 
-        val layoutManager2: RecyclerView.LayoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
+        val layoutManager2: RecyclerView.LayoutManager =
+            GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
         binding.rvFacilities2.layoutManager = layoutManager2
-        filterRoomAdapter = FilterRoomAdapter(filterRoomList) { filter, view -> onClickRoom(filter, view) }
-        binding.rvFacilities2.addItemDecoration(GridSpacingItemDecoration(1,20, 40))
+        filterRoomAdapter =
+            FilterRoomAdapter(filterRoomList) { filter, view -> onClickFacilities(filter, view) }
+        binding.rvFacilities2.addItemDecoration(GridSpacingItemDecoration(1, 20, 40))
         binding.rvFacilities2.adapter = filterRoomAdapter
     }
 
     @SuppressLint("ResourceAsColor")
-    private fun onClickRoom(filter: Filter, view: View){
+    private fun onClickFacilities(filter: Filter, view: View) {
         val card = view as MaterialCardView
-        card.strokeWidth = 5
-        card.strokeColor = Color.BLACK
-        Toast.makeText(this, filter.text, Toast.LENGTH_SHORT).show()
+        if (filterData.contains(filter.text)) {
+            card.strokeWidth = 3
+            card.strokeColor = Color.parseColor("#C7C6CA")
+        } else {
+            card.strokeWidth = 5
+            card.strokeColor = Color.BLACK
+        }
+        checkFilter(filter.text)
     }
 
-    private fun onClick(filter: Filter){
-        Toast.makeText(this, filter.text, Toast.LENGTH_SHORT).show()
+    fun checkFilter(text: String) {
+        if (filterData.contains(text)) {
+            filterData.remove(text)
+        } else {
+            filterData.add(text)
+        }
+        Toast.makeText(this, filterData.toString(), Toast.LENGTH_SHORT).show()
     }
+
     private fun loadFilter() {
         filterGeneralList = listOf(
             Filter(R.drawable.ic_bathub, "Kamar Mandi Dalam"),

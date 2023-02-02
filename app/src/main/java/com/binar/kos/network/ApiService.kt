@@ -1,6 +1,5 @@
 package com.binar.kos.network
 
-import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.data.remote.request.*
 import com.binar.kos.data.remote.response.*
 import retrofit2.Call
@@ -19,6 +18,12 @@ interface ApiService {
     @POST("auth/signup")
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
 
+    @GET("auth/index/{tokenotp}")
+    suspend fun confirmUser(@Path("tokenotp") tokenotp: String): UsersListResponse
+
+    @POST("auth/send-otp")
+    suspend fun sendOtp(@Body request: RegisterRequest): RegisterResponse
+
     @POST("auth/forget-password")
     suspend fun forgotPassword(@Body request: ForgotPasswordRequest): ForgotPasswordResponse
 
@@ -33,8 +38,5 @@ interface ApiService {
 
     @DELETE("users/{id}")
     suspend fun deleteUser(@Path("id") id: Int, @Header("Authorization") authorization: String): UserResponse
-
-    @GET("/room")
-    suspend fun getAllRooms() : ArrayList<Kos>
 
 }
