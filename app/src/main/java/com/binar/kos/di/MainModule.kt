@@ -13,5 +13,6 @@ object MainModule {
         viewModel { SearchViewModel(get()) }
         viewModel { DatastoreViewModel(get()) }
         viewModel { HomeViewModel(get()) }
+        viewModel { LogoutViewModel(get()) }
     }
 }

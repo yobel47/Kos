@@ -176,7 +176,6 @@ class VerificationActivity : AppCompatActivity() {
                         }
                         isdialog = builder.create()
                         isdialog.show()
-
                     }
                     Status.ERROR -> {
                         hideLoading()

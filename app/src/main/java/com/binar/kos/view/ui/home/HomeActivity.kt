@@ -16,8 +16,9 @@ import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.databinding.ActivityHomeBinding
 import com.binar.kos.utils.Status
 import com.binar.kos.view.adapter.KosAdapter
+import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
 import com.binar.kos.view.ui.login.LoginActivity
-import com.binar.kos.view.ui.login.LogoutActivity
+import com.binar.kos.view.ui.logout.LogoutActivity
 import com.binar.kos.view.ui.search.SearchActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.HomeViewModel
@@ -48,6 +49,9 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent, optionsCompat.toBundle())
         }
     }
+
+
+
 
     private fun setCarousel() {
         binding.topBanner.registerLifecycle(lifecycle)
@@ -115,7 +119,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun toProfile() {
         dataStore.getLoginState().observe(this) {
-
             if (it) {
                 binding.btnProfile.setOnClickListener {
                     val intent = Intent(this, LogoutActivity::class.java)

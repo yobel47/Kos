@@ -15,6 +15,7 @@ class DatastoreManager(private val context: Context) {
         private const val DATA_STORE_NAME = "datastore_preference"
         private val LOGINSTATE_KEY = booleanPreferencesKey("loginstate_key")
         private val ACCESSTOKEN_KEY = stringPreferencesKey("accesstoken_key")
+        private val ROLE_KEY = stringPreferencesKey("role_key")
         private val Context.dataStore by preferencesDataStore(name = DATA_STORE_NAME)
     }
 
@@ -39,6 +40,18 @@ class DatastoreManager(private val context: Context) {
     fun readAccessTokenFromDataStore(): Flow<String> {
         return context.dataStore.data.map { pref ->
             pref[ACCESSTOKEN_KEY] ?: "default value"
+        }
+    }
+
+    suspend fun saveRoleToDataStore(value: String) {
+        context.dataStore.edit { pref ->
+            pref[ROLE_KEY] = value
+        }
+    }
+
+    fun readRoleFromDataStore(): Flow<String> {
+        return context.dataStore.data.map { pref ->
+            pref[ROLE_KEY] ?: "default value"
         }
     }
 

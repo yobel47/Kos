@@ -3,14 +3,9 @@ package com.binar.kos.network
 import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.data.remote.request.*
 import com.binar.kos.data.remote.response.*
+import com.binar.kos.data.remote.response.userdataResponse.UserdataResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.PATCH
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiService {
     @POST("auth/login")
@@ -40,4 +35,7 @@ interface ApiService {
     @DELETE("users/{id}")
     suspend fun deleteUser(@Path("id") id: Int, @Header("Authorization") authorization: String): UserResponse
 
+    @GET("user/find")
+    suspend fun getUser(@HeaderMap header: Map<String, String>) : UserdataResponse
 }
+

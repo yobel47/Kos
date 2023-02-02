@@ -16,6 +16,7 @@ import com.binar.kos.utils.Status
 import com.binar.kos.utils.hideLoading
 import com.binar.kos.utils.showLoading
 import com.binar.kos.view.ui.home.HomeActivity
+import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LoginViewModel
@@ -70,20 +71,34 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this,
                             "Berhasil Login",
                             Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, HomeActivity::class.java)
-                        dataStore.saveLoginState(true)
-                        dataStore.saveAccessToken(result.data?.accessToken!!)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        finishAffinity()
-                        startActivity(intent)
+                        if(result.data?.role == "ROLE_PENCARI"){
+                            val intent = Intent(this, HomeActivity::class.java)
+                            dataStore.saveLoginState(true)
+                            dataStore.saveAccessToken(result.data.accessToken!!)
+                            dataStore.saveRole(result.data.role)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            finishAffinity()
+                            startActivity(intent)
+                        }else{
+                            val intent = Intent(this, HomePenyewaActivity::class.java)
+                            dataStore.saveLoginState(true)
+                            dataStore.saveAccessToken(result.data?.accessToken!!)
+                            dataStore.saveRole(result.data.role!!)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            finishAffinity()
+                            startActivity(intent)
+                        }
+
                     }
                     Status.ERROR -> {
                         hideLoading()
                         binding.scrollView.setScrolling(true)
                         if(result.message!!.contains("email")){
                             binding.etEmail.error = result.message
+                            binding.btnLogin.isEnabled = false
                         }else if(result.message.contains("password")){
                             binding.etPassword.error = result.message
+                            binding.btnLogin.isEnabled = false
                         }else{
                             Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
                         }

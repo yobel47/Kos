@@ -72,6 +72,7 @@ class SearchResultAdapter(
                 binding.tvDiscountPrice.text = price.toRp()
                 binding.tvDiscountPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 binding.tvDiscount.text = "${discount.toString()}%"
+                binding.tvPrice.text = truePrice.toRp()
             }else{
                 binding.tvPrice.text = "${item.price?.costMonth!!.toInt().toRp()}/bulan"
                 binding.tvDiscountPrice.isVisible = false

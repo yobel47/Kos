@@ -2,6 +2,7 @@ package com.binar.kos.network
 
 import com.binar.kos.data.remote.request.LoginRequest
 import com.binar.kos.data.remote.request.RegisterRequest
+import com.binar.kos.utils.getHeaderMap
 
 class ApiHelper(private val apiService: ApiService) {
 
@@ -15,4 +16,5 @@ class ApiHelper(private val apiService: ApiService) {
     suspend fun sendOtp(email: String, username: String, password: String, fullname: String, role: String) =
         apiService.sendOtp(RegisterRequest(email, username, password, fullname, role))
 
+    suspend fun getUser(accessToken: String) = apiService.getUser(getHeaderMap(accessToken))
 }
