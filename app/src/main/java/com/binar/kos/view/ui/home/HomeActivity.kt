@@ -35,7 +35,6 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showKos(this)
         toProfile()
         binding.searchKosContainer.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
