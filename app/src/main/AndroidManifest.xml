@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,10 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kos"
+        android:usesCleartextTraffic="true"
         android:windowSoftInputMode="stateAlwaysVisible"
         tools:targetApi="31">
         <activity
-            android:name=".view.ui.login.LogoutActivity"
+            android:name=".view.ui.home.HomeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.ui.MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.ui.logout.LogoutActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -67,7 +81,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.ui.MainActivity"
+            android:name=".view.ui.homePenyewa.HomePenyewaActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -81,7 +95,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.ui.home.HomeActivity"
+            android:name=".view.ui.splash.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
