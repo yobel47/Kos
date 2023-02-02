@@ -73,7 +73,8 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-
+    }
+    
     private fun fetchAllRooms() {
         homeViewModel.getAllRooms().observe(this) { result ->
             when (result.status) {
