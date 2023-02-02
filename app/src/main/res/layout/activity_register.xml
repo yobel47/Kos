@@ -279,9 +279,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.binar.kos.view.customView.CustomScrollView>
-
-    <include
-        android:id="@+id/pb_loading"
-        android:visibility="gone"
-        layout="@layout/loading_bar"/>
 </RelativeLayout>

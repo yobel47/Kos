@@ -35,15 +35,15 @@ class KosAdapter(private val kosList: ArrayList<Kos>, private val context: Conte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameText.text = kosList[position].title
-        holder.locationText.text = "${kosList[position].address?.city}"
+        holder.locationText.text = "Jakarta" //TODO: find out more about Kos Address
         holder.rateText.text = "4.5" //TODO: find out more about Kos Rating
-        holder.discountText.text = "${kosList[position].discount?.discountPercentage}%"
+        holder.discountText.text = "50%"
         holder.originalPriceText.text = kosList[position].price.toString()
         holder.discountedPriceText.text = kosList[position].price.toString()
         holder.category.text = "Pria"
 
 
-        val kosImageResponse = kosList[position].imageUrl?.get(0)
+        val kosImageResponse = kosList[position].imageUrl[0]
         val requestOptions = RequestOptions().placeholder(R.drawable.kos_dummy_image)
         Glide.with(context).load(kosImageResponse).apply(requestOptions).skipMemoryCache(true)
             .into(holder.kosImagePreview)
