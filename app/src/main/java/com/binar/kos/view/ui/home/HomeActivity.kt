@@ -2,9 +2,12 @@ package com.binar.kos.view.ui.home
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import android.util.AttributeSet
+import android.util.Log
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.R
@@ -16,11 +19,14 @@ import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.view.ui.login.LogoutActivity
 import com.binar.kos.view.ui.search.SearchActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
+import com.binar.kos.viewmodel.HomeViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private val dataStore: DatastoreViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +34,6 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showKos(this)
         toProfile()
         binding.searchKosContainer.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
@@ -59,6 +64,22 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    
+    private fun fetchAllRooms() {
+        homeViewModel.getAllRooms().observe(this) { result ->
+            when (result.status) {
+                Status.LOADING -> {}
+                Status.SUCCESS -> {
+                    val response = result.data
+                    Log.e("HEYYY", result.data.toString())
+                    showKos(this, response!!)
+                }
+                Status.ERROR -> {
 
+                }
+            }
+
+        }
     }
 }
