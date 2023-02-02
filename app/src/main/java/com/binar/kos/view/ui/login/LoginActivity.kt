@@ -11,14 +11,19 @@ import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.viewModels
 import com.binar.kos.R
 import com.binar.kos.databinding.ActivityLoginBinding
 import com.binar.kos.utils.Status
+import com.binar.kos.utils.hideLoading
+import com.binar.kos.utils.showLoading
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.register.RegisterActivity
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
+import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val loginViewModel: LoginViewModel by viewModel()
+    private val dataStore: DatastoreViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +42,11 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLogin.isEnabled = false
         val userType = intent.getStringExtra(SelectUserActivity.USER_TYPE)
 
-        checkUserType(userType!!)
         checkButton()
         onLogin()
 
         binding.tvBtnRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            intent.putExtra(SelectUserActivity.USER_TYPE, userType)
+            val intent = Intent(this, SelectUserActivity::class.java)
             finish()
             startActivity(intent)
         }
@@ -55,21 +59,23 @@ class LoginActivity : AppCompatActivity() {
                 when (result.status) {
                     Status.LOADING -> {
                         binding.scrollView.setScrolling(false)
-                        binding.pbLoading.layoutLoading.visibility = View.VISIBLE
+                        showLoading(this)
                     }
                     Status.SUCCESS -> {
+                        hideLoading()
                         binding.scrollView.setScrolling(true)
                         Toast.makeText(this,
                             "Login Berhasil",
                             Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, HomeActivity::class.java)
+                        dataStore.saveLoginState(true)
+                        dataStore.saveAccessToken(result.data!!.token)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                         finishAffinity()
-
                         startActivity(intent)
-                        binding.pbLoading.layoutLoading.visibility = View.GONE
                     }
                     Status.ERROR -> {
+                        hideLoading()
                         binding.scrollView.setScrolling(true)
                         if(result.message!!.contains("email")){
                             binding.etEmail.error = result.message
@@ -78,27 +84,9 @@ class LoginActivity : AppCompatActivity() {
                         }else{
                             Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
                         }
-                        binding.pbLoading.layoutLoading.visibility = View.GONE
                     }
                 }
             }
-        }
-    }
-
-
-    private fun checkUserType(userType: String) {
-        if (userType == "pencari") {
-            binding.ivLogin1.setImageDrawable(ResourcesCompat.getDrawable(resources,
-                R.drawable.image_login_1,
-                null))
-            binding.tvWelcomeDescription.text =
-                resources.getString(R.string.tolong_isi_data_dirimu_untuk_masuk_sebagai_pencari_kost)
-        } else if (userType == "penyewa") {
-            binding.ivLogin1.setImageDrawable(ResourcesCompat.getDrawable(resources,
-                R.drawable.image_login_2,
-                null))
-            binding.tvWelcomeDescription.text =
-                resources.getString(R.string.tolong_isi_data_dirimu_untuk_masuk_sebagai_penyewa_kost)
         }
     }
 
