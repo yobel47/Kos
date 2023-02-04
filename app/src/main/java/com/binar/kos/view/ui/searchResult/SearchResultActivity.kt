@@ -3,28 +3,15 @@ package com.binar.kos.view.ui.searchResult
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.binar.kos.R
-import com.binar.kos.data.local.entity.Filter
 import com.binar.kos.data.remote.response.searchResponse.SearchResponse
-import com.binar.kos.databinding.ActivitySearchBinding
 import com.binar.kos.databinding.ActivitySearchResultBinding
-import com.binar.kos.utils.GridSpacingItemDecoration
 import com.binar.kos.utils.Status
-import com.binar.kos.view.adapter.FilterGeneralAdapter
-import com.binar.kos.view.adapter.FilterRoomAdapter
 import com.binar.kos.view.adapter.SearchResultAdapter
 import com.binar.kos.view.ui.filter.FilterActivity
-import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.search.SearchActivity
-import com.binar.kos.view.ui.selectUser.SelectUserActivity
-import com.binar.kos.viewmodel.LoginViewModel
 import com.binar.kos.viewmodel.SearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -48,7 +35,7 @@ class SearchResultActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        getData(searchText!!.toLowerCase(Locale.ROOT))
+        getData(searchText!!.lowercase(Locale.ROOT))
         setAdapter()
         onBack()
     }

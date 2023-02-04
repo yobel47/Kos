@@ -2,28 +2,29 @@ package com.binar.kos.view.ui.verification
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.Rect
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
+import android.util.DisplayMetrics
+import android.view.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.binar.kos.R
 import com.binar.kos.databinding.ActivityVerificationBinding
 import com.binar.kos.databinding.SentDialogBinding
 import com.binar.kos.utils.Status
 import com.binar.kos.utils.hideLoading
 import com.binar.kos.utils.showLoading
-import com.binar.kos.view.ui.selectUser.SelectUserActivity
+import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.viewmodel.RegisterViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -50,15 +51,21 @@ class VerificationActivity : AppCompatActivity() {
         otpConfig()
         checkButton()
         setTimer()
-        sendOtp(email,username,password,fullname,role)
+        sendOtp(email, username, password, fullname, role)
     }
 
 
-    private fun sendOtp(email : String?, username: String?, password: String?, fullname: String?, role: String?){
+    private fun sendOtp(
+        email: String?,
+        username: String?,
+        password: String?,
+        fullname: String?,
+        role: String?,
+    ) {
         binding.btnSendOtp.setOnClickListener {
             cTimer.start()
             registerViewModel.resendOtp(
-                email!!,username!!,password!!,fullname!!,role!!
+                email!!, username!!, password!!, fullname!!, role!!
             ).observe(this@VerificationActivity) { result ->
                 when (result.status) {
                     Status.LOADING -> {
@@ -93,9 +100,9 @@ class VerificationActivity : AppCompatActivity() {
                 val seconds = ((value / 1000) % 60)
                 var textsecond = seconds.toString()
                 if (minutes < 10) {
-                     textminute = "0$minutes"
+                    textminute = "0$minutes"
                 }
-                if(seconds < 10){
+                if (seconds < 10) {
                     textsecond = "0$seconds"
                 }
                 binding.tvTimer.text = "$textminute:$textsecond"
@@ -124,9 +131,6 @@ class VerificationActivity : AppCompatActivity() {
             checkButton()
         }
         binding.etOtp5.editText!!.doOnTextChanged { _, _, _, _ ->
-            checkButton()
-        }
-        binding.etOtp6.editText!!.doOnTextChanged { _, _, _, _ ->
             checkButton()
         }
         binding.etOtp6.editText!!.doOnTextChanged { _, _, _, _ ->
@@ -162,24 +166,26 @@ class VerificationActivity : AppCompatActivity() {
                         builder.setView(binding.root)
                         builder.setCancelable(false)
                         binding.btnClose.setOnClickListener {
-                            val sentBinding: SentDialogBinding =
-                                SentDialogBinding.inflate(LayoutInflater.from(this))
-                            val builderDialog = AlertDialog.Builder(this)
-                            builderDialog.setView(sentBinding.root)
-                            builderDialog.setCancelable(false)
-                            sentBinding.btnClose.setOnClickListener {
-                                isdialog.dismiss()
-                                startActivity(intent)
-                            }
-                            isdialog = builderDialog.create()
-                            isdialog.show()
+                            isdialog.dismiss()
+                            val intentt = Intent(this, LoginActivity::class.java)
+                            finishAffinity()
+                            startActivity(intentt)
                         }
+                        val displayMetrics = DisplayMetrics()
+                        @Suppress("DEPRECATION")
+                        windowManager.defaultDisplay.getMetrics(displayMetrics)
+                        val width = displayMetrics.widthPixels
                         isdialog = builder.create()
+                        isdialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                         isdialog.show()
+                        val window: Window = isdialog.window!!
+                        val wlp: WindowManager.LayoutParams = window.attributes
+                        wlp.width = (width * 0.8).toInt()
+                        window.attributes = wlp
                     }
                     Status.ERROR -> {
                         hideLoading()
-                            Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "${result.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -188,38 +194,41 @@ class VerificationActivity : AppCompatActivity() {
 
     private fun attachTextWatchers() {
         binding.etOtp1.editText!!.addTextChangedListener(GenericTextWatcher(binding.etOtp1.editText!!,
-            binding.etOtp2.editText!!))
+            binding.etOtp2.editText!!, binding.btnVerif))
         binding.etOtp2.editText!!.addTextChangedListener(GenericTextWatcher(binding.etOtp2.editText!!,
-            binding.etOtp3.editText!!))
+            binding.etOtp3.editText!!, binding.btnVerif))
         binding.etOtp3.editText!!.addTextChangedListener(GenericTextWatcher(binding.etOtp3.editText!!,
-            binding.etOtp4.editText!!))
+            binding.etOtp4.editText!!, binding.btnVerif))
         binding.etOtp4.editText!!.addTextChangedListener(GenericTextWatcher(binding.etOtp4.editText!!,
-            binding.etOtp5.editText!!))
+            binding.etOtp5.editText!!, binding.btnVerif))
         binding.etOtp5.editText!!.addTextChangedListener(GenericTextWatcher(binding.etOtp5.editText!!,
-            binding.etOtp6.editText!!))
+            binding.etOtp6.editText!!, binding.btnVerif))
         binding.etOtp6.editText!!.addTextChangedListener(GenericTextWatcher(binding.etOtp6.editText!!,
-            null))
+            null, binding.btnVerif))
         binding.etOtp2.editText!!.setOnKeyListener(GenericKeyEvent(binding.etOtp2.editText!!,
-            binding.etOtp1.editText!!))
+            binding.etOtp1.editText!!, binding.btnVerif))
         binding.etOtp3.editText!!.setOnKeyListener(GenericKeyEvent(binding.etOtp3.editText!!,
-            binding.etOtp2.editText!!))
+            binding.etOtp2.editText!!, binding.btnVerif))
         binding.etOtp4.editText!!.setOnKeyListener(GenericKeyEvent(binding.etOtp4.editText!!,
-            binding.etOtp3.editText!!))
+            binding.etOtp3.editText!!, binding.btnVerif))
         binding.etOtp5.editText!!.setOnKeyListener(GenericKeyEvent(binding.etOtp5.editText!!,
-            binding.etOtp4.editText!!))
+            binding.etOtp4.editText!!, binding.btnVerif))
         binding.etOtp6.editText!!.setOnKeyListener(GenericKeyEvent(binding.etOtp6.editText!!,
-            binding.etOtp5.editText!!))
+            binding.etOtp5.editText!!, binding.btnVerif))
     }
 
     private class GenericTextWatcher(
         private val currentView: EditText,
         nextView: EditText?,
+        submitBtn: Button,
     ) :
         TextWatcher {
         private val nextView: EditText?
+        private val submitBtn: Button
 
         init {
             this.nextView = nextView
+            this.submitBtn = submitBtn
         }
 
         override fun afterTextChanged(editable: Editable) {
@@ -231,6 +240,9 @@ class VerificationActivity : AppCompatActivity() {
             if (text.length > 1) {
                 currentView.setText(text[text.length - 1].toString())
                 currentView.setSelection(1)
+            }
+            if (text.isEmpty() || (nextView != null && nextView.text.isEmpty())) {
+                submitBtn.isEnabled = false
             }
         }
 
@@ -247,6 +259,7 @@ class VerificationActivity : AppCompatActivity() {
     class GenericKeyEvent(
         private val currentView: EditText,
         private val previousView: EditText?,
+        private val submitBtn: Button,
     ) :
         View.OnKeyListener {
         override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
@@ -254,6 +267,11 @@ class VerificationActivity : AppCompatActivity() {
             if (event.action === KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.text.toString()
                     .isEmpty()
             ) {
+                if (currentView.text.toString().isEmpty() || previousView?.text.toString()
+                        .isEmpty()
+                ) {
+                    submitBtn.isEnabled = false
+                }
                 previousView?.requestFocus()
                 return true
             }
