@@ -1,3 +1,5 @@
 package com.binar.kos.data.repository
 
-class MainRepository()
+import com.binar.kos.network.ApiHelper
+
+class MainRepository(private val apiHelper: ApiHelper)
