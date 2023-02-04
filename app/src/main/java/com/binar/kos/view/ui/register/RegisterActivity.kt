@@ -5,7 +5,6 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -205,23 +204,18 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun onRegister() {
-        val email = binding.etEmail.editText?.text
-        val username = binding.etUsername.editText?.text
-        val password = binding.etPassword.editText?.text
-        val fullname = binding.etName.editText?.text
         val userType = intent.getStringExtra(SelectUserActivity.USER_TYPE)
-        val role = if (userType == "pencari") {
-            "pencari"
-        } else {
-            "penyewa"
-        }
         binding.btnRegister.setOnClickListener {
             registerViewModel.registerAccount(
-                email.toString(),
-                username.toString(),
-                password.toString(),
-                fullname.toString(),
-                role
+                binding.etEmail.editText?.text.toString(),
+                binding.etUsername.editText?.text.toString(),
+                binding.etPassword.editText?.text.toString(),
+                binding.etName.editText?.text.toString(),
+                if (userType == "pencari") {
+                    "pencari"
+                } else {
+                    "penyewa"
+                }
             ).observe(this@RegisterActivity) { result ->
                 when (result.status) {
                     Status.LOADING -> {
@@ -238,11 +232,15 @@ class RegisterActivity : AppCompatActivity() {
                             "Daftar Berhasil",
                             Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, VerificationActivity::class.java)
-                        intent.putExtra("email", email.toString())
-                        intent.putExtra("username", username.toString())
-                        intent.putExtra("password", password.toString())
-                        intent.putExtra("fullname", fullname.toString())
-                        intent.putExtra("role", role)
+                        intent.putExtra("email", binding.etEmail.editText?.text.toString())
+                        intent.putExtra("username", binding.etUsername.editText?.text.toString())
+                        intent.putExtra("password", binding.etPassword.editText?.text.toString())
+                        intent.putExtra("fullname", binding.etName.editText?.text.toString())
+                        intent.putExtra("role", if (userType == "pencari") {
+                            "pencari"
+                        } else {
+                            "penyewa"
+                        })
                         finish()
                         startActivity(intent)
                     }

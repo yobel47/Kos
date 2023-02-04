@@ -1,10 +1,8 @@
 package com.binar.kos.view.ui.home
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
@@ -16,7 +14,6 @@ import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.databinding.ActivityHomeBinding
 import com.binar.kos.utils.Status
 import com.binar.kos.view.adapter.KosAdapter
-import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
 import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.view.ui.logout.LogoutActivity
 import com.binar.kos.view.ui.search.SearchActivity
@@ -80,10 +77,6 @@ class HomeActivity : AppCompatActivity() {
         )
 
         binding.topBanner.setData(list)
-    }
-
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        return super.onCreateView(name, context, attrs)
     }
 
     private fun showKos(context: Context, kosList: ArrayList<Kos>) {

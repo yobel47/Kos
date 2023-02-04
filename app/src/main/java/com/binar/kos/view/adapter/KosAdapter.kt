@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -52,7 +51,7 @@ class KosAdapter(private val kosList: ArrayList<Kos>, private val context: Conte
             val truePrice = price - discountPrice
             holder.originalPriceText.text = price.toRp()
             holder.originalPriceText.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            holder.discountText.text  = "${discount.toString()}%"
+            holder.discountText.text  = "$discount%"
             holder.discountedPriceText.text = truePrice.toRp()
         }else{
             holder.discountedPriceText.text = "${kosList[position].price?.costMonth!!.toInt().toRp()}/bulan"

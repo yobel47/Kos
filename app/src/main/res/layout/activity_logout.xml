@@ -7,7 +7,7 @@
     android:backgroundTint="@color/white"
     android:fitsSystemWindows="true"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.ui.login.LogoutActivity">
+    tools:context=".view.ui.logout.LogoutActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="FullName"
+                    android:text="@string/fullname"
                     android:textStyle="bold"
                     android:textSize="18sp" />
 
@@ -49,7 +49,7 @@
                     android:id="@+id/tv_no_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="username"
+                    android:text="@string/username"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -57,37 +57,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2" />
-
-            <Button
-                android:id="@+id/tv_btn_register"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:letterSpacing="0"
-                android:minWidth="0dp"
-                android:minHeight="48dp"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="0dp"
-                android:text="Edit Profil"
-                android:textAllCaps="false"
-                android:textColor="@color/primary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@+id/tv_to_register"
-                app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Edit Profil"-->
-<!--                android:textAlignment="textEnd"-->
-<!--                android:textColor="@color/primary"-->
-<!--                android:textSize="14sp"-->
-<!--                tools:ignore="RtlCompat" />-->
-
 
         </LinearLayout>
 
@@ -112,22 +81,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/coin"
                     android:drawablePadding="8dp"
-                    android:text="0"
-                    android:textFontWeight="700"
-                    android:textSize="20dp"
+                    android:text="@string/_0"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableStartCompat="@drawable/coin" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/tukar_poin"
                     android:textColor="@color/primary"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -147,17 +116,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Akun"
-                android:textFontWeight="700"
-                android:textSize="20dp" />
+                android:text="@string/akun"
+                android:textStyle="bold"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableStart="@drawable/pencil"
                 android:drawablePadding="12dp"
                 android:padding="16dp"
-                android:text="@string/edit_profil" />
+                android:text="@string/edit_profil"
+                app:drawableStartCompat="@drawable/pencil" />
 
             <View
                 android:layout_width="match_parent"
@@ -167,10 +136,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableStart="@drawable/paper"
                 android:drawablePadding="12dp"
                 android:padding="16dp"
-                android:text="@string/pesanan_saya" />
+                android:text="@string/pesanan_saya"
+                app:drawableStartCompat="@drawable/paper" />
 
             <View
                 android:layout_width="match_parent"
@@ -180,10 +149,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableStart="@drawable/lock"
                 android:drawablePadding="12dp"
                 android:padding="16dp"
-                android:text="@string/ubah_kata_sandi" />
+                android:text="@string/ubah_kata_sandi"
+                app:drawableStartCompat="@drawable/lock" />
 
             <View
                 android:layout_width="match_parent"
@@ -193,10 +162,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableStart="@drawable/trash"
                 android:drawablePadding="12dp"
                 android:padding="16dp"
-                android:text="Hapus Akun" />
+                android:text="@string/hapus_akun"
+                app:drawableStartCompat="@drawable/trash" />
 
             <View
                 android:layout_width="match_parent"
@@ -225,9 +194,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:drawableStart="@drawable/voucher"
                 android:drawablePadding="12dp"
-                android:text="@string/voucher" />
+                android:text="@string/voucher"
+                app:drawableStartCompat="@drawable/voucher" />
 
             <View
                 android:layout_width="match_parent"
@@ -238,9 +207,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:drawableStart="@drawable/invite_person"
                 android:drawablePadding="12dp"
-                android:text="@string/undang_teman_dan_dapatkan_poin" />
+                android:text="@string/undang_teman_dan_dapatkan_poin"
+                app:drawableStartCompat="@drawable/invite_person" />
 
             <View
                 android:layout_width="match_parent"
@@ -269,9 +238,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:drawableStart="@drawable/customer_service"
                 android:drawablePadding="12dp"
-                android:text="@string/bantuan" />
+                android:text="@string/bantuan"
+                app:drawableStartCompat="@drawable/customer_service" />
 
             <View
                 android:layout_width="match_parent"
@@ -282,9 +251,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:drawableStart="@drawable/group"
                 android:drawablePadding="12dp"
-                android:text="@string/tentang_kami" />
+                android:text="@string/tentang_kami"
+                app:drawableStartCompat="@drawable/group" />
 
             <View
                 android:layout_width="match_parent"
@@ -295,9 +264,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:drawableStart="@drawable/connect_without_contact"
                 android:drawablePadding="12dp"
-                android:text="@string/connect_with_us" />
+                android:text="@string/connect_with_us"
+                app:drawableStartCompat="@drawable/connect_without_contact" />
 
             <View
                 android:layout_width="match_parent"
@@ -308,9 +277,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:drawableStart="@drawable/file_copy"
                 android:drawablePadding="12dp"
-                android:text="@string/syarat_dan_ketentuan" />
+                android:text="@string/syarat_dan_ketentuan"
+                app:drawableStartCompat="@drawable/file_copy" />
 
             <View
                 android:layout_width="match_parent"
@@ -321,9 +290,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:drawableStart="@drawable/file_text"
                 android:drawablePadding="12dp"
-                android:text="@string/kebijakan_privasi" />
+                android:text="@string/kebijakan_privasi"
+                app:drawableStartCompat="@drawable/file_text" />
 
             <View
                 android:layout_width="match_parent"
@@ -345,12 +314,12 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="16dp"
                 android:paddingHorizontal="18dp"
-                android:text="Logout"
-                android:textSize="14dp"
+                android:text="@string/logout"
+                android:textSize="14sp"
                 android:textColor="@color/error"
-                android:textFontWeight="700"
-                android:drawableStart="@drawable/logout"
-                android:drawablePadding="10dp"/>
+                android:textStyle="bold"
+                android:drawablePadding="10dp"
+                app:drawableStartCompat="@drawable/logout" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
