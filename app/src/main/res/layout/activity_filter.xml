@@ -26,6 +26,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_baseline_close_24"
+        app:tint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/close_filter" />
@@ -370,7 +371,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Maksimal"
+                        android:text="@string/maksimal"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -525,7 +526,6 @@
                 android:paddingHorizontal="0dp"
                 android:text="@string/check_in_di_jam_14_00_sewa_harian_amp_mingguan"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cb_electicity" />
 
@@ -540,7 +540,6 @@
                 android:paddingHorizontal="0dp"
                 android:text="@string/check_out_di_jam_12_00_sewa_harian_amp_mingguan"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cb_checkIn" />
         </androidx.constraintlayout.widget.ConstraintLayout>

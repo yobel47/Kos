@@ -22,30 +22,32 @@ class SplashScreenActivity : AppCompatActivity() {
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        @Suppress("DEPRECATION")
         Handler().postDelayed({
             checkLogin()
         }, 3000)
     }
 
-    private fun checkLogin(){
+    private fun checkLogin() {
         dataStore.getLoginState().observe(this) { it ->
-            if(it){
+            if (it) {
                 dataStore.getRole().observe(this) { role ->
-                    if(role == "ROLE_PENYEWA"){
+                    if (role == "ROLE_PENYEWA") {
                         val intent = Intent(this, HomePenyewaActivity::class.java)
                         finishAffinity()
                         startActivity(intent)
-                    }else{
+                    } else {
                         val intent = Intent(this, HomeActivity::class.java)
                         finishAffinity()
                         startActivity(intent)
                     }
                 }
-            }else{
+            } else {
                 val intent = Intent(this, HomeActivity::class.java)
                 finishAffinity()
                 startActivity(intent)
             }
         }
     }
+
 }

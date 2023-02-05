@@ -18,6 +18,13 @@
         android:windowSoftInputMode="stateAlwaysVisible"
         tools:targetApi="31">
         <activity
+            android:name=".view.ui.room.RoomActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.ui.home.HomeActivity"
             android:exported="false">
             <meta-data
