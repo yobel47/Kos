@@ -98,6 +98,8 @@
     <string name="_00_00">00:00</string>
     <string name="kirim_ulang_otp">Kirim Ulang OTP</string>
     <string name="data_kosong">Data kosong</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
     <string name="bulan">/bulan</string>
     <string name="rp_2_120_000">Rp 2.120.000</string>
     <string name="rp_3_120_000">Rp 3.120.000</string>
