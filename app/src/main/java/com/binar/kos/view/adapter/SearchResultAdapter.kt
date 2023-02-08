@@ -3,19 +3,16 @@ package com.binar.kos.view.adapter
 import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.binar.kos.data.local.entity.Filter
 import com.binar.kos.data.remote.response.searchResponse.SearchResponse
 import com.binar.kos.databinding.CardSearchItemBinding
 import com.binar.kos.utils.toCapital
 import com.binar.kos.utils.toRp
 import com.bumptech.glide.Glide
-import java.util.*
 
 class SearchResultAdapter(
     val clickListener: (SearchResponse) -> Unit
@@ -71,7 +68,7 @@ class SearchResultAdapter(
                 val truePrice = price - discountPrice
                 binding.tvDiscountPrice.text = price.toRp()
                 binding.tvDiscountPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                binding.tvDiscount.text = "${discount.toString()}%"
+                binding.tvDiscount.text = "$discount%"
                 binding.tvPrice.text = truePrice.toRp()
             }else{
                 binding.tvPrice.text = "${item.price?.costMonth!!.toInt().toRp()}/bulan"

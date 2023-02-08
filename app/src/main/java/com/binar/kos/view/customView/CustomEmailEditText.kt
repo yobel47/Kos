@@ -28,7 +28,7 @@ class CustomEmailEditText : TextInputLayout {
         editText?.doOnTextChanged { inputText, _, _, _ ->
             if (inputText?.length!! < 1) {
                 error = "Kamu belum isi email-mu"
-            }else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(inputText!!).matches()){
+            }else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(inputText).matches()){
                 error =  "Tolong isi alamat email yang benar"
             }else{
                 error = null

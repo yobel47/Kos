@@ -1,8 +1,7 @@
 package com.binar.kos.view.customView
 
-import android.annotation.TargetApi
+import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.ScrollView
@@ -10,20 +9,11 @@ import android.widget.ScrollView
 class CustomScrollView : ScrollView {
     private var enableScrolling = true
 
-    constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context,
         attrs,
-        defStyleAttr) {
-    }
-
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int,
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-    }
+        defStyleAttr)
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
         return if (scrollingEnabled()) {
@@ -33,6 +23,7 @@ class CustomScrollView : ScrollView {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(ev: MotionEvent): Boolean {
         return if (scrollingEnabled()) {
             super.onTouchEvent(ev)
