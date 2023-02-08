@@ -15,6 +15,7 @@ import androidx.core.view.isVisible
 import com.binar.kos.databinding.ActivityLogoutBinding
 import com.binar.kos.databinding.CardLogoutBinding
 import com.binar.kos.utils.Status
+import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LogoutViewModel
@@ -38,6 +39,7 @@ class LogoutActivity : AppCompatActivity() {
 
         onLogout()
         getUsername()
+        onEditUser()
     }
 
     private fun getUsername() {
@@ -91,6 +93,14 @@ class LogoutActivity : AppCompatActivity() {
             wlp.gravity = Gravity.BOTTOM
             wlp.width = width
             window.attributes = wlp
+        }
+    }
+
+    private fun onEditUser() {
+        binding.profileSection.setOnClickListener {
+            val intent = Intent(this, EditProfileActivity::class.java)
+            finishAffinity()
+            startActivity(intent)
         }
     }
 }

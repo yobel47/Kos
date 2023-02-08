@@ -1,116 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.ui.editProfile.EditProfileActivity">
 
-    <TextView
-        android:id="@+id/editProfileText"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/edit_profile"
-        android:textAlignment="center"
-        android:textFontWeight="700"
-        android:textSize="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingBottom="113dp">
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="24dp"
-        android:layout_height="15.25dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/back_arrow"
-        android:backgroundTint="@android:color/transparent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/editProfileText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/edit_profile"
+            android:textAlignment="center"
+            android:textFontWeight="700"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/headerDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editProfileText" />
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="15.25dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/back_arrow"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/profile_empty_edit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerDivider" />
+        <View
+            android:id="@+id/headerDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editProfileText" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputNamaLengkap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="18dp"
-        android:layout_marginTop="48dp"
-        android:background="@color/grey"
-        android:hint="@string/nama_lengkap"
-        android:padding="16dp"
-        android:textSize="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileImage" />
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/profile_empty"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerDivider" />
 
-    <TextView
-        android:id="@+id/genderSectionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="32dp"
-        android:text="Gender"
-        android:textSize="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputNamaLengkap" />
-
-    <RadioGroup
-        android:id="@+id/genderPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/genderSectionText">
-
-        <RadioButton
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:text="Perempuan"
-            android:textSize="18dp" />
+            android:layout_marginLeft="-30dp"
+            android:src="@drawable/pencil_edit"
+            app:layout_constraintBottom_toBottomOf="@id/profileImage"
+            app:layout_constraintLeft_toRightOf="@id/profileImage" />
 
-        <RadioButton
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputNamaLengkap"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/input_text"
+            android:hint="@string/nama_lengkap"
+            android:padding="16dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileImage" />
+
+        <TextView
+            android:id="@+id/genderSectionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="34dp"
-            android:text="Laki - Laki" />
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="32dp"
+            android:text="Gender"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputNamaLengkap" />
 
-    </RadioGroup>
+        <RadioGroup
+            android:id="@+id/genderPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderSectionText">
 
-<com.google.android.material.textfield.TextInputEditText
-    android:id="@+id/inputTanggalLahir"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/genderPicker"
-    app:layout_constraintLeft_toLeftOf="parent"
-    android:layout_marginHorizontal="18dp"
-    android:layout_marginTop="20dp"
-    android:background="@color/grey"
-    android:padding="16dp"
-    android:drawableStart="@drawable/calendar"
-    android:hint="Tanggal Lahir"
-    android:drawablePadding="11dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="Perempuan"
+                android:textSize="18dp" />
 
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="34dp"
+                android:text="Laki - Laki"
+                android:textSize="18dp" />
 
+        </RadioGroup>
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputTanggalLahir"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_text"
+            android:drawableStart="@drawable/calendar"
+            android:drawablePadding="11dp"
+            android:hint="Tanggal Lahir"
+            android:padding="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderPicker" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputAsalKota"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input_text"
+            android:hint="@string/asal_kota"
+            android:padding="16dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputTanggalLahir" />
+
+        <RadioGroup
+            android:id="@+id/marriageStatusPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputAsalKota">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="Lajang"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="34dp"
+                android:text="Menikah"
+                android:textSize="18dp" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputProfesi"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input_text"
+            android:hint="@string/profesi"
+            android:padding="16dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/marriageStatusPicker" />
+
+        <Spinner
+            android:id="@+id/bankPicker"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input_text"
+            android:padding="16dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputProfesi" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputNoRek"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input_text"
+            android:hint="@string/nomor_rekening"
+            android:padding="16dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bankPicker" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputNamaPemilikBank"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input_text"
+            android:hint="@string/nama_pemilik_bank"
+            android:padding="16dp"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputNoRek" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="113dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="Simpan"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputNamaPemilikBank" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

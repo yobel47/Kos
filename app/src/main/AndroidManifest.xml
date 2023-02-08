@@ -39,6 +39,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.ui.editProfile.EditProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.ui.logout.LogoutActivity"
             android:exported="false">
             <meta-data
