@@ -100,4 +100,8 @@
     <string name="data_kosong">Data kosong</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="asal_kota">Asal Kota</string>
+    <string name="profesi">Profesi</string>
+    <string name="nomor_rekening">Nomor Rekening</string>
+    <string name="nama_pemilik_bank">Nama Pemilik Bank</string>
 </resources>

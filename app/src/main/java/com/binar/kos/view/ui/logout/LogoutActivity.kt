@@ -2,18 +2,13 @@ package com.binar.kos.view.ui.logout
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.auth0.android.jwt.JWT
 import com.binar.kos.databinding.ActivityLogoutBinding
 import com.binar.kos.utils.Status
-import com.binar.kos.utils.hideLoading
-import com.binar.kos.utils.showLoading
+import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
-import com.binar.kos.viewmodel.LoginViewModel
 import com.binar.kos.viewmodel.LogoutViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,6 +29,7 @@ class LogoutActivity : AppCompatActivity() {
 
         onLogout()
         getUsername()
+        onEditUser()
     }
 
     private fun getUsername() {
@@ -63,6 +59,14 @@ class LogoutActivity : AppCompatActivity() {
         binding.logoutButton.setOnClickListener {
             dataStore.deleteAllData()
             val intent = Intent(this, HomeActivity::class.java)
+            finishAffinity()
+            startActivity(intent)
+        }
+    }
+
+    private fun onEditUser() {
+        binding.tvBtnRegister.setOnClickListener {
+            val intent = Intent(this, EditProfileActivity::class.java)
             finishAffinity()
             startActivity(intent)
         }
