@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.binar.kos.R
 import com.binar.kos.databinding.ActivityHomeBinding
 import com.binar.kos.databinding.ActivityHomePenyewaBinding
+import com.binar.kos.view.ui.add.AddRoomActivity
 import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.view.ui.logout.LogoutActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
@@ -27,7 +28,7 @@ class HomePenyewaActivity : AppCompatActivity() {
 
         setCarousel()
         toProfile()
-
+        toAddRoom()
     }
 
     private fun setCarousel() {
@@ -73,5 +74,11 @@ class HomePenyewaActivity : AppCompatActivity() {
             }
         }
 
+    }
+    private fun toAddRoom(){
+        binding.btnMyRoom.setOnClickListener {
+            val intent = Intent(this, AddRoomActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

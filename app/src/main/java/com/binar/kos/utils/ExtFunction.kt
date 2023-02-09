@@ -1,9 +1,13 @@
 package com.binar.kos.utils
 
+import android.graphics.Rect
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.text.NumberFormat
@@ -33,3 +37,4 @@ fun getHeaderMap(accessToken: String): Map<String, String> {
     headerMap["Authorization"] = "Bearer $accessToken"
     return headerMap
 }
+

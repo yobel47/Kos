@@ -25,12 +25,12 @@
                 android:id="@+id/iv_carousel_room"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:src="@drawable/banner_1"
+                android:contentDescription="@string/banner_homepage"
                 android:scaleType="fitXY"
+                android:src="@drawable/kos_dummy_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/banner_homepage" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/btn_favorite"
@@ -38,10 +38,10 @@
                 android:layout_height="28dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
+                android:contentDescription="@string/icon_like"
                 app:layout_constraintEnd_toStartOf="@+id/btn_share"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/heart_outline"
-                android:contentDescription="@string/icon_like" />
+                app:srcCompat="@drawable/heart_outline" />
 
             <ImageView
                 android:id="@+id/btn_share"
@@ -49,10 +49,10 @@
                 android:layout_height="28dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="20dp"
+                android:contentDescription="@string/icon_share"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_share"
-                android:contentDescription="@string/icon_share" />
+                app:srcCompat="@drawable/ic_share" />
 
             <Button
                 android:id="@+id/btn_see_image"
@@ -142,9 +142,9 @@
                 android:drawablePadding="6dp"
                 android:gravity="center"
                 android:text="@string/kost_campur"
+                app:drawableLeftCompat="@drawable/ic_outline_person_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_room"
-                app:drawableLeftCompat="@drawable/ic_outline_person_24" />
+                app:layout_constraintTop_toBottomOf="@id/tv_title_room" />
 
             <TextView
                 android:id="@+id/tv_rating_room"
@@ -156,9 +156,9 @@
                 android:gravity="center"
                 android:text="@string/_4_8"
                 android:textStyle="bold"
+                app:drawableLeftCompat="@drawable/ic_round_star_24"
                 app:layout_constraintStart_toEndOf="@id/tv_type_room"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_room"
-                app:drawableLeftCompat="@drawable/ic_round_star_24" />
+                app:layout_constraintTop_toBottomOf="@id/tv_title_room" />
 
             <TextView
                 android:id="@+id/tv_rating_5"
@@ -184,11 +184,11 @@
                 android:gravity="center"
                 android:text="@string/jl_tanah_ara_ii_no_16_rt_4_rw_12_pd_indah"
                 android:textAlignment="textStart"
+                app:drawableLeftCompat="@drawable/ic_outline_location_on_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_type_room"
-                tools:ignore="RtlCompat"
-                app:drawableLeftCompat="@drawable/ic_outline_location_on_24" />
+                tools:ignore="RtlCompat" />
 
             <View
                 android:id="@+id/line"
@@ -496,7 +496,6 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="18dp"
                 android:ellipsize="marquee"
-                android:lines="4"
                 android:text="@string/kost_ini_terdiri_dari_2_lantai_tipe_kamar_a_berada_di_lantai_2_dengan_jendela_yang_menghadap_ke_arah_luar_apabila_anda_membutuhkan_bantuan_anda_dapat_menghubungi_penjaga_yang_bertugas_dari_pukul_08_00_17_30_wib_informasi_fasilitas_daya_listrik_3500_va_pascabayar_sumber_air_sumur_wifi_indihome_30_mbps_kapasitas_parkir_10_motor_dan_10_sepeda_biaya_tambahan_bisa_berdua_400_ribu_tamu_menginap_50_ribu_kost_ini_berlokasi_3_menit_dari_jalan_raya_dengan_akses_yang_tidak_dapat_dilalui_oleh_mobil_berada_di_area_perkampungan_dan_lingkungan_kost_yang_bebas_dari_banjir"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -512,9 +511,9 @@
                 android:gravity="center"
                 android:text="@string/tampilkan"
                 android:textSize="16sp"
+                app:drawableRightCompat="@drawable/ic_round_keyboard_arrow_down_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_about"
-                app:drawableRightCompat="@drawable/ic_round_keyboard_arrow_down_24" />
+                app:layout_constraintTop_toBottomOf="@id/tv_about" />
 
             <View
                 android:id="@+id/line5"
@@ -549,6 +548,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_review_room">
@@ -557,9 +557,9 @@
                     android:id="@+id/ic_review_room"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:contentDescription="@string/icon_star"
                     android:src="@drawable/star"
-                    app:tint="#FBB040"
-                    android:contentDescription="@string/icon_star" />
+                    app:tint="#FBB040" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -595,6 +595,18 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_review_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/review_container" />
+
             <View
                 android:id="@+id/line6"
                 android:layout_width="match_parent"
@@ -605,7 +617,7 @@
                 android:background="#D9D9D9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/review_container" />
+                app:layout_constraintTop_toBottomOf="@id/rv_review_room" />
 
             <TextView
                 android:id="@+id/tv_location_room2"
@@ -636,50 +648,50 @@
                 android:text="@string/jl_tanah_ara_ii_no_16_rt_4_rw_12_pd_indah"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
+                app:drawableLeftCompat="@drawable/ic_outline_location_on_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_location_room2"
-                tools:ignore="RtlCompat"
-                app:drawableLeftCompat="@drawable/ic_outline_location_on_24" />
+                tools:ignore="RtlCompat" />
 
-            <View
-                android:id="@+id/line7"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="20dp"
-                android:background="#D9D9D9"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_location" />
+<!--            <View-->
+<!--                android:id="@+id/line7"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="24dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:background="#D9D9D9"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tv_location" />-->
 
-            <TextView
-                android:id="@+id/tv_more_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/tipe_kamar_lainnya"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/line7" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_more_type"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="16dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="24dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:text="@string/tipe_kamar_lainnya"-->
+<!--                android:textSize="22sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/line7" />-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_more_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_more_type" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rv_more_type"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="18dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tv_more_type" />-->
 
             <View
                 android:id="@+id/line8"
@@ -691,7 +703,7 @@
                 android:background="#D9D9D9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_more_type" />
+                app:layout_constraintTop_toBottomOf="@id/tv_location" />
 
             <TextView
                 android:id="@+id/tv_rule_room"
@@ -753,10 +765,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="18dp"
+                android:contentDescription="@string/icon_icon"
                 android:src="@drawable/ic_baseline_article_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_policy_room"
-                android:contentDescription="@string/icon_icon" />
+                app:layout_constraintTop_toBottomOf="@id/tv_policy_room" />
 
             <TextView
                 android:id="@+id/tv_start_book_title"
@@ -787,10 +799,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="18dp"
+                android:contentDescription="@string/icon_icon"
                 android:src="@drawable/ic_baseline_article_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_start_book"
-                android:contentDescription="@string/icon_icon" />
+                app:layout_constraintTop_toBottomOf="@id/tv_start_book" />
 
             <TextView
                 android:id="@+id/tv_end_book_title"

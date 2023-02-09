@@ -14,5 +14,6 @@ object MainModule {
         viewModel { DatastoreViewModel(get()) }
         viewModel { HomeViewModel(get()) }
         viewModel { LogoutViewModel(get()) }
+        viewModel { RoomViewModel(get()) }
     }
 }

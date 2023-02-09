@@ -31,7 +31,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_weight="4.75"
-            android:backgroundTint="@null"
+            android:backgroundTint="@android:color/transparent"
             android:hint="@string/tulis_nama_daerah_atau_kota"
             android:importantForAutofill="no"
             android:inputType="text"

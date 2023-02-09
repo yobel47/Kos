@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
+        @Suppress("DEPRECATION")
         super.onBackPressed()
         val intent = Intent(this, HomeActivity::class.java)
         finish()

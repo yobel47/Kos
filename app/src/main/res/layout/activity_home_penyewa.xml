@@ -304,6 +304,7 @@
         app:layout_constraintLeft_toLeftOf="parent">
 
         <LinearLayout
+            android:id="@+id/btn_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -326,6 +327,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_my_room"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -342,13 +344,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:gravity="center"
-                android:text="Kelola"
+                android:text="Kost Saya"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -359,39 +360,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_statistik" />
+                android:src="@drawable/riwayat_button" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:gravity="center"
-                android:text="Statistik"
+                android:text="Pesanan"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btn_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_chat" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:gravity="center"
-                android:text="Chat"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
         </LinearLayout>
 
         <LinearLayout

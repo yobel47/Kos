@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="add_room">
+        <item>Data</item>
+        <item>Alamat</item>
+        <item>Foto</item>
+        <item>Fasilitas</item>
+        <item>Kamar</item>
+        <item>Harga</item>
+    </array>
+</resources>

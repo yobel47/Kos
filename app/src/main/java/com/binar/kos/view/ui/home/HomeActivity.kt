@@ -126,4 +126,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
+    companion object{
+        const val ID_ROOM = "id_room"
+    }
 }

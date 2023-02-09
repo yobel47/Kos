@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustNothing"
+    tools:context=".view.ui.add.AddRoomActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/title_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/icon_back"
+                app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                android:gravity="center_vertical"
+                android:text="Tambahkan Kost Anda"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.shuhart.stepview.StepView
+                android:id="@+id/step_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_container"
+                app:sv_animationDuration="1"
+                app:sv_animationType="Line"
+                app:sv_doneCircleColor="@color/primary"
+                app:sv_doneCircleRadius="20dp"
+                app:sv_doneStepLineColor="@color/primary"
+                app:sv_doneStepMarkColor="@color/white"
+                app:sv_doneTextColor="@color/black"
+                app:sv_nextStepLineColor="@color/outline"
+                app:sv_nextTextColor="@color/outline"
+                app:sv_selectedCircleColor="@color/primary"
+                app:sv_selectedCircleRadius="12dp"
+                app:sv_selectedStepNumberColor="@color/primary_container"
+                app:sv_selectedTextColor="@color/black"
+                app:sv_stepLineWidth="1dp"
+                app:sv_stepNumberTextSize="18sp"
+                app:sv_stepPadding="4dp"
+                app:sv_stepViewStyle="@style/StepView"
+                app:sv_steps="@array/add_room"
+                app:sv_stepsNumber="3"
+                app:sv_textSize="18sp" />
+
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/cv_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step_view">
+
+            <include
+                android:id="@+id/layout_data"
+                layout="@layout/layout_data_kost"
+                android:visibility="visible" />
+
+            <include
+                android:id="@+id/layout_address"
+                layout="@layout/layout_address_kost"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/layout_photo"
+                layout="@layout/layout_photo_kost"
+                android:visibility="gone" />
+            <include
+                android:id="@+id/layout_facility"
+                layout="@layout/layout_facility_kost"
+                android:visibility="gone" />
+            <include
+                android:id="@+id/layout_room"
+                layout="@layout/layout_room_kost"
+                android:visibility="gone" />
+            <include
+                android:id="@+id/layout_price"
+                layout="@layout/layout_price_kost"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@null">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp">
+
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="left"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/custom_button"
+                android:text="Simpan dan Lanjut"
+                android:textAllCaps="false"
+                android:textColor="@drawable/custom_button_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
