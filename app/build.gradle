@@ -114,4 +114,7 @@ dependencies {
     // Circle Indicator (To fix the xml preview "Missing classes" error)
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
+
+    //Stepview
+    implementation 'com.github.shuhart:stepview:1.5.1'
 }

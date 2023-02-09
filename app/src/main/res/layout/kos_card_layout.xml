@@ -81,10 +81,12 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="10dp"
             android:drawableStart="@drawable/star"
+            android:drawableTint="#FBB040"
             android:drawablePadding="7dp"
             android:text="@string/rate_5"
             android:textColor="@color/black"
             android:textSize="12sp"
+
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/kosName" />
 

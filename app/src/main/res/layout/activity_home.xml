@@ -498,33 +498,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:gravity="center"
-                android:text="Riwayat"
+                android:text="Pesanan"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btn_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_chat" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:gravity="center"
-                android:text="Chat"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
         </LinearLayout>
 
         <LinearLayout

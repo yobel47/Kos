@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="108dp">
+
+        <TextView
+            android:id="@+id/tv_title_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fasilitas Kost"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_desc_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Yuk, bantu pencari kost mengetahui fasilitas kost yang akan kamu sewakan"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_address" />
+
+        <TextView
+            android:id="@+id/tv_title_street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Fasilitas Umum"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc_address" />
+
+        <LinearLayout
+            android:id="@+id/facilities_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_street">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/cb_wifi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Wifi"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_parking_car"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Parkir Mobil"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_parking_motor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Parkir Motor"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_parking_bicycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Parkir Sepeda"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_washing_machine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mesin Cuci"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_iron"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Setrika"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_kitchen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Dapur"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/cb_living_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ruang Tamu"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_dispenser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Dispenser"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_mushola"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mushola"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_tv_in_living_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="TV"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_refrigerator"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Kulkas"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_laundry"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Laundry"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_facilities_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Fasilitas Kamar"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/facilities_container" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_facilities_room">
+
+            <CheckBox
+                android:id="@+id/cb_bath_in_room"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kamar Mandi Dalam"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_ac"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="AC"
+                android:textSize="16sp" />
+            <CheckBox
+                android:id="@+id/cb_tv_in_room"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="TV"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_desk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Meja"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_wardrobe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Lemari"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_bed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kasur"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_pillow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Bantal"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_chair"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kursi"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_window"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Jendela"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_hot_water"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Air Panas"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_squat_toilet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kloset Jongkok"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_sit_toilet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kloset Duduk"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_fan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Kipas Angin"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cb_electicity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Termasuk Listrik"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
