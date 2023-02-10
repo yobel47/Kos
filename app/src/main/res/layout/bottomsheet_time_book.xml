@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="42dp">
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/icon_close"
+            app:srcCompat="@drawable/ic_baseline_close_24"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_title_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Biaya Sewa Kost"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp">
+
+            <LinearLayout
+                android:id="@+id/cv_daily_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cb_daily_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Per Hari"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tv_daily_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 100.000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/cv_weekly_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cb_weekly_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Per Minggu"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tv_weekly_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 100.000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/cv_monthly_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cb_monthly_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Per Bulan"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tv_monthly_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 100.000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="2dp"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:layout_marginTop="42dp"
+            android:paddingHorizontal="40dp"
+            android:background="@drawable/custom_button"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@drawable/custom_button_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,6 +1,7 @@
 package com.binar.kos.view.ui.room
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +27,9 @@ import com.binar.kos.view.adapter.FilterRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.BottomFacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.FacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.ReviewRoomAdapter
+import com.binar.kos.view.ui.booking.BookingActivity
 import com.binar.kos.view.ui.home.HomeActivity
+import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.viewmodel.RoomViewModel
 import com.binar.kos.viewmodel.SearchViewModel
@@ -67,6 +70,11 @@ class RoomActivity : AppCompatActivity() {
             }
         }
         setupBottomSheet()
+
+        binding.btnSewa.setOnClickListener {
+            val intent = Intent(this, BookingActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

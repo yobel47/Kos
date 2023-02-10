@@ -8,11 +8,11 @@
         <item name="colorPrimaryContainer">@color/primary_container</item>
         <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary</item>
-        <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="colorSecondaryContainer">@color/secondary_container</item>
-        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+        <item name="colorSecondary">@color/primary</item>
+        <item name="colorSecondaryVariant">@color/primary</item>
+        <item name="colorOnSecondary">@color/on_primary</item>
+        <item name="colorSecondaryContainer">@color/primary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_primary_container</item>
         <!-- Error color. -->
         <item name="colorError">@color/error</item>
         <item name="colorOnError">@color/on_error</item>
