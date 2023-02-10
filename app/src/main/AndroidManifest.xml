@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -23,6 +24,13 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="stateAlwaysVisible"
         tools:targetApi="31">
+        <activity
+            android:name=".view.ui.booking.BookingActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".view.ui.MainActivity"
             android:exported="false">
@@ -127,7 +135,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
 
         <provider
             android:name="androidx.core.content.FileProvider"
