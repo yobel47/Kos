@@ -95,6 +95,7 @@
             app:layout_constraintTop_toBottomOf="@id/genderSectionText">
 
             <RadioButton
+                android:id="@+id/perempuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
@@ -102,6 +103,7 @@
                 android:textSize="18dp" />
 
             <RadioButton
+                android:id="@+id/lakilaki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="34dp"
@@ -110,7 +112,7 @@
 
         </RadioGroup>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/inputTanggalLahir"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -122,7 +124,8 @@
             android:hint="Tanggal Lahir"
             android:padding="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genderPicker" />
+            app:layout_constraintTop_toBottomOf="@id/genderPicker"
+            android:inputType="date"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputAsalKota"
@@ -137,6 +140,17 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputTanggalLahir" />
 
+        <TextView
+            android:id="@+id/marriageStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/status"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputAsalKota" />
+
         <RadioGroup
             android:id="@+id/marriageStatusPicker"
             android:layout_width="wrap_content"
@@ -144,9 +158,10 @@
             android:layout_marginTop="14dp"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputAsalKota">
+            app:layout_constraintTop_toBottomOf="@id/marriageStatusText">
 
             <RadioButton
+                android:id="@+id/lajang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="35dp"
@@ -154,6 +169,7 @@
                 android:textSize="18dp" />
 
             <RadioButton
+                android:id="@+id/menikah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="34dp"
@@ -185,6 +201,7 @@
             android:padding="16dp"
             android:spinnerMode="dropdown"
             app:layout_constraintLeft_toLeftOf="parent"
+            android:entries="@array/bank_names"
             app:layout_constraintTop_toBottomOf="@id/inputProfesi" />
 
         <com.google.android.material.textfield.TextInputEditText

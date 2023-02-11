@@ -3,24 +3,42 @@ package com.binar.kos.data.remote.request
 import com.google.gson.annotations.SerializedName
 
 data class EditUserRequest(
-    @field:SerializedName("nama_lengkap")
-    val nama_lengkap: String,
+    @field:SerializedName("createdAt")
+    val createdAt: Long,
 
-    @field:SerializedName("jenis_kelamin")
-    val jenis_kelamin: String,
+    @field:SerializedName("updatedAt")
+    val updatedAt: Long,
 
-    @field:SerializedName("tanggal_lahir")
-    val tanggal_lahir: String,
+    @field:SerializedName("namaLengkap")
+    val namaLengkap: String,
 
-    @field:SerializedName("kota_asal")
-    val kota_asal: String,
+    @field:SerializedName("gender")
+    val gender: String,
+
+    @field:SerializedName("tanggalKelahiran")
+    val tanggalKelahiran: String,
+
+    @field:SerializedName("kotaAsal")
+    val kotaAsal: String,
 
     @field:SerializedName("status")
     val status: String,
 
-    @field:SerializedName("no_hp")
-    val no_hp: String,
+    @field:SerializedName("noTelepon")
+    val noTelepon: String,
 
     @field:SerializedName("profesi")
     val profesi: String,
+
+    @field:SerializedName("bank")
+    val bank: String,
+
+    @field:SerializedName("noRekening")
+    val noRekening: String,
+
+    @field:SerializedName("pin")
+    val pin: String,
+
+    @field:SerializedName("image")
+    val image: String,
 )

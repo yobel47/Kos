@@ -30,7 +30,7 @@ interface ApiService {
     suspend fun getAllUsers(@Path("id") id: Int, @Header("Authorization") authorization: String): UsersListResponse
 
     @PATCH("users/{id}")
-    suspend fun editUser(@Path("id") id: Int, @Body request: EditUserRequest, @Header("Authorization") authorization: String): UserResponse
+    suspend fun editUser(@Path("id") id: Int, @Body request: EditUserRequest, @HeaderMap header:Map<String, String>): UserResponse
 
     @DELETE("users/{id}")
     suspend fun deleteUser(@Path("id") id: Int, @Header("Authorization") authorization: String): UserResponse

@@ -15,5 +15,6 @@ object MainModule {
         viewModel { HomeViewModel(get()) }
         viewModel { LogoutViewModel(get()) }
         viewModel { RoomViewModel(get()) }
+        viewModel { EditProfileViewModel(get()) }
     }
 }

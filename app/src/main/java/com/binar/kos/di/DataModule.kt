@@ -29,6 +29,7 @@ object DataModule {
         factory { SearchRepository(get()) }
         factory { RoomRepository(get()) }
         factory { LogoutRepository(get()) }
-        factory { DatastoreManager(androidContext())}
+        factory { UserRepository(get()) }
+        factory { DatastoreManager(androidContext()) }
     }
 }
