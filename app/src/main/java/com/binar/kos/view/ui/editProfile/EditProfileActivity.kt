@@ -1,9 +1,11 @@
 package com.binar.kos.view.ui.editProfile
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.binar.kos.data.remote.request.EditUserRequest
 import com.binar.kos.databinding.ActivityEditProfileBinding
 import com.binar.kos.utils.Status
+import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.EditProfileViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -29,6 +32,7 @@ class EditProfileActivity: AppCompatActivity() {
     private val editProfileViewmodel: EditProfileViewModel by viewModel()
     private val dataStore: DatastoreViewModel by viewModel()
 
+    var userId: Int = 0
     var namaLengkap: String = ""
     var gender: String = ""
     var tanggalLahir: Long = 0
@@ -57,6 +61,8 @@ class EditProfileActivity: AppCompatActivity() {
                     when (result.status) {
                         Status.LOADING -> {}
                         Status.SUCCESS -> {
+                            userId = result.data!!.data!!.id ?: 0
+                            Log.e("HELLO", result.data!!.data!!.id.toString())
                             binding.inputNamaLengkap.setText(result.data!!.data!!.namaLengkap)
                         }
                         Status.ERROR -> {
@@ -191,7 +197,20 @@ class EditProfileActivity: AppCompatActivity() {
                 }
             }
 
-            editProfileViewmodel.editThisUSer(0, editUserRequest, accessToken)
+            editProfileViewmodel.editThisUser(0, editUserRequest, accessToken).observe(this){result ->
+                when(result.status){
+                    Status.LOADING -> {}
+                    Status.SUCCESS -> {
+                        Toast.makeText(this, "User updated!", Toast.LENGTH_LONG)
+                        val intent = Intent(this, HomeActivity::class.java)
+                        finish()
+                        startActivity(intent)
+                    }
+                    Status.ERROR -> {
+                        Toast.makeText(this, "An error occurred", Toast.LENGTH_LONG)
+                    }
+                }
+            }
         }
     }
 }
