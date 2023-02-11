@@ -23,7 +23,7 @@ class EditProfileViewModel(private val repository: UserRepository) : ViewModel()
         }
     }
 
-    fun editThisUSer(id: Int, request: EditUserRequest, accessToken: String) =
+    fun editThisUser(id: Int, request: EditUserRequest, accessToken: String) =
         liveData(Dispatchers.IO) {
             emit(Resource.loading(null))
             try {
