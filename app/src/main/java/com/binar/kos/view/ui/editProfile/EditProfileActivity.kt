@@ -88,6 +88,8 @@ class EditProfileActivity: AppCompatActivity() {
 
         radioListener(binding.marriageStatusPicker) { text -> marriageStatus = text }
 
+        onChangeUser()
+
     }
 
     private fun inputTanggalLahirListener() {
