@@ -8,6 +8,7 @@ import android.os.Handler
 import com.binar.kos.databinding.ActivitySplashScreenBinding
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
+import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,7 +44,7 @@ class SplashScreenActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 finishAffinity()
                 startActivity(intent)
             }
