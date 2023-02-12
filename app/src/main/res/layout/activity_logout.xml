@@ -25,9 +25,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile_image"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@color/primary_container" />
+                android:src="@drawable/profile_empty" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

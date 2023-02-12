@@ -40,16 +40,16 @@ class KosAdapter(private val kosList: ArrayList<Kos>, private val context: Conte
                 if(kosList[position].discount?.isDiscount == "true"){
                     val price = kosList[position].price?.costMonth!!.toInt()
                     val discount = kosList[position].discount!!.discountPercentage!!.toInt()
-                    val discountPrice = price / (discount * 100)
+                    val discountPrice = price * (discount / 100)
                     val truePrice = price - discountPrice
                     binding.kosOriginalPrice.text = price.toRp()
                     binding.kosOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     binding.kosDiscount.text  = "$discount%"
                     binding.kosDiscountedPrice.text = truePrice.toRp()
                 }else{
-                    binding.kosDiscountedPrice.text = "${kosList[position].price?.costMonth!!.toInt().toRp()}/bulan"
-                    binding.kosDiscount.isVisible = false
-                    binding.kosOriginalPrice.isVisible = false
+                    binding.kosDiscountedPrice.text = "${kosList[position].price?.costMonth!!.toInt().toRp()}"
+                    binding.kosDiscount.text = ""
+                    binding.kosOriginalPrice.text = ""
                 }
 
                 binding.tvTypeHome.text = kosList[position].type!!.toCapital()
@@ -59,7 +59,7 @@ class KosAdapter(private val kosList: ArrayList<Kos>, private val context: Conte
                 if(kosList[position].imageUrl!!.isNotEmpty()){
                     val kosImageResponse = kosList[position].imageUrl?.get(0)
                     val requestOptions = RequestOptions().placeholder(R.drawable.kos_dummy_image)
-                    Glide.with(context).load(kosImageResponse).apply(requestOptions).skipMemoryCache(true)
+                    Glide.with(context).load(kosImageResponse?.url).apply(requestOptions).skipMemoryCache(true)
                         .into(binding.kosImagePreview)
                 }
 

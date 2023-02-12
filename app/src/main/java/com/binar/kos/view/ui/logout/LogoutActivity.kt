@@ -10,11 +10,14 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.binar.kos.databinding.ActivityLogoutBinding
 import com.binar.kos.databinding.CardLogoutBinding
 import com.binar.kos.utils.Status
+import com.binar.kos.utils.hideLoading
+import com.binar.kos.utils.showLoading
 import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
@@ -48,8 +51,10 @@ class LogoutActivity : AppCompatActivity() {
                 logoutViewModel.getUsedata(token).observe(this@LogoutActivity) { result ->
                     when (result.status) {
                         Status.LOADING -> {
+                            showLoading(this)
                         }
                         Status.SUCCESS -> {
+                            hideLoading()
                             binding.tvUsernameProfile.isVisible = true
                             binding.tvUsernameProfile.text = result.data!!.data!!.namaLengkap
                             if (result.data.data!!.noTelepon !== null){
@@ -58,6 +63,8 @@ class LogoutActivity : AppCompatActivity() {
                             }
                         }
                         Status.ERROR -> {
+                            showLoading(this)
+                            Toast.makeText(this, result.message.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
