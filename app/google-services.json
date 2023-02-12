@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "853800400882",
-    "project_id": "omahkos-f9f22",
-    "storage_bucket": "omahkos-f9f22.appspot.com"
+    "project_number": "102601979504",
+    "project_id": "omah-kos",
+    "storage_bucket": "omah-kos.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:853800400882:android:14948bfe29146c8bc81d6b",
+        "mobilesdk_app_id": "1:102601979504:android:d611c2e28e6e92941f66b5",
         "android_client_info": {
           "package_name": "com.binar.kos"
         }
       },
       "oauth_client": [
         {
-          "client_id": "853800400882-ma0i3cv57b98vncjk7gb8peof406e1nr.apps.googleusercontent.com",
+          "client_id": "102601979504-93eispja3d7rt5sl1lk5vq27535cvaob.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.binar.kos",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "853800400882-jip4r4cvj0a22d2i6qlsmd9j08b50qjt.apps.googleusercontent.com",
+          "client_id": "102601979504-4or4kn1kl8of7f2a20rgk4qb9ccboq7j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBsWZydq-e2V-pvPojayYqZ_Hk_L7cG4Ws"
+          "current_key": "AIzaSyBsS4-GybAUexZivO35ExY-7m1S6mob4E0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "853800400882-jip4r4cvj0a22d2i6qlsmd9j08b50qjt.apps.googleusercontent.com",
+              "client_id": "102601979504-4or4kn1kl8of7f2a20rgk4qb9ccboq7j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

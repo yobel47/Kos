@@ -31,8 +31,11 @@ import com.binar.kos.R
 import com.binar.kos.data.remote.request.AddRoomRequest
 import com.binar.kos.databinding.ActivityAddRoomBinding
 import com.binar.kos.databinding.CardChooseImageBinding
+import com.binar.kos.databinding.SentDialog2Binding
+import com.binar.kos.databinding.SentDialogBinding
 import com.binar.kos.utils.*
 import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
+import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.RoomViewModel
 import com.bumptech.glide.Glide
@@ -51,6 +54,7 @@ class AddRoomActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddRoomBinding
     private lateinit var isdialogg: AlertDialog
+    private lateinit var isdialoggg: AlertDialog
     private val roomViewModel: RoomViewModel by viewModel()
     private val dataStore: DatastoreViewModel by viewModel()
 
@@ -135,6 +139,10 @@ class AddRoomActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.btnNext.isEnabled = false
 
+
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
 
         dataStore.getAccessToken().observe(this) { token ->
             if (!token.equals("default value")) {
@@ -403,10 +411,32 @@ class AddRoomActivity : AppCompatActivity() {
                 }
                 Status.SUCCESS -> {
                     hideLoading()
-                    Toast.makeText(this, result.message.toString(), Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, HomePenyewaActivity::class.java)
-                    finishAffinity()
-                    startActivity(intent)
+                    val binding2: SentDialog2Binding =
+                        SentDialog2Binding.inflate(LayoutInflater.from(this))
+                    val builder2 = AlertDialog.Builder(this)
+                    builder2.setView(binding2.root)
+                    binding2.tvTittleSent.text = "Selamat Data Kost Telah Ditambahkan"
+                    binding2.tvSent.text = "Kost Anda siap dipasarkan. Lihat statusnya di properti saya"
+                    binding2.btnCheck.text = "Lihat Status"
+
+                    builder2.setCancelable(false)
+                    binding2.btnClose.setOnClickListener {
+                        isdialoggg.dismiss()
+                        val intent = Intent(this, HomePenyewaActivity::class.java)
+                        finishAffinity()
+                        startActivity(intent)
+                    }
+                    val displayMetrics = DisplayMetrics()
+                    @Suppress("DEPRECATION")
+                    windowManager.defaultDisplay.getMetrics(displayMetrics)
+                    val width = displayMetrics.widthPixels
+                    isdialoggg = builder2.create()
+                    isdialoggg.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    isdialoggg.show()
+                    val window: Window = isdialoggg.window!!
+                    val wlp: WindowManager.LayoutParams = window.attributes
+                    wlp.width = (width * 0.8).toInt()
+                    window.attributes = wlp
                 }
                 Status.ERROR -> {
                     hideLoading()

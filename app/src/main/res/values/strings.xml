@@ -178,4 +178,6 @@
     <string name="akun">Akun</string>
     <string name="hapus_akun">Hapus Akun</string>
     <string name="maksimal">Maksimal</string>
+    <string name="pilih_salah_satu_dari_metode_pembayaran_yang_tersedia_ya_n_kami_rekomendasikan_melalui_transfer_virtual_account_untuk_kemudahan_transaksi_n_ingat_lakukan_pembayaran_di_dalam_omah_kos_agar_transaksimu_aman_yaa">Pilih salah satu dari metode pembayaran yang tersedia ya.\nKami rekomendasikan melalui <b>Transfer Virtual Account</b> untuk kemudahan transaksi.\nIngat! Lakukan pembayaran di dalam Omah Kos agar transaksimu aman yaa :)</string>
+    <string name="jika_kamu_masih_bingung_boleh_baca_baca_faq_dulu_atau_kontak_kami_ya">Jika kamu masih bingung,\nboleh baca-baca <b>FAQ</b> dulu atau <b>kontak kami</b> ya!</string>
 </resources>

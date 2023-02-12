@@ -25,6 +25,20 @@
         android:windowSoftInputMode="stateAlwaysVisible"
         tools:targetApi="31">
         <activity
+            android:name=".view.ui.transactionGuide.TransactionGuideActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.ui.transaction.TransactionActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.ui.booking.BookingActivity"
             android:exported="false">
             <meta-data

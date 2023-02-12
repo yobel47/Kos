@@ -1,6 +1,7 @@
 package com.binar.kos.view.ui.room
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.R
 import com.binar.kos.data.local.entity.Filter
+import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.data.local.entity.Review
 import com.binar.kos.data.remote.response.roomResponse.ImageUrlItem
 import com.binar.kos.data.remote.response.roomResponse.RoomResponse
@@ -24,19 +26,23 @@ import com.binar.kos.databinding.BottomsheetImageBinding
 import com.binar.kos.utils.*
 import com.binar.kos.view.adapter.FilterGeneralAdapter
 import com.binar.kos.view.adapter.FilterRoomAdapter
+import com.binar.kos.view.adapter.KosAdapter
+import com.binar.kos.view.adapter.MoreKosAdapter
 import com.binar.kos.view.adapter.RoomAdapter.BottomFacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.FacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.ReviewRoomAdapter
 import com.binar.kos.view.ui.booking.BookingActivity
+import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
+import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.view.ui.selectUser.SelectUserActivity
-import com.binar.kos.viewmodel.RoomViewModel
-import com.binar.kos.viewmodel.SearchViewModel
+import com.binar.kos.viewmodel.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,9 +52,13 @@ class RoomActivity : AppCompatActivity() {
     private lateinit var bindingFacilityBottomsheet: BottomsheetFacilityBinding
     private lateinit var bindingImageBottomsheet: BottomsheetImageBinding
     private val roomViewModel: RoomViewModel by viewModel()
+    private val dataStore: DatastoreViewModel by viewModel()
+    private val logoutViewModel: LogoutViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var facilitiesRoomAdapter: FacilitiesRoomAdapter
     private lateinit var bottomFacilitiesRoomAdapter: BottomFacilitiesRoomAdapter
     private lateinit var reviewRoomAdapter: ReviewRoomAdapter
+    private var userData = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,17 +75,37 @@ class RoomActivity : AppCompatActivity() {
 
         val roomId = intent.getStringExtra(HomeActivity.ID_ROOM)
         if (roomId != null) {
-            if(roomId.isNotEmpty()){
+            if (roomId.isNotEmpty()) {
                 getData(roomId)
             }
         }
         setupBottomSheet()
+        getUserdata()
+        moreRoom()
 
-        binding.btnSewa.setOnClickListener {
-            val intent = Intent(this, BookingActivity::class.java)
-            startActivity(intent)
+    }
+
+    private fun moreRoom() {
+        homeViewModel.getAllRooms().observe(this) { result ->
+            when (result.status) {
+                Status.LOADING -> {
+                }
+                Status.SUCCESS -> {
+                    val response = result.data!!
+                    showKos(this, response)
+                }
+                Status.ERROR -> {
+                    Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
 
+    private fun showKos(context: Context, kosList: ArrayList<Kos>) {
+        val adapter = MoreKosAdapter(kosList, context)
+        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvMoreRoom.layoutManager = linearLayoutManager
+        binding.rvMoreRoom.adapter = adapter
     }
 
 
@@ -88,6 +118,7 @@ class RoomActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     hideLoading()
                     mappingData(result.data!!)
+                    setToBooking(result.data)
                 }
                 Status.ERROR -> {
                     hideLoading()
@@ -95,6 +126,109 @@ class RoomActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun getUserdata() {
+        dataStore.getAccessToken().observe(this) { token ->
+            if (!token.equals("default value")) {
+                logoutViewModel.getUsedata(token).observe(this@RoomActivity) { result ->
+                    when (result.status) {
+                        Status.LOADING -> {
+                        }
+                        Status.SUCCESS -> {
+                            if (result.data!!.data!!.noTelepon == null) {
+                                userData = false
+                            }
+                            if (result.data.data!!.bank == null) {
+                                userData = false
+                            }
+                            if (result.data.data.gender == null) {
+                                userData = false
+                            }
+                            if (result.data.data.kotaAsal == null) {
+                                userData = false
+                            }
+                            if (result.data.data.noRekening == null) {
+                                userData = false
+                            }
+                            if (result.data.data.profesi == null) {
+                                userData = false
+                            }
+//                            if (result.data.data.tanggalKelahiran == null) {
+//                                userData = false
+//                            }
+                        }
+                        Status.ERROR -> {
+                            Toast.makeText(this, result.message.toString(), Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setToBooking(data: RoomResponse) {
+        dataStore.getLoginState().observe(this) { isLoggedIn ->
+            binding.btnSewa.setOnClickListener {
+                if (isLoggedIn) {
+                    if (userData) {
+                        val intent = Intent(this, BookingActivity::class.java)
+                        intent.putExtra(ROOM_ID, data.id)
+                        intent.putExtra(ROOM_NAME, data.title)
+                        intent.putExtra(ROOM_IMAGE, data.imageUrl?.get(0)?.url)
+                        intent.putExtra(ROOM_TYPE, data.type)
+                        intent.putExtra(ROOM_LOCATION,
+                            "${data.address?.district}, ${data.address?.city}")
+
+                        if (data.discount?.isDiscount == true) {
+                            val discount = data.discount.discountPercentage!!.toInt()
+
+                            val priceMonth = data.price?.costMonth!!.toInt()
+                            val discountPriceMonth = priceMonth * (discount / 100)
+                            val truePriceMonth = priceMonth - discountPriceMonth
+
+                            val priceWeek = data.price.costWeek!!.toInt()
+                            val discountPriceWeek = priceWeek * (discount / 100)
+                            val truePriceWeek = priceWeek - discountPriceWeek
+
+                            val priceDay = data.price.costDay!!.toInt()
+                            val discountPriceDay = priceDay * (discount / 100)
+                            val truePriceDay = priceDay - discountPriceDay
+
+
+                            intent.putExtra(ROOM_COST_MONTHLY, truePriceMonth.toString())
+                            intent.putExtra(ROOM_COST_WEEKLY, truePriceWeek.toString())
+                            intent.putExtra(ROOM_COST_DAILY, truePriceDay.toString())
+                        } else {
+                            intent.putExtra(ROOM_COST_MONTHLY, data.price?.costMonth)
+                            intent.putExtra(ROOM_COST_WEEKLY, data.price?.costWeek)
+                            intent.putExtra(ROOM_COST_DAILY, data.price?.costDay)
+                        }
+                        finish()
+                        startActivity(intent)
+                    } else {
+                        Snackbar.make(binding.root,
+                            "Data profil belum terisi",
+                            Snackbar.LENGTH_LONG)
+                            .setAction("Isi data profile") {
+                                val intent = Intent(this, EditProfileActivity::class.java)
+                                finish()
+                                startActivity(intent)
+                            }.show()
+                    }
+                } else {
+                    Snackbar.make(binding.root, "Anda belum login", Snackbar.LENGTH_LONG)
+                        .setAction("Login") {
+                            val intent = Intent(this, LoginActivity::class.java)
+                            finish()
+                            startActivity(intent)
+                        }.show()
+                }
+            }
+
+        }
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -112,12 +246,12 @@ class RoomActivity : AppCompatActivity() {
         if (data.discount?.isDiscount == true) {
             val price = data.price?.costMonth!!.toInt()
             val discount = data.discount.discountPercentage!!.toInt()
-            val discountPrice = price / (discount * 100)
+            val discountPrice = price.toDouble() * (discount.toDouble() / 100)
             val truePrice = price - discountPrice
             binding.tvDiscountPrice.text = price.toRp()
             binding.tvDiscountPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             binding.tvDiscount.text = "$discount%"
-            binding.tvPrice.text = truePrice.toRp()
+            binding.tvPrice.text = truePrice.toInt().toRp()
         } else {
             binding.tvPrice.text = data.price?.costMonth!!.toInt().toRp()
             binding.tvDiscountPrice.text = ""
@@ -296,51 +430,39 @@ class RoomActivity : AppCompatActivity() {
 
         val rulesData = arrayListOf<Filter>()
         if (data.rules?.pet == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Boleh Bawa Hewan"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Dilarang Bawa Hewan"))
+            rulesData.add(Filter(R.drawable.ic_baseline_pets_24, "Boleh bawa hewan"))
         }
         if (data.rules?.couple == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Boleh Pasutri"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Tidak Boleh Pasutri"))
+            rulesData.add(Filter(R.drawable.ic_baseline_people_alt_24, "Boleh pasutri"))
         }
         if (data.rules?.person == "2") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Maks 2 orang/kamar"))
+            rulesData.add(Filter(R.drawable.ic_baseline_people_alt_24, "Maks 2 orang/kamar"))
         }
-        if (data.rules?.checkIn == "2") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Check in jam 14.00  (sewa harian & mingguan)"))
+        if (data.rules?.checkIn == "1") {
+            rulesData.add(Filter(R.drawable.ic_baseline_login_24,
+                "Check in jam 14.00  (sewa harian & mingguan)"))
         }
         if (data.rules?.children == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Boleh Bawa Anak"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Dilarang Bawa Anak"))
+            rulesData.add(Filter(R.drawable.ic_baseline_child_friendly_24, "Boleh bawa anak"))
         }
         if (data.rules?.checkOut == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Check out jam 12.00  (sewa harian & mingguan)"))
+            rulesData.add(Filter(R.drawable.ic_baseline_logout_24,
+                "Check out jam 12.00  (sewa harian & mingguan)"))
         }
         if (data.rules?.addElectricity == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Tambah biaya untuk elektronik"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Tidak ada tambahan biaya untuk elektronik"))
+            rulesData.add(Filter(R.drawable.ic_lightning, "Tambah biaya untuk elektronik"))
         }
         if (data.rules?.smokingInRoom == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Boleh merokok di kamar"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Dilarang merokok di kamar"))
+            rulesData.add(Filter(R.drawable.ic_baseline_smoke_free_24, "Dilarang merokok di kamar"))
         }
         if (data.rules?.specialStudent == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Murid Spesial"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Bukan Murid Spesial"))
+            rulesData.add(Filter(R.drawable.ic_baseline_person_24, "Khusus Mahasiswa"))
         }
         if (data.rules?.specialEmployee == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Karyawan Spesial"))
-        } else {
-            rulesData.add(Filter(R.drawable.ic_ac, "Bukan Karyawan Spesial"))
+            rulesData.add(Filter(R.drawable.ic_baseline_person_24, "Khusus Karyawan"))
         }
         if (data.rules?.twfHoursAccess == "1") {
-            rulesData.add(Filter(R.drawable.ic_ac, "Ini jam jaman pokoknya"))
+            rulesData.add(Filter(R.drawable.ic_24hours, "Akses 24 Jam"))
         }
 
         val layoutManager5: RecyclerView.LayoutManager =
@@ -371,11 +493,17 @@ class RoomActivity : AppCompatActivity() {
         binding.rvReviewRoom.adapter = reviewRoomAdapter
 
         setCarousel(data.imageUrl!!)
+        bindingImageBottomsheet.tvTitleAbout.text = data.title.toString().toCapital()
+
 
         val kosImageResponse = data.imageUrl[0]
         val requestOptions = RequestOptions().placeholder(R.drawable.kos_dummy_image)
-        Glide.with(this).load(kosImageResponse).apply(requestOptions).skipMemoryCache(true)
+        Glide.with(this).load(kosImageResponse?.url).apply(requestOptions).skipMemoryCache(true)
             .into(binding.ivCarouselRoom)
+
+        Glide.with(this).load(data.oauthUser!!.userDetail!!.image).apply(requestOptions)
+            .skipMemoryCache(true)
+            .into(binding.ivProfileRoom)
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -482,6 +610,17 @@ class RoomActivity : AppCompatActivity() {
             )
         }
         bindingImageBottomsheet.imgCarousel.setData(list)
+    }
+
+    companion object {
+        const val ROOM_ID = "room_id"
+        const val ROOM_NAME = "room_name"
+        const val ROOM_IMAGE = "room_image"
+        const val ROOM_TYPE = "room_type"
+        const val ROOM_LOCATION = "room_location"
+        const val ROOM_COST_MONTHLY = "room_cost_monthly"
+        const val ROOM_COST_WEEKLY = "room_cost_weekly"
+        const val ROOM_COST_DAILY = "room_cost_daily"
     }
 
 //    private fun setWindowFlag(bits: Int, on: Boolean) {
