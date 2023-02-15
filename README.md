@@ -26,3 +26,6 @@ Firstly, clone this repository and import it into Android Studio (`git clone htt
 Any contributions, issues, and feature requests are welcome.
 
 Give a ⭐️ if you like this project.
+
+[release-shield]: https://img.shields.io/github/v/release/yobel47/Kos?include_prereleases&style=for-the-badge
+[release-url]: https://github.com/yobel47/Kos/releases
