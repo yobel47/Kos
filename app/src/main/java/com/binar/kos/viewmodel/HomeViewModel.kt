@@ -21,4 +21,15 @@ class HomeViewModel (private val repository: RoomRepository) : ViewModel(){
             emit(Resource.error(null, jsonObj.getString("message") ?: "Error occurred!"))
         }
     }
+    fun getPromoRooms() = liveData(Dispatchers.IO){
+        emit(Resource.loading(null))
+        try{
+            emit(Resource.success(data = repository.getPromoRooms()))
+        } catch (e: IOException){
+            emit(Resource.error(null, e.message ?: "Error Occurred!"))
+        } catch (e: HttpException){
+            val jsonObj = JSONObject(e.response()?.errorBody()?.charStream()?.readText()!!)
+            emit(Resource.error(null, jsonObj.getString("message") ?: "Error occurred!"))
+        }
+    }
 }

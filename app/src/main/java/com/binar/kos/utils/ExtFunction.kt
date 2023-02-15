@@ -1,15 +1,8 @@
 package com.binar.kos.utils
 
-import android.graphics.Rect
-import android.view.MotionEvent
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import androidx.activity.ComponentActivity
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import java.text.NumberFormat
 import java.util.*
 
@@ -24,11 +17,6 @@ fun String.toCapital() : String{
     return split(" ").joinToString(separator = " ", transform = String::capitalize)
 }
 
-fun View.hideKeyboard() {
-    val imm = context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm.hideSoftInputFromWindow(windowToken, 0)
-}
-
 fun getHeaderMap(accessToken: String): Map<String, String> {
     val headerMap = mutableMapOf<String, String>()
     headerMap["Connection"] = "keep-alive"
@@ -38,3 +26,19 @@ fun getHeaderMap(accessToken: String): Map<String, String> {
     return headerMap
 }
 
+fun getFirebaseToken() : String{
+    var firebaseToken = ""
+    FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+        if (!task.isSuccessful) {
+            Log.w("Firebase", "Fetching FCM registration token failed", task.exception)
+            return@OnCompleteListener
+        }
+
+        // Get new FCM registration token
+        firebaseToken = task.result
+
+        // Log and toast
+        Log.d("Firebase token", firebaseToken)
+    })
+    return firebaseToken
+}

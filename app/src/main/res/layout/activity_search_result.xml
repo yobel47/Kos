@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:contentDescription="@string/icon_back"
+            app:tint="@color/black"
             android:src="@drawable/ic_baseline_keyboard_backspace_24" />
 
         <EditText
@@ -36,6 +37,8 @@
             android:importantForAutofill="no"
             android:inputType="text"
             android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,31 +56,31 @@
         android:id="@+id/filter_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
+        android:paddingBottom="8dp"
         android:scrollbars="none"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topBar_container">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="18dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/tv_type_filter"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="42dp"
                 android:backgroundTint="@color/primary_container"
                 android:clickable="false"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="12dp"
                 android:paddingVertical="0dp"
                 android:text="@string/tipe_kos"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:icon="@drawable/ic_gender"
                 app:iconTint="@color/primary"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,54 +89,55 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/tv_duration_filter"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/primary_container"
                 android:clickable="false"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="12dp"
                 android:paddingVertical="0dp"
                 android:text="@string/waktu_bayar_kos"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:icon="@drawable/ic_baseline_access_time_filled_24"
                 app:iconTint="@color/primary"
-
                 app:layout_constraintStart_toEndOf="@+id/tv_type_filter"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/tv_price_filter"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/primary_container"
                 android:clickable="false"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="12dp"
                 android:paddingVertical="0dp"
                 android:text="@string/harga"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:icon="@drawable/ic_baseline_discount_24"
                 app:iconTint="@color/primary"
-
                 app:layout_constraintStart_toEndOf="@+id/tv_duration_filter"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/tv_facilities_filter"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/primary_container"
                 android:clickable="false"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="12dp"
                 android:paddingVertical="0dp"
                 android:text="@string/fasilitas"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:icon="@drawable/ic_baseline_house_24"
                 app:iconTint="@color/primary"
                 app:layout_constraintStart_toEndOf="@+id/tv_price_filter"
@@ -142,16 +146,17 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/tv_rule_filter"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/primary_container"
                 android:clickable="false"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="12dp"
                 android:paddingVertical="0dp"
                 android:text="@string/aturan_kos"
                 android:textAllCaps="false"
                 android:textColor="@color/primary"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:icon="@drawable/ic_baseline_article_24"
                 app:iconTint="@color/primary"
                 app:layout_constraintStart_toEndOf="@+id/tv_facilities_filter"
@@ -166,9 +171,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search_result"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:fadeScrollbars="true"
         android:scrollbars="none"
+        android:paddingBottom="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filter_container"
@@ -200,18 +206,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filter_container" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="58dp"
+        app:cardElevation="20dp"
+        android:elevation="20dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="#D9D9D9"
+        android:layout_marginBottom="-52dp"
+        android:layout_marginHorizontal="-12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="#FFFBFE"
+            android:layout_height="102dp"
+            android:paddingBottom="52dp"
+            android:background="@color/background"
             android:orientation="horizontal">
 
             <TextView
@@ -221,19 +235,20 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/filter"
-                android:textSize="16sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/urutkan"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/textView17"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/urutkan"-->
+<!--                android:textSize="16sp" />-->
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

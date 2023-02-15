@@ -11,23 +11,12 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class EditProfileViewModel(private val repository: UserRepository) : ViewModel() {
-    fun getThisUser(accessToken: String) = liveData(Dispatchers.IO) {
-        emit(Resource.loading(null))
-        try {
-            emit(Resource.success(data = repository.getUser(accessToken)))
-        } catch (e: IOException) {
-            emit(Resource.error(null, e.message ?: "Error Occurred!"))
-        } catch (e: HttpException) {
-            val jsonObj = JSONObject(e.response()?.errorBody()?.charStream()?.readText()!!)
-            emit(Resource.error(null, jsonObj.getString("message") ?: "Error occurred!"))
-        }
-    }
 
-    fun editThisUser(id: Int, request: EditUserRequest, accessToken: String) =
+    fun editThisUser(request: EditUserRequest, accessToken: String) =
         liveData(Dispatchers.IO) {
             emit(Resource.loading(null))
             try {
-                emit(Resource.success(data = repository.editUser(id, accessToken, request)))
+                emit(Resource.success(data = repository.editUser(accessToken, request)))
             } catch (e: IOException) {
                 emit(Resource.error(null, e.message ?: "Error Occurred!"))
             } catch (e: HttpException) {

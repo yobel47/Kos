@@ -168,18 +168,23 @@
             app:layout_constraintStart_toEndOf="@+id/tv_discount_price"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+<!--        <Button-->
+<!--            android:id="@+id/btn_book"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:minHeight="0dp"-->
+<!--            android:paddingHorizontal="8dp"-->
+<!--            android:paddingVertical="4dp"-->
+<!--            app:backgroundTint="@null"-->
+<!--            android:background="@drawable/custom_button"-->
+<!--            android:textColor="@drawable/custom_button_text"-->
+<!--            android:text="Booking Kost"-->
+<!--            android:textAllCaps="false"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_price" />-->
 
-        <Button
-            android:id="@+id/btn_book"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:minHeight="0dp"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="4dp"
-            android:text="Booking Kost"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
 
         <ImageView
             android:id="@+id/iv_favorite"

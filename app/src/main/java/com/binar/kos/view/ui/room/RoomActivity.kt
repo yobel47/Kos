@@ -24,9 +24,6 @@ import com.binar.kos.databinding.ActivityRoomBinding
 import com.binar.kos.databinding.BottomsheetFacilityBinding
 import com.binar.kos.databinding.BottomsheetImageBinding
 import com.binar.kos.utils.*
-import com.binar.kos.view.adapter.FilterGeneralAdapter
-import com.binar.kos.view.adapter.FilterRoomAdapter
-import com.binar.kos.view.adapter.KosAdapter
 import com.binar.kos.view.adapter.MoreKosAdapter
 import com.binar.kos.view.adapter.RoomAdapter.BottomFacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.FacilitiesRoomAdapter
@@ -34,9 +31,7 @@ import com.binar.kos.view.adapter.RoomAdapter.ReviewRoomAdapter
 import com.binar.kos.view.ui.booking.BookingActivity
 import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
-import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
 import com.binar.kos.view.ui.login.LoginActivity
-import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.viewmodel.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -185,17 +180,16 @@ class RoomActivity : AppCompatActivity() {
                             val discount = data.discount.discountPercentage!!.toInt()
 
                             val priceMonth = data.price?.costMonth!!.toInt()
-                            val discountPriceMonth = priceMonth * (discount / 100)
-                            val truePriceMonth = priceMonth - discountPriceMonth
+                            val discountPriceMonth = priceMonth * (discount.toDouble() / 100.toDouble())
+                            val truePriceMonth = priceMonth - discountPriceMonth.toInt()
 
                             val priceWeek = data.price.costWeek!!.toInt()
-                            val discountPriceWeek = priceWeek * (discount / 100)
-                            val truePriceWeek = priceWeek - discountPriceWeek
+                            val discountPriceWeek = priceWeek * (discount.toDouble() / 100.toDouble())
+                            val truePriceWeek = priceWeek - discountPriceWeek.toInt()
 
                             val priceDay = data.price.costDay!!.toInt()
-                            val discountPriceDay = priceDay * (discount / 100)
-                            val truePriceDay = priceDay - discountPriceDay
-
+                            val discountPriceDay = priceDay * (discount.toDouble() / 100.toDouble())
+                            val truePriceDay = priceDay - discountPriceDay.toInt()
 
                             intent.putExtra(ROOM_COST_MONTHLY, truePriceMonth.toString())
                             intent.putExtra(ROOM_COST_WEEKLY, truePriceWeek.toString())
@@ -205,7 +199,6 @@ class RoomActivity : AppCompatActivity() {
                             intent.putExtra(ROOM_COST_WEEKLY, data.price?.costWeek)
                             intent.putExtra(ROOM_COST_DAILY, data.price?.costDay)
                         }
-                        finish()
                         startActivity(intent)
                     } else {
                         Snackbar.make(binding.root,
@@ -351,6 +344,9 @@ class RoomActivity : AppCompatActivity() {
         if (data.facilities?.motorcycleParking == "1") {
             generalFacilitiesData.add(Filter(R.drawable.ic_motorcycle, "Parkir Motor"))
         }
+        if (data.facilities?.bicycleParking == "1") {
+            generalFacilitiesData.add(Filter(R.drawable.ic_bicycle, "Parkir Motor"))
+        }
         if (data.facilities?.mushola == "1") {
             generalFacilitiesData.add(Filter(R.drawable.ic_mushola, "Mushola"))
         }
@@ -369,7 +365,7 @@ class RoomActivity : AppCompatActivity() {
             spesificationData.add(Filter(R.drawable.ic_lightning, "Termasuk listrik"))
         }
         if (data.wide.toString().isNotEmpty()) {
-            spesificationData.add(Filter(R.drawable.ic_baseline_photo_size_select_small_24,
+            spesificationData.add(Filter(R.drawable.ic_slide_size,
                 "${data.wide.toString()} meter"))
         }
 

@@ -13,15 +13,18 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.binar.kos.R
 import com.binar.kos.databinding.ActivityLogoutBinding
 import com.binar.kos.databinding.CardLogoutBinding
 import com.binar.kos.utils.Status
 import com.binar.kos.utils.hideLoading
 import com.binar.kos.utils.showLoading
-import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
+import com.binar.kos.view.ui.profile.ProfileActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LogoutViewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -61,6 +64,12 @@ class LogoutActivity : AppCompatActivity() {
                                 binding.tvNoProfile.isVisible = true
                                 binding.tvNoProfile.text = result.data.data!!.noTelepon.toString()
                             }
+                            if(!result.data.data!!.image.isNullOrEmpty()){
+                                val requestOptions = RequestOptions().placeholder(R.drawable.profile_empty)
+                                Glide.with(this).load(result.data.data.image).apply(requestOptions).skipMemoryCache(true)
+                                    .into(binding.ivProfileImage)
+                            }
+
                         }
                         Status.ERROR -> {
                             showLoading(this)
@@ -105,8 +114,11 @@ class LogoutActivity : AppCompatActivity() {
 
     private fun onEditUser() {
         binding.profileSection.setOnClickListener {
-            val intent = Intent(this, EditProfileActivity::class.java)
-            finishAffinity()
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnEditProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }

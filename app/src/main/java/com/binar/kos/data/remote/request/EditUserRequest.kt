@@ -3,11 +3,6 @@ package com.binar.kos.data.remote.request
 import com.google.gson.annotations.SerializedName
 
 data class EditUserRequest(
-    @field:SerializedName("createdAt")
-    val createdAt: Long,
-
-    @field:SerializedName("updatedAt")
-    val updatedAt: Long,
 
     @field:SerializedName("namaLengkap")
     val namaLengkap: String,

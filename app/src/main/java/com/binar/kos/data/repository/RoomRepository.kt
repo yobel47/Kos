@@ -1,12 +1,11 @@
 package com.binar.kos.data.repository
 
-import com.binar.kos.data.remote.request.AddRoomRequest
-import com.binar.kos.network.ApiHelper
 import com.binar.kos.network2.ApiHelper2
 import okhttp3.RequestBody
 
 class RoomRepository(private val apiHelper2: ApiHelper2) {
     suspend fun getAllRooms() = apiHelper2.getAllRooms()
+    suspend fun getPromoRooms() = apiHelper2.getPromoRooms()
     suspend fun getDetailRoom(id: String) = apiHelper2.getDetailRoom(id)
     suspend fun addRoom(accessToken: String, request: RequestBody) =
         apiHelper2.postRoom(accessToken, request)
@@ -42,4 +41,9 @@ class RoomRepository(private val apiHelper2: ApiHelper2) {
         accessToken: String, idBook: Int, desc: String
     ) = apiHelper2.cancelTransaction(accessToken,
             idBook, desc)
+
+    suspend fun approveBook(
+        accessToken: String, idBook: Int, isApprove: String, status: String, description: String
+    ) = apiHelper2.approveBook(accessToken, idBook,
+        isApprove, status, description)
 }

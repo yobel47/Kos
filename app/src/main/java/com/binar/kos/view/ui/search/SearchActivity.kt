@@ -32,6 +32,7 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        @Suppress("DEPRECATION")
         Handler().postDelayed({
             binding.etSearch.requestFocus()
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -45,6 +46,9 @@ class SearchActivity : AppCompatActivity() {
         popularAreaAdapter = PopularAreaAdapter(popularAreaList) { popularArea -> onClick(popularArea) }
         binding.rvSearch.addItemDecoration(GridSpacingItemDecoration(3,10, 1))
         binding.rvSearch.adapter = popularAreaAdapter
+
+
+        binding.rvSearch
     }
 
 

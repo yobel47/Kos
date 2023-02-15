@@ -61,7 +61,7 @@ class SearchResultAdapter(
             binding.tvType.text = item.type!!.toCapital()
 
 
-            if(item.discount?.isDiscount == "true"){
+            if(item.discount?.isDiscount == true){
                 val price = item.price?.costMonth!!.toInt()
                 val discount = item.discount.discountPercentage!!.toInt()
                 val discountPrice = price / (discount * 100)
@@ -81,6 +81,7 @@ class SearchResultAdapter(
             Glide.with(itemView.context)
                 .load(item.imageUrl?.get(0)?.url)
                 .into(binding.ivRoom)
+
         }
     }
 }

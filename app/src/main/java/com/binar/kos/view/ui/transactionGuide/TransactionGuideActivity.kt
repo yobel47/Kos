@@ -21,15 +21,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.binar.kos.databinding.ActivityTransactionBinding
 import com.binar.kos.databinding.ActivityTransactionGuideBinding
 import com.binar.kos.databinding.CardChooseImageBinding
 import com.binar.kos.databinding.SentDialog2Binding
 import com.binar.kos.utils.*
-import com.binar.kos.view.ui.add.AddRoomActivity
-import com.binar.kos.view.ui.booking.BookingActivity
+import com.binar.kos.view.ui.history.HistoryActivity
 import com.binar.kos.view.ui.home.HomeActivity
-import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
 import com.binar.kos.view.ui.transaction.TransactionActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.RoomViewModel
@@ -85,6 +82,7 @@ class TransactionGuideActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun onUpload(){
         val builder = MultipartBody.Builder().setType(MultipartBody.FORM)
         if (getFile?.exists() == true) {
@@ -119,6 +117,12 @@ class TransactionGuideActivity : AppCompatActivity() {
                     binding2.btnClose.setOnClickListener {
                         isdialoggg.dismiss()
                         val intent = Intent(this, HomeActivity::class.java)
+                        finishAffinity()
+                        startActivity(intent)
+                    }
+                    binding2.btnCheck.setOnClickListener {
+                        isdialoggg.dismiss()
+                        val intent = Intent(this, HistoryActivity::class.java)
                         finishAffinity()
                         startActivity(intent)
                     }
@@ -211,7 +215,7 @@ class TransactionGuideActivity : AppCompatActivity() {
         }
     }
 
-    private fun allPermissionsGranted() = TransactionGuideActivity.REQUIRED_PERMISSIONS.all {
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -221,7 +225,7 @@ class TransactionGuideActivity : AppCompatActivity() {
         grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == TransactionGuideActivity.REQUEST_CODE_PERMISSIONS) {
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
@@ -282,7 +286,6 @@ class TransactionGuideActivity : AppCompatActivity() {
 
     companion object {
         const val COPY = "copy"
-        const val CAMERA_X_RESULT = 200
         private val REQUIRED_PERMISSIONS = arrayOf(
             Manifest.permission.CAMERA
         )

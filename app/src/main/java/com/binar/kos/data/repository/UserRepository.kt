@@ -7,6 +7,8 @@ class UserRepository(private val apiHelper: ApiHelper) {
     suspend fun getUser(accessToken: String) =
         apiHelper.getUser(accessToken)
 
-    suspend fun editUser(id: Int, accessToken: String, request: EditUserRequest) =
-        apiHelper.editUser(id, accessToken, request)
+    suspend fun editUser(accessToken: String, request: EditUserRequest) =
+        apiHelper.editUser(accessToken, request)
+
+
 }
