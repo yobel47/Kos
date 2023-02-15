@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.kos.R
 import com.binar.kos.data.local.entity.Kos
@@ -33,15 +32,19 @@ class KosAdapter(private val kosList: ArrayList<Kos>, private val context: Conte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(kosList[position]) {
-                binding.kosName.text = kosList[position].title!!.toCapital()
-                binding.kosLocation.text = kosList[position].address?.city!!.toCapital()
+                if(!kosList[position].title!!.isNullOrEmpty()){
+                    binding.kosName.text = kosList[position].title!!.toCapital()
+                }
+                if(!kosList[position].address?.city!!.isNullOrEmpty()){
+                    binding.kosLocation.text = kosList[position].address?.city!!.toCapital()
+                }
                 binding.kosRate.text = "4.5" //TODO: find out more about Kos Rating
 
                 if(kosList[position].discount?.isDiscount == "true"){
                     val price = kosList[position].price?.costMonth!!.toInt()
                     val discount = kosList[position].discount!!.discountPercentage!!.toInt()
-                    val discountPrice = price * (discount / 100)
-                    val truePrice = price - discountPrice
+                    val discountPrice = (price * (discount.toDouble() / 100.toDouble()))
+                    val truePrice = price - discountPrice.toInt()
                     binding.kosOriginalPrice.text = price.toRp()
                     binding.kosOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     binding.kosDiscount.text  = "$discount%"

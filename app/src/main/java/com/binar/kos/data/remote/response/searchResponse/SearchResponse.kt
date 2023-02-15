@@ -49,10 +49,3 @@ data class SearchResponse(
 	@field:SerializedName("updatedAt")
 	val updatedAt: String? = null
 )
-
-
-
-
-
-
-

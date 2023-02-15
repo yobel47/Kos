@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 data class Data(
 
     @field:SerializedName("gender")
-    val gender: Any? = null,
+    val gender: String? = null,
 
     @field:SerializedName("noRekening")
-    val noRekening: Any? = null,
+    val noRekening: String? = null,
 
     @field:SerializedName("profesi")
-    val profesi: Any? = null,
+    val profesi: String? = null,
 
     @field:SerializedName("createdAt")
     val createdAt: Any? = null,
@@ -20,13 +20,13 @@ data class Data(
     val tanggalKelahiran: Any? = null,
 
     @field:SerializedName("bank")
-    val bank: Any? = null,
+    val bank: String? = null,
 
     @field:SerializedName("noTelepon")
-    val noTelepon: Any? = null,
+    val noTelepon: String? = null,
 
     @field:SerializedName("kotaAsal")
-    val kotaAsal: Any? = null,
+    val kotaAsal: String? = null,
 
     @field:SerializedName("id")
     val id: Int? = null,
@@ -35,11 +35,14 @@ data class Data(
     val namaLengkap: String? = null,
 
     @field:SerializedName("tanggalLahiranFormatted")
-    val tanggalLahiranFormatted: Any? = null,
+    val tanggalLahiranFormatted: String? = null,
 
     @field:SerializedName("updatedAt")
     val updatedAt: Any? = null,
 
     @field:SerializedName("status")
-    val status: Any? = null
+    val status: String? = null ,
+
+    @field:SerializedName("image")
+    val image: String? = null
 )

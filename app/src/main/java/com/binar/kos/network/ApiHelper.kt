@@ -31,6 +31,6 @@ class ApiHelper(private val apiService: ApiService) {
 
     suspend fun getUser(accessToken: String) = apiService.getUser(getHeaderMap(accessToken))
 
-    suspend fun editUser(id: Int, accessToken: String, request: EditUserRequest) =
-        apiService.editUser(id, request, getHeaderMap(accessToken))
+    suspend fun editUser(accessToken: String, request: EditUserRequest) =
+        apiService.editUser(request, getHeaderMap(accessToken))
 }

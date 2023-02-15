@@ -11,43 +11,48 @@
         android:layout_height="wrap_content"
         android:paddingBottom="113dp">
 
-        <TextView
-            android:id="@+id/editProfileText"
+        <LinearLayout
+            android:id="@+id/title_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/edit_profile"
-            android:textAlignment="center"
-            android:textFontWeight="700"
-            android:textSize="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="24dp"
-            android:layout_height="15.25dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/back_arrow"
-            android:backgroundTint="@android:color/transparent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/icon_back"
+                app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24"
+                app:tint="@color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                android:gravity="center_vertical"
+                android:text="Edit Profil"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <View
             android:id="@+id/headerDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
             android:background="@color/grey"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editProfileText" />
+            app:layout_constraintTop_toBottomOf="@id/title_container" />
 
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="42dp"
             android:src="@drawable/profile_empty"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -61,188 +66,203 @@
             app:layout_constraintBottom_toBottomOf="@id/profileImage"
             app:layout_constraintLeft_toRightOf="@id/profileImage" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputNamaLengkap"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="48dp"
-            android:background="@drawable/input_text"
-            android:hint="@string/nama_lengkap"
-            android:padding="16dp"
-            android:textSize="16dp"
+            android:layout_marginEnd="20dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:hintAnimationEnabled="false"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profileImage" />
+            app:layout_constraintTop_toBottomOf="@id/profileImage">
 
-        <TextView
-            android:id="@+id/genderSectionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="33dp"
-            android:layout_marginTop="32dp"
-            android:text="Gender"
-            android:textSize="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputNamaLengkap" />
-
-        <RadioGroup
-            android:id="@+id/genderPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genderSectionText">
-
-            <RadioButton
-                android:id="@+id/perempuan"
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:text="Perempuan"
-                android:textSize="18dp" />
+                android:layout_marginBottom="8dp"
+                android:autofillHints=""
+                android:hint="@string/masukkan_nama_anda"
+                android:inputType="text"
+                android:minHeight="48dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <RadioButton
-                android:id="@+id/lakilaki"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="34dp"
-                android:text="Laki - Laki"
-                android:textSize="18dp" />
 
-        </RadioGroup>
+<!--        <TextView-->
+<!--            android:id="@+id/genderSectionText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="33dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:text="Jenis Kelamin"-->
+<!--            android:textSize="20dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inputNamaLengkap" />-->
 
-        <EditText
-            android:id="@+id/inputTanggalLahir"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/input_text"
-            android:drawableStart="@drawable/calendar"
-            android:drawablePadding="11dp"
-            android:hint="Tanggal Lahir"
-            android:padding="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genderPicker"
-            android:inputType="date"/>
+<!--        <RadioGroup-->
+<!--            android:id="@+id/genderPicker"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/genderSectionText">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputAsalKota"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/input_text"
-            android:hint="@string/asal_kota"
-            android:padding="16dp"
-            android:textSize="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputTanggalLahir" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/perempuan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="35dp"-->
+<!--                android:text="Perempuan"-->
+<!--                android:textSize="18dp" />-->
 
-        <TextView
-            android:id="@+id/marriageStatusText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="33dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/status"
-            android:textSize="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputAsalKota" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/lakilaki"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="34dp"-->
+<!--                android:text="Laki - Laki"-->
+<!--                android:textSize="18dp" />-->
 
-        <RadioGroup
-            android:id="@+id/marriageStatusPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/marriageStatusText">
+<!--        </RadioGroup>-->
 
-            <RadioButton
-                android:id="@+id/lajang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:text="Lajang"
-                android:textSize="18dp" />
+<!--        <EditText-->
+<!--            android:id="@+id/inputTanggalLahir"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_marginHorizontal="18dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/input_text"-->
+<!--            android:drawableStart="@drawable/calendar"-->
+<!--            android:drawablePadding="11dp"-->
+<!--            android:hint="Tanggal Lahir"-->
+<!--            android:padding="16dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/genderPicker"-->
+<!--            android:inputType="date"/>-->
 
-            <RadioButton
-                android:id="@+id/menikah"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="34dp"
-                android:text="Menikah"
-                android:textSize="18dp" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputAsalKota"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_marginHorizontal="18dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:background="@drawable/input_text"-->
+<!--            android:hint="@string/asal_kota"-->
+<!--            android:padding="16dp"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inputTanggalLahir" />-->
 
-        </RadioGroup>
+<!--        <TextView-->
+<!--            android:id="@+id/marriageStatusText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="33dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:text="@string/status"-->
+<!--            android:textSize="20dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inputAsalKota" />-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputProfesi"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/input_text"
-            android:hint="@string/profesi"
-            android:padding="16dp"
-            android:textSize="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/marriageStatusPicker" />
+<!--        <RadioGroup-->
+<!--            android:id="@+id/marriageStatusPicker"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/marriageStatusText">-->
 
-        <Spinner
-            android:id="@+id/bankPicker"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/input_text"
-            android:padding="16dp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:entries="@array/bank_names"
-            app:layout_constraintTop_toBottomOf="@id/inputProfesi" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/lajang"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="35dp"-->
+<!--                android:text="Lajang"-->
+<!--                android:textSize="18dp" />-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputNoRek"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/input_text"
-            android:hint="@string/nomor_rekening"
-            android:padding="16dp"
-            android:textSize="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bankPicker" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/menikah"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="34dp"-->
+<!--                android:text="Menikah"-->
+<!--                android:textSize="18dp" />-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputNamaPemilikBank"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/input_text"
-            android:hint="@string/nama_pemilik_bank"
-            android:padding="16dp"
-            android:textSize="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputNoRek" />
+<!--        </RadioGroup>-->
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="113dp"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:text="Simpan"
-            android:textSize="18sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputNamaPemilikBank" />
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputProfesi"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_marginHorizontal="18dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:background="@drawable/input_text"-->
+<!--            android:hint="@string/profesi"-->
+<!--            android:padding="16dp"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/marriageStatusPicker" />-->
+
+<!--        <Spinner-->
+<!--            android:id="@+id/bankPicker"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_marginHorizontal="18dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:padding="16dp"-->
+<!--            android:spinnerMode="dropdown"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            android:entries="@array/bank_names"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inputProfesi" />-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputNoRek"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_marginHorizontal="18dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:background="@drawable/input_text"-->
+<!--            android:hint="@string/nomor_rekening"-->
+<!--            android:padding="16dp"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/bankPicker" />-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/inputNamaPemilikBank"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_marginHorizontal="18dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:background="@drawable/input_text"-->
+<!--            android:hint="@string/nama_pemilik_bank"-->
+<!--            android:padding="16dp"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inputNoRek" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/saveButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="19dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginBottom="113dp"-->
+<!--            android:paddingHorizontal="16dp"-->
+<!--            android:paddingVertical="8dp"-->
+<!--            android:text="Simpan"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inputNamaPemilikBank" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

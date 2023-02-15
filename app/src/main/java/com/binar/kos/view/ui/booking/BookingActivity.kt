@@ -16,18 +16,13 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isNotEmpty
-import androidx.core.view.isVisible
 import com.binar.kos.R
 import com.binar.kos.data.remote.response.userdataResponse.UserdataResponse
 import com.binar.kos.databinding.ActivityBookingBinding
 import com.binar.kos.databinding.BottomsheetBookerBinding
-import com.binar.kos.databinding.BottomsheetFacilityBinding
-import com.binar.kos.databinding.BottomsheetImageBinding
 import com.binar.kos.databinding.BottomsheetTimeBookBinding
 import com.binar.kos.utils.*
-import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.room.RoomActivity
-import com.binar.kos.view.ui.selectUser.SelectUserActivity
 import com.binar.kos.view.ui.transaction.TransactionActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LogoutViewModel
@@ -49,7 +44,7 @@ class BookingActivity : AppCompatActivity() {
     private var bookerCount = 1
     private var timeCount = 1
     private var roomCost = 0
-    private var feeCost: Double = 0.0
+    private var feeCost = 0
     private var totalCost = 0
     private var roomCostMonthly = ""
     private var roomCostWeekly = ""
@@ -130,7 +125,6 @@ class BookingActivity : AppCompatActivity() {
                                 intent.putExtra(BOOKING_FEE_COST, feeCost.toInt())
                                 intent.putExtra(BOOKING_TOTAL_COST, totalCost)
                                 intent.putExtra(BOOKING_ROOM_INFO, "Biaya Kost $timeCount/$type_cost")
-                                finish()
                                 startActivity(intent)
                             }
                             Status.ERROR -> {
@@ -149,6 +143,7 @@ class BookingActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun checkButtonUserdata() {
         bindingBottomsheetBooker.btnSewa.isEnabled =
             bindingBottomsheetBooker.etNameBooker.isNotEmpty() &&
@@ -334,7 +329,7 @@ class BookingActivity : AppCompatActivity() {
             binding.tvPriceTime.text = roomCostMonthly.toInt().toRp()
             bindingBottomsheetTimeBook.tvMonthlyCost.text = roomCostMonthly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCostMonthly.toInt().toRp()
-            feeCost = 0.02 * roomCostMonthly.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -381,9 +376,9 @@ class BookingActivity : AppCompatActivity() {
                 }
             }
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
-            binding.tvCostFeePrice.text = feeCost.toInt().toRp()
-            totalCost = roomCost + feeCost.toInt()
+            feeCost = 9000
+            binding.tvCostFeePrice.text = feeCost.toRp()
+            totalCost = roomCost + feeCost
             binding.tvCostTotalPrice.text = totalCost.toRp()
         }
         binding.ivRemoveCountDuration.setOnClickListener {
@@ -401,9 +396,9 @@ class BookingActivity : AppCompatActivity() {
                 }
                 binding.tvCountTime.text = "$timeCount $type_cost"
                 binding.tvCostPaymentPrice.text = roomCost.toRp()
-                feeCost = 0.02 * roomCost.toDouble()
-                binding.tvCostFeePrice.text = feeCost.toInt().toRp()
-                totalCost = roomCost + feeCost.toInt()
+                feeCost = 9000
+                binding.tvCostFeePrice.text = feeCost.toRp()
+                totalCost = roomCost + feeCost
                 binding.tvCostTotalPrice.text = totalCost.toRp()
             } else {
                 timeCount -= 1
@@ -420,9 +415,9 @@ class BookingActivity : AppCompatActivity() {
                 }
                 binding.tvCountTime.text = "$timeCount $type_cost"
                 binding.tvCostPaymentPrice.text = roomCost.toRp()
-                feeCost = 0.02 * roomCost.toDouble()
-                binding.tvCostFeePrice.text = feeCost.toInt().toRp()
-                totalCost = roomCost + feeCost.toInt()
+                feeCost = 9000
+                binding.tvCostFeePrice.text = feeCost.toRp()
+                totalCost = roomCost + feeCost
                 binding.tvCostTotalPrice.text = totalCost.toRp()
             }
         }
@@ -548,7 +543,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostWeekly.toInt() * timeCount
             binding.tvPriceTime.text = roomCostWeekly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -568,7 +563,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostWeekly.toInt() * timeCount
             binding.tvPriceTime.text = roomCostWeekly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -599,7 +594,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostDaily.toInt() * timeCount
             binding.tvPriceTime.text = roomCostDaily.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -614,7 +609,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostWeekly.toInt() * timeCount
             binding.tvPriceTime.text = roomCostWeekly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -629,7 +624,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostMonthly.toInt() * timeCount
             binding.tvPriceTime.text = roomCostMonthly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCostMonthly.toInt().toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -644,7 +639,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostDaily.toInt() * timeCount
             binding.tvPriceTime.text = roomCostDaily.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -659,7 +654,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostWeekly.toInt() * timeCount
             binding.tvPriceTime.text = roomCostWeekly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()
@@ -674,7 +669,7 @@ class BookingActivity : AppCompatActivity() {
             roomCost = roomCostMonthly.toInt() * timeCount
             binding.tvPriceTime.text = roomCostMonthly.toInt().toRp()
             binding.tvCostPaymentPrice.text = roomCost.toRp()
-            feeCost = 0.02 * roomCost.toDouble()
+            feeCost = 9000
             binding.tvCostFeePrice.text = feeCost.toInt().toRp()
             totalCost = roomCost + feeCost.toInt()
             binding.tvCostTotalPrice.text = totalCost.toRp()

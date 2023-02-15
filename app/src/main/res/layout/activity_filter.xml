@@ -31,25 +31,36 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/close_filter" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btn_terapkan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="24dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/custom_button_2"
+        android:textColor="@drawable/custom_button_text"
         android:text="@string/terapkan"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        app:layout_constraintEnd_toEndOf="parent"  />
+    <Button
+        android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="24dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/custom_button_2"
+        android:textColor="@drawable/custom_button_text"
         android:text="@string/reset"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_terapkan" />
 
@@ -58,7 +69,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton"
+        app:layout_constraintBottom_toTopOf="@+id/btn_reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_header_filter">
@@ -241,10 +252,10 @@
                     android:layout_height="match_parent" />
 
                 <RadioButton
-                    android:id="@+id/rb_monthly"
+                    android:id="@+id/rb_weekly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/bulanan"
+                    android:text="Mingguan"
                     android:textSize="16sp" />
 
                 <androidx.legacy.widget.Space
@@ -252,10 +263,10 @@
                     android:layout_height="match_parent" />
 
                 <RadioButton
-                    android:id="@+id/rb_yearly"
+                    android:id="@+id/rb_monthly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tahunan"
+                    android:text="@string/bulanan"
                     android:textSize="16sp" />
             </RadioGroup>
 
@@ -503,6 +514,32 @@
                 app:layout_constraintTop_toBottomOf="@+id/cb_pet" />
 
             <CheckBox
+                android:id="@+id/cb_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="0dp"
+                android:text="Khusus Mahasiswa"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cb_worker" />
+
+            <CheckBox
+                android:id="@+id/cb_smoking_in_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="0dp"
+                android:text="Dilarang merokok di kamar"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cb_student" />
+
+            <CheckBox
                 android:id="@+id/cb_electicity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -510,10 +547,10 @@
                 android:layout_marginTop="14dp"
                 android:minHeight="0dp"
                 android:paddingHorizontal="0dp"
-                android:text="@string/harga_termasuk_listrik"
+                android:text="Tambah biaya untuk elektronik"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_worker" />
+                app:layout_constraintTop_toBottomOf="@+id/cb_smoking_in_room" />
 
             <CheckBox
                 android:id="@+id/cb_checkIn"

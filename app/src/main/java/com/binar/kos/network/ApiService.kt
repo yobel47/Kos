@@ -1,10 +1,9 @@
 package com.binar.kos.network
 
-import com.binar.kos.data.local.entity.Kos
 import com.binar.kos.data.remote.request.*
 import com.binar.kos.data.remote.response.*
+import com.binar.kos.data.remote.response.editUser.EditUserResponse
 import com.binar.kos.data.remote.response.userdataResponse.UserdataResponse
-import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
@@ -20,22 +19,14 @@ interface ApiService {
     @POST("auth/send-otp")
     suspend fun sendOtp(@Body request: RegisterRequest): RegisterResponse
 
-    @POST("auth/forget-password")
-    suspend fun forgotPassword(@Body request: ForgotPasswordRequest): ForgotPasswordResponse
 
-    @POST("auth/change-password")
-    suspend fun changePassword(@Body request: ChangePasswordRequest): ChangePasswordResponse
-
-    @GET("users/{id}")
-    suspend fun getAllUsers(@Path("id") id: Int, @Header("Authorization") authorization: String): UsersListResponse
-
-    @PATCH("users/{id}")
-    suspend fun editUser(@Path("id") id: Int, @Body request: EditUserRequest, @HeaderMap header:Map<String, String>): UserResponse
-
-    @DELETE("users/{id}")
-    suspend fun deleteUser(@Path("id") id: Int, @Header("Authorization") authorization: String): UserResponse
+    @POST("user/update")
+    suspend fun editUser(
+        @Body request: EditUserRequest,
+        @HeaderMap header: Map<String, String>,
+    ): EditUserResponse
 
     @GET("user/find")
-    suspend fun getUser(@HeaderMap header: Map<String, String>) : UserdataResponse
+    suspend fun getUser(@HeaderMap header: Map<String, String>): UserdataResponse
 }
 

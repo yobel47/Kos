@@ -5,10 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatDelegate
 import com.binar.kos.databinding.ActivitySplashScreenBinding
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.homePenyewa.HomePenyewaActivity
-import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,6 +22,9 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         @Suppress("DEPRECATION")
         Handler().postDelayed({
@@ -44,7 +47,7 @@ class SplashScreenActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 finishAffinity()
                 startActivity(intent)
             }
