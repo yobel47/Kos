@@ -4,7 +4,9 @@
 
 <a><img src="https://i.imgur.com/P1pNuCU.png" /></a>
 
-**Rent room for your own. Both for seeker and tenant.** This Android-based app is entirely well-written in Kotlin. Kalorieda is built using MVVM which makes it robust, flexible, and maintainable. This app was developed as a final project in SYNERGY.
+**Omah Kos.
+Seperti di rumah sendiri.** 
+This Android-based app is entirely well-written in Kotlin. Kalorieda is built using MVVM which makes it robust, flexible, and maintainable. This app was developed as a final project in SYNRGY.
 
 ## Download
 Check out the [release page](https://github.com/yobel47/Kos/releases) and download the latest apk.
