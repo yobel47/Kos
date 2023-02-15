@@ -2,7 +2,7 @@
 
 [![GitHub release][release-shield]][release-url]
 
-<a><img src="https://imgur.com/P1pNuCU" /></a>
+<a><img src="https://i.imgur.com/P1pNuCU.png" /></a>
 
 **Rent room for your own. Both for seeker and tenant.** This Android-based app is entirely well-written in Kotlin. Kalorieda is built using MVVM which makes it robust, flexible, and maintainable. This app was developed as a final project in SYNERGY.
 
