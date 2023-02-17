@@ -1,95 +1,67 @@
-package com.binar.kos.view.ui.homePenyewa
+package com.binar.kos.view.ui.myroom
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
-import com.binar.kos.R
-import com.binar.kos.databinding.ActivityHomePenyewaBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.binar.kos.databinding.ActivityMyRoomBinding
 import com.binar.kos.utils.Status
+import com.binar.kos.view.adapter.HistoryPenyewaAdapter
+import com.binar.kos.view.adapter.MyRoomAdapter
 import com.binar.kos.view.ui.add.AddRoomActivity
 import com.binar.kos.view.ui.historyPenyewa.HistoryPenyewaActivity
-import com.binar.kos.view.ui.login.LoginActivity
 import com.binar.kos.view.ui.logout.LogoutActivity
-import com.binar.kos.view.ui.myroom.MyRoomActivity
-import com.binar.kos.view.ui.notification.NotificationActivity
 import com.binar.kos.view.ui.profile.ProfileActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.LogoutViewModel
+import com.binar.kos.viewmodel.RoomViewModel
 import com.google.android.material.snackbar.Snackbar
-import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomePenyewaActivity : AppCompatActivity() {
+class MyRoomActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomePenyewaBinding
+    private lateinit var binding: ActivityMyRoomBinding
     private val dataStore: DatastoreViewModel by viewModel()
     private val logoutViewModel: LogoutViewModel by viewModel()
+    private val roomViewModel: RoomViewModel by viewModel()
+
+    private lateinit var myRoomAdapter: MyRoomAdapter
+
 
     private var userData = true
-
+    var accessToken = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomePenyewaBinding.inflate(layoutInflater)
+        binding = ActivityMyRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getUserdata()
-        setCarousel()
-        toProfile()
-        toAddRoom()
-        toHistory()
-        toNotif()
-
-    }
-
-    private fun setCarousel() {
-        binding.ivCarousel.registerLifecycle(lifecycle)
-        binding.ivCarousel.showIndicator = true
-        binding.ivCarousel.showNavigationButtons = false
-        binding.ivCarousel.showTopShadow = false
-        binding.ivCarousel.showBottomShadow = false
-        binding.ivCarousel.autoPlay = true
-        binding.ivCarousel.autoPlayDelay = 3000
-
-        val list = mutableListOf<CarouselItem>()
-        list.add(
-            CarouselItem(
-                imageDrawable = R.drawable.banner_1
-            )
-        )
-        list.add(
-            CarouselItem(
-                imageDrawable = R.drawable.banner_2
-            )
-        )
-        list.add(
-            CarouselItem(
-                imageDrawable = R.drawable.banner_3
-            )
-        )
-
-        binding.ivCarousel.setData(list)
-    }
-    private fun toProfile() {
-        dataStore.getLoginState().observe(this) {
-            if (it) {
-                binding.btnProfile.setOnClickListener {
-                    val intent = Intent(this, LogoutActivity::class.java)
-                    startActivity(intent)
-                }
-            } else {
-                binding.btnProfile.setOnClickListener {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                }
+        dataStore.getAccessToken().observe(this) { token ->
+            if (!token.equals("default value")) {
+                accessToken = token
+                getMyRoom()
             }
         }
+
+        getUserdata()
+        toAddRoom()
+        toHome()
+        toProfile()
+        toHistory()
     }
+
+
+
 
     private fun getUserdata() {
         dataStore.getAccessToken().observe(this) { token ->
             if (!token.equals("default value")) {
+                accessToken = token
+                Log.d("token1",token)
+
                 logoutViewModel.getUsedata(token).observe(this) { result ->
                     when (result.status) {
                         Status.LOADING -> {
@@ -128,10 +100,62 @@ class HomePenyewaActivity : AppCompatActivity() {
     }
 
 
+
+    private fun getMyRoom(){
+        Log.d("token",accessToken)
+        roomViewModel.getMyRoom(accessToken).observe(this) { result ->
+            when (result.status) {
+                Status.LOADING -> {
+                    binding.pbRv.visibility = View.VISIBLE
+                    binding.cvAddRoom.visibility = View.GONE
+                    binding.rvRoom.visibility = View.GONE
+                }
+                Status.SUCCESS -> {
+                    binding.pbRv.visibility = View.GONE
+                    binding.cvAddRoom.visibility = View.VISIBLE
+                    binding.rvRoom.visibility = View.VISIBLE
+                    myRoomAdapter =
+                        MyRoomAdapter(result.data!!)
+                    val linearLayoutManager = LinearLayoutManager(this)
+                    binding.rvRoom.layoutManager = linearLayoutManager
+                    binding.rvRoom.adapter = myRoomAdapter
+
+                }
+                Status.ERROR -> {
+                    binding.pbRv.visibility = View.GONE
+                    binding.cvAddRoom.visibility = View.VISIBLE
+
+                    Toast.makeText(this, result.message.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
+    }
+    private fun toHome() {
+        binding.btnHome.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun toProfile() {
+        binding.btnProfile.setOnClickListener {
+            val intent = Intent(this, LogoutActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+    }
+
+    private fun toHistory(){
+        binding.btnHistory.setOnClickListener {
+            val intent = Intent(this, HistoryPenyewaActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     private fun toAddRoom(){
         if(userData){
-            binding.btnMyRoom.setOnClickListener {
-                val intent = Intent(this, MyRoomActivity::class.java)
+            binding.btnAddRoom.setOnClickListener {
+                val intent = Intent(this, AddRoomActivity::class.java)
                 startActivity(intent)
             }
         }else{
@@ -143,21 +167,6 @@ class HomePenyewaActivity : AppCompatActivity() {
                     finish()
                     startActivity(intent)
                 }.show()
-        }
-
-    }
-
-    private fun toHistory(){
-        binding.btnHistory.setOnClickListener {
-            val intent = Intent(this, HistoryPenyewaActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    private fun toNotif(){
-        binding.btnNotif.setOnClickListener {
-            val intent = Intent(this, NotificationActivity::class.java)
-            startActivity(intent)
         }
     }
 }

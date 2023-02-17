@@ -29,9 +29,9 @@ import com.binar.kos.view.adapter.RoomAdapter.BottomFacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.FacilitiesRoomAdapter
 import com.binar.kos.view.adapter.RoomAdapter.ReviewRoomAdapter
 import com.binar.kos.view.ui.booking.BookingActivity
-import com.binar.kos.view.ui.editProfile.EditProfileActivity
 import com.binar.kos.view.ui.home.HomeActivity
 import com.binar.kos.view.ui.login.LoginActivity
+import com.binar.kos.view.ui.profile.ProfileActivity
 import com.binar.kos.viewmodel.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -205,7 +205,7 @@ class RoomActivity : AppCompatActivity() {
                             "Data profil belum terisi",
                             Snackbar.LENGTH_LONG)
                             .setAction("Isi data profile") {
-                                val intent = Intent(this, EditProfileActivity::class.java)
+                                val intent = Intent(this, ProfileActivity::class.java)
                                 finish()
                                 startActivity(intent)
                             }.show()

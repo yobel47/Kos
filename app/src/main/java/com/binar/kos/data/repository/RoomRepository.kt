@@ -46,4 +46,8 @@ class RoomRepository(private val apiHelper2: ApiHelper2) {
         accessToken: String, idBook: Int, isApprove: String, status: String, description: String
     ) = apiHelper2.approveBook(accessToken, idBook,
         isApprove, status, description)
+
+
+    suspend fun getMyRoom(accessToken: String) = apiHelper2.getMyRoom(accessToken)
+
 }

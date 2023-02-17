@@ -12,6 +12,7 @@ import com.binar.kos.data.remote.response.bookingRoom.post.BookingPostResponse
 import com.binar.kos.data.remote.response.bookingRoom.put.BookingPutResponse
 import com.binar.kos.data.remote.response.historyPenyewa.HistoryPenyewaResponse
 import com.binar.kos.data.remote.response.historyResponse.HistoryResponse
+import com.binar.kos.data.remote.response.myRoom.MyRoomResponse
 import com.binar.kos.data.remote.response.paymentMethod.PaymentMethodResponseItem
 import com.binar.kos.data.remote.response.roomResponse.RoomResponse
 import com.binar.kos.data.remote.response.searchResponse.SearchResponse
@@ -178,4 +179,11 @@ interface ApiService2 {
         @HeaderMap header: Map<String, String>,
         @Body request: RequestBody,
     ): ApproveBookResponse
+
+    @GET("/api/room/pemilik")
+    suspend fun getMyRoom(
+        @HeaderMap header: Map<String, String>,
+    ): List<MyRoomResponse>
+
+
 }

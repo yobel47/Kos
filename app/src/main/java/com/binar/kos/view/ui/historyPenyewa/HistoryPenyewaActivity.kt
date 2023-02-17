@@ -24,6 +24,7 @@ import com.binar.kos.view.adapter.HistoryPenyewaAdapter
 import com.binar.kos.view.ui.add.AddRoomActivity
 import com.binar.kos.view.ui.detailPenyewa.DetailPenyewaActivity
 import com.binar.kos.view.ui.logout.LogoutActivity
+import com.binar.kos.view.ui.myroom.MyRoomActivity
 import com.binar.kos.viewmodel.DatastoreViewModel
 import com.binar.kos.viewmodel.MainViewModel
 import com.binar.kos.viewmodel.RoomViewModel
@@ -270,10 +271,11 @@ class HistoryPenyewaActivity : AppCompatActivity() {
 
     private fun toFavorit() {
         binding.btnMyRoom.setOnClickListener {
-            val intent = Intent(this, AddRoomActivity::class.java)
+            val intent = Intent(this, MyRoomActivity::class.java)
             startActivity(intent)
         }
     }
+
 
     companion object {
         const val BOOKING_ID = "booking_id"
