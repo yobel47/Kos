@@ -29,7 +29,7 @@ class HistoryAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             with(historyList[position]) {
-                binding.tvTitle.text = this.title
+                binding.tvTitle.text = this.title.toString().toCapital()
                 binding.tvLocation.text =
                     "${this.address?.district!!.toCapital()}, ${this.address.city!!.toCapital()}"
 
