@@ -119,7 +119,6 @@ class MyRoomActivity : AppCompatActivity() {
                     val linearLayoutManager = LinearLayoutManager(this)
                     binding.rvRoom.layoutManager = linearLayoutManager
                     binding.rvRoom.adapter = myRoomAdapter
-
                 }
                 Status.ERROR -> {
                     binding.pbRv.visibility = View.GONE
