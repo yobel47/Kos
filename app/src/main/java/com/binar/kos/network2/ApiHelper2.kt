@@ -158,4 +158,6 @@ class ApiHelper2(private val apiService2: ApiService2) {
 
     suspend fun uploadProfile(accessToken: String, request: RequestBody) = apiService2.uploadProfilePicture(
         getHeaderMap(accessToken), request)
+
+    suspend fun getMyRoom(accessToken: String) = apiService2.getMyRoom(getHeaderMap(accessToken))
 }

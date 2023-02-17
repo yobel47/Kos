@@ -30,7 +30,7 @@ class HistoryPenyewaAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             with(historyList[position]) {
-                binding.tvTitle.text = this.rooms?.title
+                binding.tvTitle.text = this.rooms?.title?.toCapital()
                 binding.tvLocation.text =
                     "${this.rooms?.address?.district!!.toCapital()}, ${this.rooms.address.city!!.toCapital()}"
 
