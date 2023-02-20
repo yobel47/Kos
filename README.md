@@ -2,7 +2,7 @@
 
 [![GitHub release][release-shield]][release-url]
 
-<a><img src="https://i.imgur.com/P1pNuCU.png" /></a>
+<a><img src="https://i.imgur.com/xeEqIJ4.png" /></a>
 
 **Omah Kos.
 Seperti di rumah sendiri.** 
