@@ -33,7 +33,7 @@ class MyRoomAdapter(
                 binding.tvLocation.text =
                     "${this.address?.district!!.toCapital()}, ${this.address.city!!.toCapital()}"
 
-                if(this.approved?.isApprovalRoom==false){
+                if(this.approved?.isApprovalRoom=="false"){
                     binding.tvType.text = "Pending"
                     binding.tvType.background = binding.root.context.getDrawable(com.binar.kos.R.drawable.tag_pending)
                 }else{
